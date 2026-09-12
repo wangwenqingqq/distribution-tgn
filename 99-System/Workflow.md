@@ -1,29 +1,20 @@
 # 使用与同步
 
-## 平时怎么用
-1. 在 Obsidian 打开本课题仓库根目录；新笔记默认进入 `00-Inbox`。
-2. 用内置模板功能插入 `90-Templates` 中的模板；日记进入 `70-Journal`。
-3. 讨论结束后只沉淀结论、来源、边界和下一步，更新对应索引。
-4. 在 Finder 双击根目录的 `Sync.command`，查看待提交列表，输入 `y` 后同步当前课题。
+本仓库遵循 research-workflow 0.1.0（上传包版本），一个课题对应一个私人 GitHub 仓库与一个 Obsidian vault。
 
-同步需要本机 Git、Python 3，以及已获 GitHub 授权的 SSH 密钥。换设备时先安装这些依赖，不把私钥复制进仓库。
+## 本机工作流
 
-## 与 Codex 配合
-将本课题目录作为工作目录，要求读取 `AGENTS.md`，再给出具体写入任务。例如：
+1. Obsidian 常用目录保持在 main；助手用独立 work/<task> worktree。
+2. 开始前阅读 AGENTS.md、README、课题卡片与来源表，检查 Git 状态并运行研究工作流 doctor。
+3. 编辑中文笔记，更新索引与交接；真实代码、数据和权重留在权威位置。
+4. 检查精确 diff，按具名文件运行 publish 预览，再 apply；不 force push。旧仓库另外运行本仓库 scripts/check.py。
+5. 创建真实 PR，审阅后由获授权的人合并；本次对已有仓库只提交 PR，不代为合并。
+6. 合并后，在干净 main 使用工作流 pull；未合并的新笔记不会出现在 main 的 Obsidian vault。需要审阅时使用 GitHub PR 或直接阅读任务工作树文件。
 
-> 将本次讨论整理成一篇研究笔记，放入 00-Inbox。保留来源，区分事实、假设和待核验项，链接相关笔记。先展示改动，不擅自执行实验或上传原始聊天。
+## 另一台设备
 
-“连接 GitHub”不等于已经具备写入权限。本地编辑走本机文件权限；云端工具需要单独授权本课题仓库，必须实际写入并读回验证后，才能称为已接通。
+在新设备独立建立 GitHub 身份验证，克隆 main，以 Obsidian 正常的“打开文件夹为仓库”操作打开该课题。不要复制其他设备的令牌、SSH 私钥、助手配置或 .obsidian 设置；不自动修改 Obsidian 注册表。
 
-## 冲突与隐私
-- 同步仅允许快进更新；双方都修改时停止，由人检查合并，绝不强推或自动丢弃修改。
-- `.obsidian/`、`_local/`、常见密钥、数据集与模型文件不跟踪。
-- 提交前检查暂存内容，推送前检查 HEAD 全部历史，阻止常见密钥、符号链接和超过 5 MiB 的文件，但不能保证识别所有敏感内容。
-- 私有仓库不是端到端加密保险箱。密码、令牌、cookie 永远不进入笔记。
-- 多设备克隆后，本地 Obsidian 设置和 Git hooks 需要重新配置；不要同步设备配置来搬运凭据。
-- 自动同步和第三方 Obsidian 插件默认不启用。需要时再单独配置，避免未经检查持续上传。
+## 本地证据
 
-## 标准工具替代
-也可安装维护者提供的 Obsidian Git 插件，通过命令面板手动提交和同步。本次方案不依赖第三方插件，也不会降低 Obsidian 的插件安全限制。
-
-参考：[Obsidian Git](https://github.com/Vinzent03/obsidian-git)、[Obsidian URI](https://help.obsidian.md/uri)、[Codex cloud](https://learn.chatgpt.com/docs/cloud)。
+_local/Source-Map.md 仅作本机定位，默认忽略，不是加密存储。可移植笔记只保留逻辑来源、版本与哈希。遇到用户改动、冲突、扫描拒绝或远端分歧就停止发布并交接，不丢弃改动。
