@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+head=$(git rev-parse HEAD)
+while read -r local_ref local_sha remote_ref remote_sha; do
+    if [ "$local_sha" != "$head" ] || [ "$remote_ref" != "refs/heads/main" ]; then
+        printf '%s\n' 'Blocked: this knowledge-vault hook only permits pushing current HEAD to main.' >&2
+        exit 1
+    fi
+done
+exec python3 scripts/check.py --history
