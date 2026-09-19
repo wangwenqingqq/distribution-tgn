@@ -7,7 +7,9 @@ tags: [research]
 
 **一个课题，一个仓库，一份可追溯的知识记录。**
 
-> 这里已准备好研究笔记结构；尚未导入历史研究材料，不代表研究刚开始或已经完成任何验证。
+> 已归档 PipeTGL＋Flash 的 Wikipedia 实验和截至 2026-09-19 的研究判断。状态关键路径已有因果证据；候选相对直接融合的额外完整达标收益尚不稳定。后续实验指定 LastFM，目前尚未开展。
+
+当前成果：[最终对比](40-Experiments/2026-09-11-final-confirmation.md)、[状态路径干预](40-Experiments/2026-09-11-state-critical-path.md)、[撤销旧结果与正确性修复](30-Ideas/2026-09-11-withdraw-invalid-speedup.md)、[下一步假设](30-Ideas/2026-09-16-state-readiness.md)。代码和轻量实验证据独立保存在 [tgn-pipeflash-artifact](https://github.com/wangwenqingqq/tgn-pipeflash-artifact)。
 
 ## 开始使用
 - [课题卡片](10-Overview/Research-Brief.md)：问题、机制、边界与下一步
