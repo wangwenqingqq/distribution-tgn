@@ -1,0 +1,1905 @@
+{
+  "host_without_nsys": [
+    {
+      "rank": 0,
+      "window_ns": [
+        917192116489539,
+        917206465027055
+      ],
+      "window_seconds": 14.348537516,
+      "exclusive_main_wall": {
+        "backward_dispatch": {
+          "seconds": 3.41586981,
+          "fraction": 0.23806397036568894
+        },
+        "unmarked": {
+          "seconds": 2.368285504,
+          "fraction": 0.16505413888761372
+        },
+        "forward": {
+          "seconds": 2.218555182,
+          "fraction": 0.1546189065977001
+        },
+        "support_snapshot_and_compute": {
+          "seconds": 1.514135689,
+          "fraction": 0.10552543681274786
+        },
+        "sampling_full": {
+          "seconds": 1.347207688,
+          "fraction": 0.09389163784098092
+        },
+        "target_state": {
+          "seconds": 1.210072275,
+          "fraction": 0.08433418901756733
+        },
+        "state_receive": {
+          "seconds": 0.548636726,
+          "fraction": 0.03823642133480275
+        },
+        "optimizer": {
+          "seconds": 0.419534272,
+          "fraction": 0.02923881765177663
+        },
+        "thread_start/parameter": {
+          "seconds": 0.38374118,
+          "fraction": 0.026744271293997153
+        },
+        "parameter_recv_api": {
+          "seconds": 0.359625571,
+          "fraction": 0.025063569760958766
+        },
+        "parameter_clone": {
+          "seconds": 0.247630545,
+          "fraction": 0.017258242850455532
+        },
+        "thread_start/state": {
+          "seconds": 0.224442705,
+          "fraction": 0.01564220079919119
+        },
+        "io_request": {
+          "seconds": 0.035295461,
+          "fraction": 0.0024598647047228447
+        },
+        "loss_scalar_read": {
+          "seconds": 0.025996074,
+          "fraction": 0.001811757746809518
+        },
+        "thread_join": {
+          "seconds": 0.011478011,
+          "fraction": 0.0007999429201199713
+        },
+        "io_wait": {
+          "seconds": 0.00959766,
+          "fraction": 0.0006688946514094336
+        },
+        "state_gpu_ready_cpu_wait": {
+          "seconds": 0.008433163,
+          "fraction": 0.0005877367634573357
+        }
+      },
+      "inclusive_spans": {
+        "sampling_full": {
+          "count": 747,
+          "mean_ms": 1.8034908808567602,
+          "p50_ms": 1.868022,
+          "p90_ms": 2.0127018,
+          "p99_ms": 2.1248657
+        },
+        "io_wait": {
+          "count": 747,
+          "mean_ms": 0.012848273092369477,
+          "p50_ms": 0.01314,
+          "p90_ms": 0.0145022,
+          "p99_ms": 0.01920359999999999
+        },
+        "state_gpu_ready_cpu_wait": {
+          "count": 747,
+          "mean_ms": 0.01128937483266399,
+          "p50_ms": 0.011688,
+          "p90_ms": 0.0123024,
+          "p99_ms": 0.015485099999999995
+        },
+        "state_receive": {
+          "count": 747,
+          "mean_ms": 0.7457428232931727,
+          "p50_ms": 0.774155,
+          "p90_ms": 0.8135424,
+          "p99_ms": 0.83669608
+        },
+        "target_state": {
+          "count": 747,
+          "mean_ms": 1.6199093373493976,
+          "p50_ms": 1.705227,
+          "p90_ms": 1.7601856,
+          "p99_ms": 1.79116178
+        },
+        "worker_first_instruction/state": {
+          "count": 747,
+          "mean_ms": 0.1566532530120482,
+          "p50_ms": 0.156627,
+          "p90_ms": 0.1845474,
+          "p99_ms": 0.21900399999999987
+        },
+        "thread_start/state": {
+          "count": 747,
+          "mean_ms": 0.3004587751004016,
+          "p50_ms": 0.315578,
+          "p90_ms": 0.3785842,
+          "p99_ms": 0.4456124799999999
+        },
+        "state_send_api": {
+          "count": 747,
+          "mean_ms": 0.43756484738955825,
+          "p50_ms": 0.481482,
+          "p90_ms": 0.5732876,
+          "p99_ms": 0.6759223199999999
+        },
+        "worker_run/state": {
+          "count": 747,
+          "mean_ms": 0.5470993975903615,
+          "p50_ms": 0.603958,
+          "p90_ms": 0.7063022,
+          "p99_ms": 0.8295335599999999
+        },
+        "support_snapshot_and_compute": {
+          "count": 747,
+          "mean_ms": 2.3274141820615797,
+          "p50_ms": 2.345464,
+          "p90_ms": 2.5658094,
+          "p99_ms": 2.7520093999999995
+        },
+        "io_request": {
+          "count": 747,
+          "mean_ms": 0.04724961311914325,
+          "p50_ms": 0.044306,
+          "p90_ms": 0.0606322,
+          "p99_ms": 0.08090659999999986
+        },
+        "forward": {
+          "count": 747,
+          "mean_ms": 2.969953389558233,
+          "p50_ms": 2.726154,
+          "p90_ms": 3.9591952,
+          "p99_ms": 5.969157959999996
+        },
+        "loss_scalar_read": {
+          "count": 747,
+          "mean_ms": 0.03480063453815261,
+          "p50_ms": 0.035824,
+          "p90_ms": 0.0380146,
+          "p99_ms": 0.04588277999999997
+        },
+        "backward_dispatch": {
+          "count": 747,
+          "mean_ms": 4.57278421686747,
+          "p50_ms": 4.570707,
+          "p90_ms": 5.484091,
+          "p99_ms": 6.185394819999999
+        },
+        "thread_join": {
+          "count": 747,
+          "mean_ms": 0.0153654765729585,
+          "p50_ms": 0.015069,
+          "p90_ms": 0.0203148,
+          "p99_ms": 0.023164899999999974
+        },
+        "parameter_recv_api": {
+          "count": 747,
+          "mean_ms": 0.4814264672021419,
+          "p50_ms": 0.483714,
+          "p90_ms": 0.6609778000000001,
+          "p99_ms": 0.6908285999999999
+        },
+        "optimizer": {
+          "count": 747,
+          "mean_ms": 0.56162553145917,
+          "p50_ms": 0.564017,
+          "p90_ms": 0.7621560000000001,
+          "p99_ms": 0.7831170999999999
+        },
+        "parameter_clone": {
+          "count": 747,
+          "mean_ms": 0.33150006024096385,
+          "p50_ms": 0.334452,
+          "p90_ms": 0.4525742,
+          "p99_ms": 0.46816423999999995
+        },
+        "worker_first_instruction/parameter": {
+          "count": 747,
+          "mean_ms": 0.14972017536813922,
+          "p50_ms": 0.148915,
+          "p90_ms": 0.17657459999999997,
+          "p99_ms": 0.21436209999999997
+        },
+        "thread_start/parameter": {
+          "count": 747,
+          "mean_ms": 0.5137097456492637,
+          "p50_ms": 0.448927,
+          "p90_ms": 0.9291979999999997,
+          "p99_ms": 1.1265843399999995
+        },
+        "parameter_send_api": {
+          "count": 747,
+          "mean_ms": 3.304475633199464,
+          "p50_ms": 3.407932,
+          "p90_ms": 3.9319901999999995,
+          "p99_ms": 4.371961059999999
+        },
+        "worker_run/parameter": {
+          "count": 747,
+          "mean_ms": 3.4288775153949134,
+          "p50_ms": 3.535156,
+          "p90_ms": 4.051419,
+          "p99_ms": 4.487496799999999
+        }
+      },
+      "scope": "ThreadProbe enabled, native baseline. Exclusive main-thread wall time is not on-core time and contains CUDA waits. Inclusive worker intervals overlap and must not be added to the main thread."
+    },
+    {
+      "rank": 1,
+      "window_ns": [
+        917192124023968,
+        917206472893279
+      ],
+      "window_seconds": 14.348869311,
+      "exclusive_main_wall": {
+        "backward_dispatch": {
+          "seconds": 3.161465997,
+          "fraction": 0.22032857979801834
+        },
+        "forward": {
+          "seconds": 3.028144332,
+          "fraction": 0.21103713932906137
+        },
+        "unmarked": {
+          "seconds": 2.200245814,
+          "fraction": 0.1533393165908388
+        },
+        "support_snapshot_and_compute": {
+          "seconds": 1.411038727,
+          "fraction": 0.09833797328673712
+        },
+        "sampling_full": {
+          "seconds": 1.285121407,
+          "fraction": 0.08956255570707665
+        },
+        "target_state": {
+          "seconds": 1.128858136,
+          "fraction": 0.07867227107118503
+        },
+        "state_receive": {
+          "seconds": 0.514985992,
+          "fraction": 0.035890353507171895
+        },
+        "thread_start/parameter": {
+          "seconds": 0.385592767,
+          "fraction": 0.02687269349539621
+        },
+        "optimizer": {
+          "seconds": 0.379434454,
+          "fraction": 0.026443508946668113
+        },
+        "parameter_recv_api": {
+          "seconds": 0.32337863,
+          "fraction": 0.02253687192983871
+        },
+        "parameter_clone": {
+          "seconds": 0.226315931,
+          "fraction": 0.015772387781558768
+        },
+        "thread_start/state": {
+          "seconds": 0.215164122,
+          "fraction": 0.014995196996815131
+        },
+        "io_request": {
+          "seconds": 0.033477905,
+          "fraction": 0.002333138888813732
+        },
+        "loss_scalar_read": {
+          "seconds": 0.024523916,
+          "fraction": 0.0017091183610683316
+        },
+        "state_gpu_ready_cpu_wait": {
+          "seconds": 0.011517274,
+          "fraction": 0.0008026607358651411
+        },
+        "thread_join": {
+          "seconds": 0.01039083,
+          "fraction": 0.0007241567105245203
+        },
+        "io_wait": {
+          "seconds": 0.009213077,
+          "fraction": 0.0006420768633621295
+        }
+      },
+      "inclusive_spans": {
+        "sampling_full": {
+          "count": 747,
+          "mean_ms": 1.720376716198126,
+          "p50_ms": 1.661127,
+          "p90_ms": 1.969405,
+          "p99_ms": 2.2248666799999994
+        },
+        "io_wait": {
+          "count": 747,
+          "mean_ms": 0.012333436412315931,
+          "p50_ms": 0.011773,
+          "p90_ms": 0.0141596,
+          "p99_ms": 0.017859299999999984
+        },
+        "state_gpu_ready_cpu_wait": {
+          "count": 747,
+          "mean_ms": 0.0154180374832664,
+          "p50_ms": 0.010103,
+          "p90_ms": 0.0120294,
+          "p99_ms": 0.023828179999999997
+        },
+        "state_receive": {
+          "count": 747,
+          "mean_ms": 0.7048236492637217,
+          "p50_ms": 0.672387,
+          "p90_ms": 0.7904286,
+          "p99_ms": 0.81970722
+        },
+        "target_state": {
+          "count": 747,
+          "mean_ms": 1.51118893708166,
+          "p50_ms": 1.441428,
+          "p90_ms": 1.7259537999999999,
+          "p99_ms": 1.7530074
+        },
+        "worker_first_instruction/state": {
+          "count": 747,
+          "mean_ms": 0.15195545247657297,
+          "p50_ms": 0.154311,
+          "p90_ms": 0.18489679999999997,
+          "p99_ms": 0.22082249999999995
+        },
+        "thread_start/state": {
+          "count": 747,
+          "mean_ms": 0.2880376465863454,
+          "p50_ms": 0.305421,
+          "p90_ms": 0.3733202,
+          "p99_ms": 0.4516056999999997
+        },
+        "state_send_api": {
+          "count": 747,
+          "mean_ms": 0.4125058808567604,
+          "p50_ms": 0.452035,
+          "p90_ms": 0.5724334,
+          "p99_ms": 0.7462038399999996
+        },
+        "worker_run/state": {
+          "count": 747,
+          "mean_ms": 0.5179605381526105,
+          "p50_ms": 0.569337,
+          "p90_ms": 0.7053564,
+          "p99_ms": 0.9112349399999988
+        },
+        "support_snapshot_and_compute": {
+          "count": 747,
+          "mean_ms": 2.176978378848728,
+          "p50_ms": 2.135251,
+          "p90_ms": 2.5132502,
+          "p99_ms": 2.65869288
+        },
+        "io_request": {
+          "count": 747,
+          "mean_ms": 0.04481647255689424,
+          "p50_ms": 0.04415,
+          "p90_ms": 0.049224399999999995,
+          "p99_ms": 0.05748742
+        },
+        "forward": {
+          "count": 747,
+          "mean_ms": 4.053740738955823,
+          "p50_ms": 3.243966,
+          "p90_ms": 6.698221799999999,
+          "p99_ms": 9.055339519999988
+        },
+        "loss_scalar_read": {
+          "count": 747,
+          "mean_ms": 0.03282987416331994,
+          "p50_ms": 0.03136,
+          "p90_ms": 0.0366996,
+          "p99_ms": 0.04489907999999995
+        },
+        "backward_dispatch": {
+          "count": 747,
+          "mean_ms": 4.232216863453815,
+          "p50_ms": 3.79806,
+          "p90_ms": 5.229747399999998,
+          "p99_ms": 5.9837482
+        },
+        "thread_join": {
+          "count": 747,
+          "mean_ms": 0.013910080321285143,
+          "p50_ms": 0.012827,
+          "p90_ms": 0.0163768,
+          "p99_ms": 0.021150639999999995
+        },
+        "parameter_recv_api": {
+          "count": 747,
+          "mean_ms": 0.4329031191432397,
+          "p50_ms": 0.390542,
+          "p90_ms": 0.5002812,
+          "p99_ms": 0.6717816
+        },
+        "optimizer": {
+          "count": 747,
+          "mean_ms": 0.5079443828647925,
+          "p50_ms": 0.462091,
+          "p90_ms": 0.5936923999999999,
+          "p99_ms": 0.7724690999999999
+        },
+        "parameter_clone": {
+          "count": 747,
+          "mean_ms": 0.30296644042838017,
+          "p50_ms": 0.273452,
+          "p90_ms": 0.35243319999999995,
+          "p99_ms": 0.46705364
+        },
+        "worker_first_instruction/parameter": {
+          "count": 747,
+          "mean_ms": 0.14926807764390898,
+          "p50_ms": 0.146577,
+          "p90_ms": 0.1768378,
+          "p99_ms": 0.21091861999999997
+        },
+        "thread_start/parameter": {
+          "count": 747,
+          "mean_ms": 0.5161884431057563,
+          "p50_ms": 0.438648,
+          "p90_ms": 0.9124882,
+          "p99_ms": 2.537175639999999
+        },
+        "parameter_send_api": {
+          "count": 747,
+          "mean_ms": 3.211698350736278,
+          "p50_ms": 3.231465,
+          "p90_ms": 3.764312,
+          "p99_ms": 4.698416179999997
+        },
+        "worker_run/parameter": {
+          "count": 747,
+          "mean_ms": 3.3322585582329323,
+          "p50_ms": 3.359191,
+          "p90_ms": 3.8864632,
+          "p99_ms": 4.827137219999999
+        }
+      },
+      "scope": "ThreadProbe enabled, native baseline. Exclusive main-thread wall time is not on-core time and contains CUDA waits. Inclusive worker intervals overlap and must not be added to the main thread."
+    }
+  ],
+  "host_with_nsys": [
+    {
+      "rank": 0,
+      "window_ns": [
+        916912503696029,
+        916937153877272
+      ],
+      "window_seconds": 24.650181243,
+      "exclusive_main_wall": {
+        "backward_dispatch": {
+          "seconds": 6.014413064,
+          "fraction": 0.24399062241004554
+        },
+        "forward": {
+          "seconds": 4.153805687,
+          "fraction": 0.16851014789919935
+        },
+        "unmarked": {
+          "seconds": 3.273121406,
+          "fraction": 0.13278285355120786
+        },
+        "target_state": {
+          "seconds": 2.106579816,
+          "fraction": 0.08545899907321018
+        },
+        "support_snapshot_and_compute": {
+          "seconds": 1.89352991,
+          "fraction": 0.07681606440673586
+        },
+        "sampling_full": {
+          "seconds": 1.617746329,
+          "fraction": 0.06562817177903701
+        },
+        "thread_start/parameter": {
+          "seconds": 0.952615737,
+          "fraction": 0.03864538469754731
+        },
+        "parameter_recv_api": {
+          "seconds": 0.863142766,
+          "fraction": 0.035015676253703394
+        },
+        "state_receive": {
+          "seconds": 0.839390262,
+          "fraction": 0.0340520929126379
+        },
+        "optimizer": {
+          "seconds": 0.802916932,
+          "fraction": 0.03257245551604239
+        },
+        "thread_start/state": {
+          "seconds": 0.801125155,
+          "fraction": 0.03249976732838418
+        },
+        "state_gpu_ready_cpu_wait": {
+          "seconds": 0.691852182,
+          "fraction": 0.0280668192732444
+        },
+        "parameter_clone": {
+          "seconds": 0.513170502,
+          "fraction": 0.020818122874683806
+        },
+        "io_request": {
+          "seconds": 0.052024337,
+          "fraction": 0.0021105052529694296
+        },
+        "loss_scalar_read": {
+          "seconds": 0.05010953,
+          "fraction": 0.0020328260269579066
+        },
+        "thread_join": {
+          "seconds": 0.015156646,
+          "fraction": 0.0006148695561540378
+        },
+        "io_wait": {
+          "seconds": 0.009480982,
+          "fraction": 0.00038462118823943123
+        }
+      },
+      "inclusive_spans": {
+        "sampling_full": {
+          "count": 747,
+          "mean_ms": 2.165657736278447,
+          "p50_ms": 2.216881,
+          "p90_ms": 2.3921734,
+          "p99_ms": 2.6386480599999995
+        },
+        "io_wait": {
+          "count": 747,
+          "mean_ms": 0.012692077643908967,
+          "p50_ms": 0.012439,
+          "p90_ms": 0.0153376,
+          "p99_ms": 0.021200439999999994
+        },
+        "state_gpu_ready_cpu_wait": {
+          "count": 747,
+          "mean_ms": 0.9261742730923695,
+          "p50_ms": 0.01692,
+          "p90_ms": 3.0107895999999994,
+          "p99_ms": 4.91364752
+        },
+        "state_receive": {
+          "count": 747,
+          "mean_ms": 2.049856016064257,
+          "p50_ms": 1.211773,
+          "p90_ms": 4.1222132,
+          "p99_ms": 6.0336839
+        },
+        "target_state": {
+          "count": 747,
+          "mean_ms": 2.820053301204819,
+          "p50_ms": 2.90389,
+          "p90_ms": 3.0229188,
+          "p99_ms": 3.714857099999997
+        },
+        "worker_first_instruction/state": {
+          "count": 747,
+          "mean_ms": 0.918960077643909,
+          "p50_ms": 1.007137,
+          "p90_ms": 1.1021002,
+          "p99_ms": 2.271115259999998
+        },
+        "thread_start/state": {
+          "count": 747,
+          "mean_ms": 1.0724567001338687,
+          "p50_ms": 1.187871,
+          "p90_ms": 1.3128456,
+          "p99_ms": 2.4473351199999995
+        },
+        "state_send_api": {
+          "count": 747,
+          "mean_ms": 6.508116538152611,
+          "p50_ms": 6.782376,
+          "p90_ms": 7.9438058,
+          "p99_ms": 8.871007119999991
+        },
+        "worker_run/state": {
+          "count": 747,
+          "mean_ms": 6.590578651941097,
+          "p50_ms": 6.865447,
+          "p90_ms": 8.0191568,
+          "p99_ms": 8.990815919999996
+        },
+        "support_snapshot_and_compute": {
+          "count": 747,
+          "mean_ms": 3.607302630522089,
+          "p50_ms": 3.507236,
+          "p90_ms": 4.0175496,
+          "p99_ms": 5.393078639999998
+        },
+        "io_request": {
+          "count": 747,
+          "mean_ms": 0.06964436010709506,
+          "p50_ms": 0.067313,
+          "p90_ms": 0.0833028,
+          "p99_ms": 0.11843871999999998
+        },
+        "forward": {
+          "count": 747,
+          "mean_ms": 5.560650183400268,
+          "p50_ms": 4.958254,
+          "p90_ms": 8.1799822,
+          "p99_ms": 11.01123365999999
+        },
+        "loss_scalar_read": {
+          "count": 747,
+          "mean_ms": 0.06708103078982597,
+          "p50_ms": 0.051503,
+          "p90_ms": 0.06695419999999999,
+          "p99_ms": 0.65864748
+        },
+        "backward_dispatch": {
+          "count": 747,
+          "mean_ms": 8.051423111111111,
+          "p50_ms": 8.060619,
+          "p90_ms": 8.9607892,
+          "p99_ms": 10.146931639999993
+        },
+        "thread_join": {
+          "count": 747,
+          "mean_ms": 0.020290021419009374,
+          "p50_ms": 0.020936,
+          "p90_ms": 0.027935799999999997,
+          "p99_ms": 0.0393866999999998
+        },
+        "parameter_recv_api": {
+          "count": 747,
+          "mean_ms": 1.15547893708166,
+          "p50_ms": 1.20092,
+          "p90_ms": 1.6254872,
+          "p99_ms": 1.7573696799999994
+        },
+        "optimizer": {
+          "count": 747,
+          "mean_ms": 1.0748553306559572,
+          "p50_ms": 1.069221,
+          "p90_ms": 1.4140232,
+          "p99_ms": 1.6661357399999999
+        },
+        "parameter_clone": {
+          "count": 747,
+          "mean_ms": 0.6869752369477911,
+          "p50_ms": 0.676087,
+          "p90_ms": 0.7624331999999999,
+          "p99_ms": 1.02607448
+        },
+        "worker_first_instruction/parameter": {
+          "count": 747,
+          "mean_ms": 1.0216085756358768,
+          "p50_ms": 1.016649,
+          "p90_ms": 1.1210186,
+          "p99_ms": 3.403673219999998
+        },
+        "thread_start/parameter": {
+          "count": 747,
+          "mean_ms": 1.2752553373493978,
+          "p50_ms": 1.290008,
+          "p90_ms": 1.4184604,
+          "p99_ms": 3.5756685199999994
+        },
+        "parameter_send_api": {
+          "count": 747,
+          "mean_ms": 4.025302761713521,
+          "p50_ms": 3.943285,
+          "p90_ms": 4.4900812000000005,
+          "p99_ms": 6.844468299999995
+        },
+        "worker_run/parameter": {
+          "count": 747,
+          "mean_ms": 4.071376398929049,
+          "p50_ms": 3.986692,
+          "p90_ms": 4.5373035999999995,
+          "p99_ms": 6.933745539999998
+        }
+      },
+      "scope": "ThreadProbe enabled, native baseline. Exclusive main-thread wall time is not on-core time and contains CUDA waits. Inclusive worker intervals overlap and must not be added to the main thread."
+    },
+    {
+      "rank": 1,
+      "window_ns": [
+        916912524251666,
+        916937174049020
+      ],
+      "window_seconds": 24.649797354,
+      "exclusive_main_wall": {
+        "backward_dispatch": {
+          "seconds": 6.589829718,
+          "fraction": 0.2673380889652891
+        },
+        "unmarked": {
+          "seconds": 3.573256749,
+          "fraction": 0.14496089755562053
+        },
+        "forward": {
+          "seconds": 3.047336701,
+          "fraction": 0.12362522325180492
+        },
+        "target_state": {
+          "seconds": 2.325680757,
+          "fraction": 0.09434887936807336
+        },
+        "support_snapshot_and_compute": {
+          "seconds": 2.05326216,
+          "fraction": 0.0832973241326388
+        },
+        "sampling_full": {
+          "seconds": 1.698421391,
+          "fraction": 0.06890204274739775
+        },
+        "parameter_recv_api": {
+          "seconds": 1.060863689,
+          "fraction": 0.04303742029862369
+        },
+        "thread_start/parameter": {
+          "seconds": 0.925211222,
+          "fraction": 0.03753423237979939
+        },
+        "optimizer": {
+          "seconds": 0.892082851,
+          "fraction": 0.03619027118919657
+        },
+        "thread_start/state": {
+          "seconds": 0.876771099,
+          "fraction": 0.0355690996728508
+        },
+        "state_receive": {
+          "seconds": 0.867575187,
+          "fraction": 0.035196037295585146
+        },
+        "parameter_clone": {
+          "seconds": 0.56673278,
+          "fraction": 0.02299137684018463
+        },
+        "loss_scalar_read": {
+          "seconds": 0.054796991,
+          "fraction": 0.002223019938584117
+        },
+        "io_request": {
+          "seconds": 0.050307249,
+          "fraction": 0.002040878806325622
+        },
+        "state_gpu_ready_cpu_wait": {
+          "seconds": 0.038840069,
+          "fraction": 0.0015756749819161211
+        },
+        "thread_join": {
+          "seconds": 0.018492319,
+          "fraction": 0.0007502016643150697
+        },
+        "io_wait": {
+          "seconds": 0.010336422,
+          "fraction": 0.0004193309117943997
+        }
+      },
+      "inclusive_spans": {
+        "sampling_full": {
+          "count": 747,
+          "mean_ms": 2.2736564805890227,
+          "p50_ms": 2.258886,
+          "p90_ms": 2.4204998,
+          "p99_ms": 2.592185619999999
+        },
+        "io_wait": {
+          "count": 747,
+          "mean_ms": 0.01383724497991968,
+          "p50_ms": 0.013129,
+          "p90_ms": 0.0162506,
+          "p99_ms": 0.023047619999999984
+        },
+        "state_gpu_ready_cpu_wait": {
+          "count": 747,
+          "mean_ms": 0.05199473761713521,
+          "p50_ms": 0.015909,
+          "p90_ms": 0.0179724,
+          "p99_ms": 0.7810755199999816
+        },
+        "state_receive": {
+          "count": 747,
+          "mean_ms": 1.2134073038821955,
+          "p50_ms": 1.169975,
+          "p90_ms": 1.242921,
+          "p99_ms": 2.3681297599999946
+        },
+        "target_state": {
+          "count": 747,
+          "mean_ms": 3.113361120481928,
+          "p50_ms": 3.085115,
+          "p90_ms": 3.2932306,
+          "p99_ms": 3.9220631599999978
+        },
+        "worker_first_instruction/state": {
+          "count": 747,
+          "mean_ms": 1.0171585207496654,
+          "p50_ms": 1.020586,
+          "p90_ms": 1.147182,
+          "p99_ms": 4.404213859999996
+        },
+        "thread_start/state": {
+          "count": 747,
+          "mean_ms": 1.1737230240963856,
+          "p50_ms": 1.199635,
+          "p90_ms": 1.3483782,
+          "p99_ms": 4.536644479999993
+        },
+        "state_send_api": {
+          "count": 747,
+          "mean_ms": 6.525785681392237,
+          "p50_ms": 6.89505,
+          "p90_ms": 7.9517424000000005,
+          "p99_ms": 8.676399079999994
+        },
+        "worker_run/state": {
+          "count": 747,
+          "mean_ms": 6.600220183400268,
+          "p50_ms": 6.966131,
+          "p90_ms": 8.0198586,
+          "p99_ms": 8.788648339999991
+        },
+        "support_snapshot_and_compute": {
+          "count": 747,
+          "mean_ms": 3.922400614457831,
+          "p50_ms": 3.889044,
+          "p90_ms": 4.1310504,
+          "p99_ms": 7.610563279999997
+        },
+        "io_request": {
+          "count": 747,
+          "mean_ms": 0.06734571485943774,
+          "p50_ms": 0.065457,
+          "p90_ms": 0.0736508,
+          "p99_ms": 0.10703701999999993
+        },
+        "forward": {
+          "count": 747,
+          "mean_ms": 4.0794333346720215,
+          "p50_ms": 3.921777,
+          "p90_ms": 4.335981399999999,
+          "p99_ms": 7.946624019999996
+        },
+        "loss_scalar_read": {
+          "count": 747,
+          "mean_ms": 0.07335607898259705,
+          "p50_ms": 0.053596,
+          "p90_ms": 0.07122379999999999,
+          "p99_ms": 0.68022838
+        },
+        "backward_dispatch": {
+          "count": 747,
+          "mean_ms": 8.821726530120483,
+          "p50_ms": 8.877671,
+          "p90_ms": 9.7220394,
+          "p99_ms": 10.550117139999998
+        },
+        "thread_join": {
+          "count": 747,
+          "mean_ms": 0.02475544712182062,
+          "p50_ms": 0.022397,
+          "p90_ms": 0.0293216,
+          "p99_ms": 0.040505599999999996
+        },
+        "parameter_recv_api": {
+          "count": 747,
+          "mean_ms": 1.4201655809906293,
+          "p50_ms": 1.323709,
+          "p90_ms": 1.7250649999999998,
+          "p99_ms": 1.8376080399999999
+        },
+        "optimizer": {
+          "count": 747,
+          "mean_ms": 1.1942206840696117,
+          "p50_ms": 1.151471,
+          "p90_ms": 1.4658608,
+          "p99_ms": 1.75743468
+        },
+        "parameter_clone": {
+          "count": 747,
+          "mean_ms": 0.758678420348059,
+          "p50_ms": 0.724509,
+          "p90_ms": 0.8316992,
+          "p99_ms": 1.1210058799999993
+        },
+        "worker_first_instruction/parameter": {
+          "count": 747,
+          "mean_ms": 0.9871173266398929,
+          "p50_ms": 1.014651,
+          "p90_ms": 1.1177724,
+          "p99_ms": 2.163349439999982
+        },
+        "thread_start/parameter": {
+          "count": 747,
+          "mean_ms": 1.2385692396251673,
+          "p50_ms": 1.28775,
+          "p90_ms": 1.419263,
+          "p99_ms": 2.377756039999986
+        },
+        "parameter_send_api": {
+          "count": 747,
+          "mean_ms": 4.176851428380187,
+          "p50_ms": 4.045625,
+          "p90_ms": 4.735240800000001,
+          "p99_ms": 8.343463279999986
+        },
+        "worker_run/parameter": {
+          "count": 747,
+          "mean_ms": 4.223433291834002,
+          "p50_ms": 4.086463,
+          "p90_ms": 4.7780882,
+          "p99_ms": 8.396934159999986
+        }
+      },
+      "scope": "ThreadProbe enabled, native baseline. Exclusive main-thread wall time is not on-core time and contains CUDA waits. Inclusive worker intervals overlap and must not be added to the main thread."
+    }
+  ],
+  "clock_alignment": [
+    {
+      "rank": 0,
+      "offset_ns": 916912327263137,
+      "p99_abs_residual_ns": 17630,
+      "matches": 14940
+    },
+    {
+      "rank": 1,
+      "offset_ns": 916912327262841,
+      "p99_abs_residual_ns": 18060,
+      "matches": 14940
+    }
+  ],
+  "nsys_window_ns": [
+    176432892,
+    24846786179
+  ],
+  "gpu": [
+    {
+      "rank": 0,
+      "device_id": 0,
+      "window_seconds": 24.670353287,
+      "union_seconds": {
+        "compute": 0.937306072,
+        "nccl": 8.98145912,
+        "memcpy": 0.103999191,
+        "memset": 0.008981821
+      },
+      "any_activity_seconds": 9.757360565,
+      "no_recorded_activity_fraction": 0.604490440348026,
+      "compute_nccl_overlap_seconds": 0.205394998,
+      "compute_kernel_count": 236922,
+      "nccl_kernel_count": 2991,
+      "compute_launch_distribution": {
+        "duration": {
+          "count": 236922,
+          "mean_ms": 0.003956179974844041,
+          "p50_ms": 0.001888,
+          "p90_ms": 0.00848,
+          "p99_ms": 0.022144
+        },
+        "fraction_at_most_5us": 0.7773993128540194,
+        "fraction_grid_at_most_2_blocks": 0.27128337596339724
+      },
+      "kernel_duration_ranking": [
+        {
+          "name": "ncclDevKernel_SendRecv(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+          "count": 2991,
+          "summed_ms": 9686.540532,
+          "duration": {
+            "count": 2991,
+            "mean_ms": 3.238562531594784,
+            "p50_ms": 0.11152,
+            "p90_ms": 12.507894,
+            "p99_ms": 16.4952056
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<float, at::native::func_wrapper_t<float, at::native::sum_functor<float, float, float>::operator ()(at::TensorIterator &)::[lambda(float, float) (instance 1)]>, unsigned int, float, (int)4, (int)4>>(T3)",
+          "count": 11205,
+          "summed_ms": 92.48278,
+          "duration": {
+            "count": 11205,
+            "mean_ms": 0.008253706381079874,
+            "p50_ms": 0.006432,
+            "p90_ms": 0.01424,
+            "p99_ms": 0.014624
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void <unnamed>::indexing_backward_kernel<float, (int)4>(const long *, const long *, const T1 *, T1 *, long, long, long, long, bool)",
+          "count": 2241,
+          "summed_ms": 77.2656,
+          "duration": {
+            "count": 2241,
+            "mean_ms": 0.034478179384203486,
+            "p50_ms": 0.005664,
+            "p90_ms": 0.095392,
+            "p99_ms": 0.34278339999999924
+          },
+          "median_grid_blocks": 1496.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_64x64_8x5_tn_align1>(T1::Params)",
+          "count": 6660,
+          "summed_ms": 66.149003,
+          "duration": {
+            "count": 6660,
+            "mean_ms": 0.009932282732732731,
+            "p50_ms": 0.008768,
+            "p90_ms": 0.01328,
+            "p99_ms": 0.013472
+          },
+          "median_grid_blocks": 58.0
+        },
+        {
+          "name": "gnnflow::SampleLayerRecentKernel(const gnnflow::DoublyLinkedList *, unsigned long, bool, unsigned int, const long *, const float *, unsigned int, unsigned int, float, unsigned int, unsigned int, long *, long *, float *, float *, unsigned int *)",
+          "count": 748,
+          "summed_ms": 46.728422,
+          "duration": {
+            "count": 748,
+            "mean_ms": 0.0624711524064171,
+            "p50_ms": 0.062528,
+            "p90_ms": 0.0703456,
+            "p99_ms": 0.07718592
+          },
+          "median_grid_blocks": 71.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_64x64_8x5_nt_align1>(T1::Params)",
+          "count": 6704,
+          "summed_ms": 31.672231,
+          "duration": {
+            "count": 6704,
+            "mean_ms": 0.004724378132458234,
+            "p50_ms": 0.004352,
+            "p90_ms": 0.00592,
+            "p99_ms": 0.0064
+          },
+          "median_grid_blocks": 70.0
+        },
+        {
+          "name": "void at::native::_scatter_gather_elementwise_kernel<(int)128, (int)8, void at::native::_cuda_scatter_gather_internal_kernel<(bool)1, long, long>::operator ()<at::native::ReduceMaximum>(at::TensorIterator &, long, long, long, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "count": 1496,
+          "summed_ms": 31.387853,
+          "duration": {
+            "count": 1496,
+            "mean_ms": 0.02098118516042781,
+            "p50_ms": 0.020496,
+            "p90_ms": 0.030095499999999997,
+            "p99_ms": 0.0405824
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void at_cuda_detail::cub::detail::radix_sort::DeviceRadixSortSingleTileKernel<at_cuda_detail::cub::detail::radix::policy_hub<long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long>::Policy1000, (at_cuda_detail::cub::SortOrder)0, long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long, at_cuda_detail::cub::detail::identity_decomposer_t>(const T3 *, T3 *, const T4 *, T4 *, T5, int, int, T6)",
+          "count": 2243,
+          "summed_ms": 30.173965,
+          "duration": {
+            "count": 2243,
+            "mean_ms": 0.013452503343736067,
+            "p50_ms": 0.017888,
+            "p90_ms": 0.01808,
+            "p99_ms": 0.018112
+          },
+          "median_grid_blocks": 1.0
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "count": 20918,
+          "summed_ms": 26.312228,
+          "duration": {
+            "count": 20918,
+            "mean_ms": 0.001257874940242853,
+            "p50_ms": 0.001216,
+            "p90_ms": 0.001408,
+            "p99_ms": 0.002368
+          },
+          "median_grid_blocks": 1.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_tn_align1>(T1::Params)",
+          "count": 1496,
+          "summed_ms": 24.219529,
+          "duration": {
+            "count": 1496,
+            "mean_ms": 0.01618952473262032,
+            "p50_ms": 0.01616,
+            "p90_ms": 0.01632,
+            "p99_ms": 0.016416
+          },
+          "median_grid_blocks": 187.0
+        },
+        {
+          "name": "void cublasLt::splitKreduce_kernel<(int)32, (int)16, int, float, float, float, float, (bool)0, float, float, float, (bool)1, (bool)0, (bool)0, (bool)0>(cublasLt::cublasSplitKParams<T6>, const T4 *, const T10 *, T9 *, T5 *, const T6 *, const T6 *, const T11 *, const T4 *, T11 *, void *, long, T6 *, int *, T6 *, T6 *, const T6 *, const T6 *, const T6 *, const T6 *, const T6 *)",
+          "count": 11207,
+          "summed_ms": 24.10123,
+          "duration": {
+            "count": 11207,
+            "mean_ms": 0.002150551441063621,
+            "p50_ms": 0.00192,
+            "p90_ms": 0.003328,
+            "p99_ms": 0.003550080000000016
+          },
+          "median_grid_blocks": 76.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(T1::Params)",
+          "count": 3836,
+          "summed_ms": 23.936821,
+          "duration": {
+            "count": 3836,
+            "mean_ms": 0.0062400471845672585,
+            "p50_ms": 0.00624,
+            "p90_ms": 0.006464,
+            "p99_ms": 0.007264
+          },
+          "median_grid_blocks": 19.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x64_8x5_nn_align1>(T1::Params)",
+          "count": 2887,
+          "summed_ms": 23.173869,
+          "duration": {
+            "count": 2887,
+            "mean_ms": 0.008026972289573952,
+            "p50_ms": 0.009504,
+            "p90_ms": 0.009632,
+            "p99_ms": 0.009696
+          },
+          "median_grid_blocks": 186.0
+        },
+        {
+          "name": "void at_cuda_detail::cub::detail::radix_sort::DeviceRadixSortOnesweepKernel<at_cuda_detail::cub::detail::radix::policy_hub<long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long>::Policy1000, (at_cuda_detail::cub::SortOrder)0, long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long, int, int, at_cuda_detail::cub::detail::identity_decomposer_t>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int, T8)",
+          "count": 2988,
+          "summed_ms": 19.315316,
+          "duration": {
+            "count": 2988,
+            "mean_ms": 0.0064642958500669345,
+            "p50_ms": 0.006368,
+            "p90_ms": 0.0072,
+            "p99_ms": 0.007328
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void dgl::cub::DeviceRadixSortOnesweepKernel<dgl::cub::DeviceRadixSortPolicy<long, long, unsigned long long>::Policy900, (bool)0, long, long, unsigned long long, int, int, dgl::cub::detail::identity_decomposer_t>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int, T8)",
+          "count": 2990,
+          "summed_ms": 19.259024,
+          "duration": {
+            "count": 2990,
+            "mean_ms": 0.0064411451505016724,
+            "p50_ms": 0.006496,
+            "p90_ms": 0.006624,
+            "p99_ms": 0.00672
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void at::native::index_kernel_impl<at::native::OpaqueType<(int)4>>(at::TensorIteratorBase &, c10::ArrayRef<long>, c10::ArrayRef<long>)::[lambda(char *, const char *, long) (instance 1)]>(at::TensorIteratorBase &, c10::ArrayRef<long>, c10::ArrayRef<long>, const T1 &, bool)::[lambda(int) (instance 1)]>(long, T3)",
+          "count": 5236,
+          "summed_ms": 17.449327,
+          "duration": {
+            "count": 5236,
+            "mean_ms": 0.0033325681818181818,
+            "p50_ms": 0.00352,
+            "p90_ms": 0.003872,
+            "p99_ms": 0.004
+          },
+          "median_grid_blocks": 83.0
+        },
+        {
+          "name": "void at::native::radixSortKVInPlace<(int)-2, (int)-1, (int)32, (int)32, long, long, unsigned int>(at::cuda::detail::TensorInfo<T5, T7>, T7, T7, T7, at::cuda::detail::TensorInfo<T6, T7>, T7, bool)",
+          "count": 748,
+          "summed_ms": 16.551603,
+          "duration": {
+            "count": 748,
+            "mean_ms": 0.022127811497326202,
+            "p50_ms": 0.022112,
+            "p90_ms": 0.022272,
+            "p99_ms": 0.022336
+          },
+          "median_grid_blocks": 1.0
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<float>, std::array<char *, (unsigned long)1>>(int, T2, T3)",
+          "count": 14945,
+          "summed_ms": 14.985942,
+          "duration": {
+            "count": 14945,
+            "mean_ms": 0.0010027395115423218,
+            "p50_ms": 0.000928,
+            "p90_ms": 0.001472,
+            "p99_ms": 0.001536
+          },
+          "median_grid_blocks": 90.0
+        },
+        {
+          "name": "std::enable_if<T7, void>::type internal::gemvx::kernel<int, int, float, float, float, float, (bool)1, (bool)1, (bool)0, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const float>, cublasGemvTensorStridedBatched<const float>, cublasGemvTensorStridedBatched<float>, float>>(T13)",
+          "count": 2988,
+          "summed_ms": 14.402552,
+          "duration": {
+            "count": 2988,
+            "mean_ms": 0.004820131191432396,
+            "p50_ms": 0.005088,
+            "p90_ms": 0.005376,
+            "p99_ms": 0.005408
+          },
+          "median_grid_blocks": 7.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x64_8x5_nt_align1>(T1::Params)",
+          "count": 1494,
+          "summed_ms": 14.13785,
+          "duration": {
+            "count": 1494,
+            "mean_ms": 0.009463085676037484,
+            "p50_ms": 0.009472,
+            "p90_ms": 0.009536,
+            "p99_ms": 0.009632
+          },
+          "median_grid_blocks": 180.0
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_alignedK_contig<at::native::<unnamed>::OpaqueType<(unsigned int)4>, unsigned int, (int)2, (int)128, (int)1, (int)16>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "count": 6535,
+          "summed_ms": 14.051219,
+          "duration": {
+            "count": 6535,
+            "mean_ms": 0.0021501482785003826,
+            "p50_ms": 0.00144,
+            "p90_ms": 0.004672,
+            "p99_ms": 0.004992
+          },
+          "median_grid_blocks": 354.0
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "count": 6724,
+          "summed_ms": 13.479479,
+          "duration": {
+            "count": 6724,
+            "mean_ms": 0.0020046815883402735,
+            "p50_ms": 0.001696,
+            "p90_ms": 0.002688,
+            "p99_ms": 0.00272
+          },
+          "median_grid_blocks": 704.0
+        },
+        {
+          "name": "void at::native::vectorized_gather_kernel<(int)16, long>(char *, char *, T2 *, int, long, long, long, long, bool)",
+          "count": 5984,
+          "summed_ms": 13.402072,
+          "duration": {
+            "count": 5984,
+            "mean_ms": 0.002239651069518717,
+            "p50_ms": 0.001376,
+            "p90_ms": 0.005344,
+            "p99_ms": 0.005376
+          },
+          "median_grid_blocks": 600.5
+        },
+        {
+          "name": "void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListScalarListMetadata<float, (int)3>, at::native::<unnamed>::PointwiseOpScalarListFunctor<float, (int)3, (int)3, (int)0>, std::divides<float>>(T1, T2, T3...)",
+          "count": 747,
+          "summed_ms": 12.653207,
+          "duration": {
+            "count": 747,
+            "mean_ms": 0.016938697456492638,
+            "p50_ms": 0.016928,
+            "p90_ms": 0.01712,
+            "p99_ms": 0.017312
+          },
+          "median_grid_blocks": 25.0
+        },
+        {
+          "name": "void at::native::<unnamed>::GammaBetaBackwardCUDAKernelTemplate<float, float, (unsigned int)32, (unsigned int)32, (unsigned int)256, (bool)0, (bool)0, (bool)0>(long, long, const T1 *, const T1 *, const T2 *, const T2 *, T1 *, T1 *)",
+          "count": 747,
+          "summed_ms": 12.408249,
+          "duration": {
+            "count": 747,
+            "mean_ms": 0.016610775100401605,
+            "p50_ms": 0.016608,
+            "p90_ms": 0.016832,
+            "p99_ms": 0.016992
+          },
+          "median_grid_blocks": 4.0
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::cos_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "count": 2992,
+          "summed_ms": 11.479993,
+          "duration": {
+            "count": 2992,
+            "mean_ms": 0.0038368960561497327,
+            "p50_ms": 0.004128,
+            "p90_ms": 0.005248,
+            "p99_ms": 0.005568
+          },
+          "median_grid_blocks": 115.0
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::sin_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "count": 2988,
+          "summed_ms": 11.443256,
+          "duration": {
+            "count": 2988,
+            "mean_ms": 0.003829737617135207,
+            "p50_ms": 0.004128,
+            "p90_ms": 0.005184,
+            "p99_ms": 0.005504
+          },
+          "median_grid_blocks": 115.0
+        },
+        {
+          "name": "void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListScalarListMetadata<float, (int)1>, at::native::<unnamed>::BinaryOpScalarListFunctor<float, (int)1, (int)1, (int)0>, std::divides<float>>(T1, T2, T3...)",
+          "count": 747,
+          "summed_ms": 10.579263,
+          "duration": {
+            "count": 747,
+            "mean_ms": 0.014162333333333334,
+            "p50_ms": 0.014144,
+            "p90_ms": 0.014304,
+            "p99_ms": 0.014432
+          },
+          "median_grid_blocks": 25.0
+        },
+        {
+          "name": "void cusparse::csrmm_alg2_kernel<(bool)0, (bool)0, (bool)0, long, long, long, long, float, float, float, float>(T4, T4, T5, T4, int, int, cusparse::KernelCoeffs<T11>, int, int, const T4 *, const T7 *, const T6 *, const T8 *, long, const T9 *, T4, long, T10 *, T4, long)",
+          "count": 1495,
+          "summed_ms": 10.323477,
+          "duration": {
+            "count": 1495,
+            "mean_ms": 0.006905335785953178,
+            "p50_ms": 0.007392,
+            "p90_ms": 0.00752,
+            "p99_ms": 0.007552
+          },
+          "median_grid_blocks": 63.0
+        },
+        {
+          "name": "void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(int)2>, at::native::<unnamed>::UnaryOpFunctor<float, (int)2, (int)1, (int)1>, at::native::Sqrt<float>>(T1, T2, T3...)",
+          "count": 747,
+          "summed_ms": 9.466039,
+          "duration": {
+            "count": 747,
+            "mean_ms": 0.012672073627844711,
+            "p50_ms": 0.012672,
+            "p90_ms": 0.012832,
+            "p99_ms": 0.012928
+          },
+          "median_grid_blocks": 25.0
+        }
+      ],
+      "scope": "Nsight-instrumented diagnostic. NCCL kernel duration includes peer wait/polling; no-recorded-activity fraction is not SM idle time. Group unions overlap and are not additive."
+    },
+    {
+      "rank": 1,
+      "device_id": 1,
+      "window_seconds": 24.670353287,
+      "union_seconds": {
+        "compute": 0.912993551,
+        "nccl": 5.288801246,
+        "memcpy": 0.103093936,
+        "memset": 0.008889703
+      },
+      "any_activity_seconds": 6.124726217,
+      "no_recorded_activity_fraction": 0.7517373932286809,
+      "compute_nccl_overlap_seconds": 0.1365695,
+      "compute_kernel_count": 237021,
+      "nccl_kernel_count": 2989,
+      "compute_launch_distribution": {
+        "duration": {
+          "count": 237021,
+          "mean_ms": 0.003851952151919028,
+          "p50_ms": 0.001856,
+          "p90_ms": 0.00816,
+          "p99_ms": 0.021472
+        },
+        "fraction_at_most_5us": 0.7811290982655545,
+        "fraction_grid_at_most_2_blocks": 0.27128819809215216
+      },
+      "kernel_duration_ranking": [
+        {
+          "name": "ncclDevKernel_SendRecv(ncclDevKernelArgsStorage<(unsigned long)4096>)",
+          "count": 2989,
+          "summed_ms": 5330.658112,
+          "duration": {
+            "count": 2989,
+            "mean_ms": 1.783425263298762,
+            "p50_ms": 0.106432,
+            "p90_ms": 7.099573800000002,
+            "p99_ms": 10.9222352
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<float, at::native::func_wrapper_t<float, at::native::sum_functor<float, float, float>::operator ()(at::TensorIterator &)::[lambda(float, float) (instance 1)]>, unsigned int, float, (int)4, (int)4>>(T3)",
+          "count": 11220,
+          "summed_ms": 90.148741,
+          "duration": {
+            "count": 11220,
+            "mean_ms": 0.008034647147950089,
+            "p50_ms": 0.00624,
+            "p90_ms": 0.013856,
+            "p99_ms": 0.014208
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void <unnamed>::indexing_backward_kernel<float, (int)4>(const long *, const long *, const T1 *, T1 *, long, long, long, long, bool)",
+          "count": 2244,
+          "summed_ms": 75.360878,
+          "duration": {
+            "count": 2244,
+            "mean_ms": 0.033583278966131905,
+            "p50_ms": 0.005472,
+            "p90_ms": 0.09628800000000001,
+            "p99_ms": 0.28846247000000247
+          },
+          "median_grid_blocks": 1496.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_64x64_8x5_tn_align1>(T1::Params)",
+          "count": 6678,
+          "summed_ms": 64.220564,
+          "duration": {
+            "count": 6678,
+            "mean_ms": 0.009616736148547468,
+            "p50_ms": 0.00848,
+            "p90_ms": 0.012896,
+            "p99_ms": 0.013088
+          },
+          "median_grid_blocks": 58.0
+        },
+        {
+          "name": "gnnflow::SampleLayerRecentKernel(const gnnflow::DoublyLinkedList *, unsigned long, bool, unsigned int, const long *, const float *, unsigned int, unsigned int, float, unsigned int, unsigned int, long *, long *, float *, float *, unsigned int *)",
+          "count": 747,
+          "summed_ms": 46.438226,
+          "duration": {
+            "count": 747,
+            "mean_ms": 0.06216629986613119,
+            "p50_ms": 0.06192,
+            "p90_ms": 0.0701504,
+            "p99_ms": 0.07963328
+          },
+          "median_grid_blocks": 71.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_64x64_8x5_nt_align1>(T1::Params)",
+          "count": 6710,
+          "summed_ms": 30.815718,
+          "duration": {
+            "count": 6710,
+            "mean_ms": 0.004592506408345752,
+            "p50_ms": 0.004256,
+            "p90_ms": 0.005728,
+            "p99_ms": 0.006208
+          },
+          "median_grid_blocks": 70.0
+        },
+        {
+          "name": "void at::native::_scatter_gather_elementwise_kernel<(int)128, (int)8, void at::native::_cuda_scatter_gather_internal_kernel<(bool)1, long, long>::operator ()<at::native::ReduceMaximum>(at::TensorIterator &, long, long, long, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "count": 1494,
+          "summed_ms": 30.716418,
+          "duration": {
+            "count": 1494,
+            "mean_ms": 0.020559851405622488,
+            "p50_ms": 0.0200155,
+            "p90_ms": 0.029302400000000003,
+            "p99_ms": 0.041277049999999975
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void at_cuda_detail::cub::detail::radix_sort::DeviceRadixSortSingleTileKernel<at_cuda_detail::cub::detail::radix::policy_hub<long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long>::Policy1000, (at_cuda_detail::cub::SortOrder)0, long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long, at_cuda_detail::cub::detail::identity_decomposer_t>(const T3 *, T3 *, const T4 *, T4 *, T5, int, int, T6)",
+          "count": 2242,
+          "summed_ms": 29.053025,
+          "duration": {
+            "count": 2242,
+            "mean_ms": 0.012958530330062444,
+            "p50_ms": 0.017184,
+            "p90_ms": 0.017568,
+            "p99_ms": 0.0176
+          },
+          "median_grid_blocks": 1.0
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "count": 20942,
+          "summed_ms": 25.673527,
+          "duration": {
+            "count": 20942,
+            "mean_ms": 0.0012259348199789896,
+            "p50_ms": 0.001184,
+            "p90_ms": 0.001344,
+            "p99_ms": 0.002304
+          },
+          "median_grid_blocks": 1.0
+        },
+        {
+          "name": "void cublasLt::splitKreduce_kernel<(int)32, (int)16, int, float, float, float, float, (bool)0, float, float, float, (bool)1, (bool)0, (bool)0, (bool)0>(cublasLt::cublasSplitKParams<T6>, const T4 *, const T10 *, T9 *, T5 *, const T6 *, const T6 *, const T11 *, const T4 *, T11 *, void *, long, T6 *, int *, T6 *, T6 *, const T6 *, const T6 *, const T6 *, const T6 *, const T6 *)",
+          "count": 11218,
+          "summed_ms": 23.634496,
+          "duration": {
+            "count": 11218,
+            "mean_ms": 0.0021068368693171685,
+            "p50_ms": 0.001888,
+            "p90_ms": 0.003232,
+            "p99_ms": 0.003456
+          },
+          "median_grid_blocks": 76.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_tn_align1>(T1::Params)",
+          "count": 1494,
+          "summed_ms": 23.46279,
+          "duration": {
+            "count": 1494,
+            "mean_ms": 0.015704678714859435,
+            "p50_ms": 0.015712,
+            "p90_ms": 0.015872,
+            "p99_ms": 0.015936
+          },
+          "median_grid_blocks": 187.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(T1::Params)",
+          "count": 3823,
+          "summed_ms": 23.113253,
+          "duration": {
+            "count": 3823,
+            "mean_ms": 0.006045841747318859,
+            "p50_ms": 0.006048,
+            "p90_ms": 0.006272,
+            "p99_ms": 0.006368
+          },
+          "median_grid_blocks": 19.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x64_8x5_nn_align1>(T1::Params)",
+          "count": 2909,
+          "summed_ms": 22.598147,
+          "duration": {
+            "count": 2909,
+            "mean_ms": 0.007768355792368512,
+            "p50_ms": 0.009216,
+            "p90_ms": 0.009344,
+            "p99_ms": 0.00944
+          },
+          "median_grid_blocks": 184.0
+        },
+        {
+          "name": "void at_cuda_detail::cub::detail::radix_sort::DeviceRadixSortOnesweepKernel<at_cuda_detail::cub::detail::radix::policy_hub<long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long>::Policy1000, (at_cuda_detail::cub::SortOrder)0, long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long, int, int, at_cuda_detail::cub::detail::identity_decomposer_t>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int, T8)",
+          "count": 2992,
+          "summed_ms": 18.671129,
+          "duration": {
+            "count": 2992,
+            "mean_ms": 0.006240350601604278,
+            "p50_ms": 0.006176,
+            "p90_ms": 0.006944,
+            "p99_ms": 0.007072
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void dgl::cub::DeviceRadixSortOnesweepKernel<dgl::cub::DeviceRadixSortPolicy<long, long, unsigned long long>::Policy900, (bool)0, long, long, unsigned long long, int, int, dgl::cub::detail::identity_decomposer_t>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int, T8)",
+          "count": 2992,
+          "summed_ms": 18.572392,
+          "duration": {
+            "count": 2992,
+            "mean_ms": 0.0062073502673796795,
+            "p50_ms": 0.00624,
+            "p90_ms": 0.0064,
+            "p99_ms": 0.006496
+          },
+          "median_grid_blocks": 2.0
+        },
+        {
+          "name": "void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void at::native::index_kernel_impl<at::native::OpaqueType<(int)4>>(at::TensorIteratorBase &, c10::ArrayRef<long>, c10::ArrayRef<long>)::[lambda(char *, const char *, long) (instance 1)]>(at::TensorIteratorBase &, c10::ArrayRef<long>, c10::ArrayRef<long>, const T1 &, bool)::[lambda(int) (instance 1)]>(long, T3)",
+          "count": 5229,
+          "summed_ms": 17.019227,
+          "duration": {
+            "count": 5229,
+            "mean_ms": 0.0032547766303308474,
+            "p50_ms": 0.00336,
+            "p90_ms": 0.003872,
+            "p99_ms": 0.004
+          },
+          "median_grid_blocks": 82.0
+        },
+        {
+          "name": "void at::native::radixSortKVInPlace<(int)-2, (int)-1, (int)32, (int)32, long, long, unsigned int>(at::cuda::detail::TensorInfo<T5, T7>, T7, T7, T7, at::cuda::detail::TensorInfo<T6, T7>, T7, bool)",
+          "count": 747,
+          "summed_ms": 15.917243,
+          "duration": {
+            "count": 747,
+            "mean_ms": 0.02130822356091031,
+            "p50_ms": 0.021184,
+            "p90_ms": 0.021632,
+            "p99_ms": 0.021664
+          },
+          "median_grid_blocks": 1.0
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<float>, std::array<char *, (unsigned long)1>>(int, T2, T3)",
+          "count": 14958,
+          "summed_ms": 14.698022,
+          "duration": {
+            "count": 14958,
+            "mean_ms": 0.0009826194678432944,
+            "p50_ms": 0.000896,
+            "p90_ms": 0.00144,
+            "p99_ms": 0.001504
+          },
+          "median_grid_blocks": 89.0
+        },
+        {
+          "name": "std::enable_if<T7, void>::type internal::gemvx::kernel<int, int, float, float, float, float, (bool)1, (bool)1, (bool)0, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const float>, cublasGemvTensorStridedBatched<const float>, cublasGemvTensorStridedBatched<float>, float>>(T13)",
+          "count": 2992,
+          "summed_ms": 14.09453,
+          "duration": {
+            "count": 2992,
+            "mean_ms": 0.004710738636363636,
+            "p50_ms": 0.00496,
+            "p90_ms": 0.005248,
+            "p99_ms": 0.005312
+          },
+          "median_grid_blocks": 7.0
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x64_8x5_nt_align1>(T1::Params)",
+          "count": 1496,
+          "summed_ms": 13.952612,
+          "duration": {
+            "count": 1496,
+            "mean_ms": 0.009326612299465242,
+            "p50_ms": 0.009312,
+            "p90_ms": 0.009408,
+            "p99_ms": 0.009472
+          },
+          "median_grid_blocks": 180.0
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_alignedK_contig<at::native::<unnamed>::OpaqueType<(unsigned int)4>, unsigned int, (int)2, (int)128, (int)1, (int)16>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "count": 6547,
+          "summed_ms": 13.686114,
+          "duration": {
+            "count": 6547,
+            "mean_ms": 0.0020904405071024896,
+            "p50_ms": 0.001408,
+            "p90_ms": 0.004512,
+            "p99_ms": 0.004832
+          },
+          "median_grid_blocks": 354.0
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "count": 6732,
+          "summed_ms": 13.19952,
+          "duration": {
+            "count": 6732,
+            "mean_ms": 0.0019607130124777183,
+            "p50_ms": 0.001664,
+            "p90_ms": 0.002656,
+            "p99_ms": 0.002688
+          },
+          "median_grid_blocks": 704.0
+        },
+        {
+          "name": "void at::native::vectorized_gather_kernel<(int)16, long>(char *, char *, T2 *, int, long, long, long, long, bool)",
+          "count": 5976,
+          "summed_ms": 13.083013,
+          "duration": {
+            "count": 5976,
+            "mean_ms": 0.0021892592034805894,
+            "p50_ms": 0.001344,
+            "p90_ms": 0.005248,
+            "p99_ms": 0.00528
+          },
+          "median_grid_blocks": 596.5
+        },
+        {
+          "name": "void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListScalarListMetadata<float, (int)3>, at::native::<unnamed>::PointwiseOpScalarListFunctor<float, (int)3, (int)3, (int)0>, std::divides<float>>(T1, T2, T3...)",
+          "count": 748,
+          "summed_ms": 12.26481,
+          "duration": {
+            "count": 748,
+            "mean_ms": 0.016396804812834224,
+            "p50_ms": 0.016384,
+            "p90_ms": 0.016672,
+            "p99_ms": 0.01684896
+          },
+          "median_grid_blocks": 25.0
+        },
+        {
+          "name": "void at::native::<unnamed>::GammaBetaBackwardCUDAKernelTemplate<float, float, (unsigned int)32, (unsigned int)32, (unsigned int)256, (bool)0, (bool)0, (bool)0>(long, long, const T1 *, const T1 *, const T2 *, const T2 *, T1 *, T1 *)",
+          "count": 748,
+          "summed_ms": 11.969085,
+          "duration": {
+            "count": 748,
+            "mean_ms": 0.01600145053475936,
+            "p50_ms": 0.016,
+            "p90_ms": 0.016288,
+            "p99_ms": 0.016512
+          },
+          "median_grid_blocks": 4.0
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::sin_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "count": 2992,
+          "summed_ms": 11.158279,
+          "duration": {
+            "count": 2992,
+            "mean_ms": 0.003729371323529412,
+            "p50_ms": 0.004,
+            "p90_ms": 0.005056,
+            "p99_ms": 0.005376
+          },
+          "median_grid_blocks": 115.0
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::cos_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "count": 2988,
+          "summed_ms": 11.133905,
+          "duration": {
+            "count": 2988,
+            "mean_ms": 0.0037262064926372154,
+            "p50_ms": 0.004,
+            "p90_ms": 0.005088,
+            "p99_ms": 0.005408
+          },
+          "median_grid_blocks": 115.0
+        },
+        {
+          "name": "void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListScalarListMetadata<float, (int)1>, at::native::<unnamed>::BinaryOpScalarListFunctor<float, (int)1, (int)1, (int)0>, std::divides<float>>(T1, T2, T3...)",
+          "count": 748,
+          "summed_ms": 10.246691,
+          "duration": {
+            "count": 748,
+            "mean_ms": 0.013698784759358287,
+            "p50_ms": 0.013696,
+            "p90_ms": 0.0139193,
+            "p99_ms": 0.014016
+          },
+          "median_grid_blocks": 25.0
+        },
+        {
+          "name": "void cusparse::csrmm_alg2_kernel<(bool)0, (bool)0, (bool)0, long, long, long, long, float, float, float, float>(T4, T4, T5, T4, int, int, cusparse::KernelCoeffs<T11>, int, int, const T4 *, const T7 *, const T6 *, const T8 *, long, const T9 *, T4, long, T10 *, T4, long)",
+          "count": 1496,
+          "summed_ms": 9.997132,
+          "duration": {
+            "count": 1496,
+            "mean_ms": 0.006682574866310161,
+            "p50_ms": 0.006736000000000001,
+            "p90_ms": 0.007296,
+            "p99_ms": 0.00736
+          },
+          "median_grid_blocks": 63.0
+        },
+        {
+          "name": "void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(int)2>, at::native::<unnamed>::UnaryOpFunctor<float, (int)2, (int)1, (int)1>, at::native::Sqrt<float>>(T1, T2, T3...)",
+          "count": 748,
+          "summed_ms": 9.138417,
+          "duration": {
+            "count": 748,
+            "mean_ms": 0.012217135026737968,
+            "p50_ms": 0.012224,
+            "p90_ms": 0.012416,
+            "p99_ms": 0.012544
+          },
+          "median_grid_blocks": 25.0
+        }
+      ],
+      "scope": "Nsight-instrumented diagnostic. NCCL kernel duration includes peer wait/polling; no-recorded-activity fraction is not SM idle time. Group unions overlap and are not additive."
+    }
+  ],
+  "cpu": [
+    {
+      "rank": 0,
+      "roles": [
+        {
+          "role": "main",
+          "threads": 1,
+          "summed_oncore_seconds": 16.867615848,
+          "summed_gil_holding_seconds": 6.376653434,
+          "summed_gil_wait_seconds": 0.537573154
+        },
+        {
+          "role": "parameter_send",
+          "threads": 747,
+          "summed_oncore_seconds": 2.106925732,
+          "summed_gil_holding_seconds": 0.922632362,
+          "summed_gil_wait_seconds": 1.866796905
+        },
+        {
+          "role": "state_send",
+          "threads": 747,
+          "summed_oncore_seconds": 5.293741786,
+          "summed_gil_holding_seconds": 0.625204258,
+          "summed_gil_wait_seconds": 0.074703517
+        },
+        {
+          "role": "autograd",
+          "threads": 2,
+          "summed_oncore_seconds": 5.751179022,
+          "summed_gil_holding_seconds": 0.588708196,
+          "summed_gil_wait_seconds": 0.003871332
+        }
+      ],
+      "main_offcore_seconds": 7.802737439,
+      "main_osrt_summed_seconds": {
+        "pthread_cond_wait": 5.873095266,
+        "sem_wait": 1.057501032,
+        "pthread_rwlock_wrlock": 0.42317606,
+        "pthread_create": 0.377209225,
+        "ioctl": 0.181902129,
+        "pthread_cond_signal": 0.081602613,
+        "pthread_mutex_lock": 0.041266733,
+        "pthread_rwlock_rdlock": 0.020675446,
+        "backtrace": 0.015083965,
+        "mmap64": 0.001152538
+      },
+      "recorded_profiler_overhead_union_seconds": 5.982437717,
+      "scope": "Scheduler thread states are Unknown, so off-core cannot distinguish blocked from runnable. GIL/OSRT assist interpretation; profiler overhead is pervasive and cannot be removed by simple subtraction."
+    },
+    {
+      "rank": 1,
+      "roles": [
+        {
+          "role": "main",
+          "threads": 1,
+          "summed_oncore_seconds": 16.371073258,
+          "summed_gil_holding_seconds": 6.802062582,
+          "summed_gil_wait_seconds": 0.513540051
+        },
+        {
+          "role": "parameter_send",
+          "threads": 747,
+          "summed_oncore_seconds": 2.096094781,
+          "summed_gil_holding_seconds": 0.894818521,
+          "summed_gil_wait_seconds": 1.992704561
+        },
+        {
+          "role": "state_send",
+          "threads": 747,
+          "summed_oncore_seconds": 5.40426857,
+          "summed_gil_holding_seconds": 0.693606041,
+          "summed_gil_wait_seconds": 0.03946576
+        },
+        {
+          "role": "autograd",
+          "threads": 2,
+          "summed_oncore_seconds": 6.142113111,
+          "summed_gil_holding_seconds": 0.611699117,
+          "summed_gil_wait_seconds": 0.008941688
+        }
+      ],
+      "main_offcore_seconds": 8.299280029,
+      "main_osrt_summed_seconds": {
+        "pthread_cond_wait": 6.454405219,
+        "sem_wait": 1.101989483,
+        "pthread_create": 0.3734667,
+        "pthread_rwlock_wrlock": 0.319296056,
+        "ioctl": 0.165743587,
+        "pthread_cond_signal": 0.082460366,
+        "pthread_mutex_lock": 0.039591463,
+        "pthread_rwlock_rdlock": 0.017812592,
+        "backtrace": 0.015839462,
+        "mmap64": 0.001205867,
+        "pthread_cond_broadcast": 6.73e-06
+      },
+      "recorded_profiler_overhead_union_seconds": 6.311956899,
+      "scope": "Scheduler thread states are Unknown, so off-core cannot distinguish blocked from runnable. GIL/OSRT assist interpretation; profiler overhead is pervasive and cannot be removed by simple subtraction."
+    }
+  ]
+}

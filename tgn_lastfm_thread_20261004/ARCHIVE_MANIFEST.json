@@ -1,0 +1,972 @@
+{
+  "created": "2026-10-05",
+  "purpose": "LastFM two-GPU thread/warp study and fixed-work screening",
+  "formal_runs": 15,
+  "formal_rank_summaries": 30,
+  "files": {
+    "runs/short_lastfm_p2_baseline_s4101_e3_v1/run.json": {
+      "source_sha256": "8035e1e29cf18fbdd4e51146eb28ebd2a253b38ec6bc593be9e79d38afc81d36",
+      "archive_sha256": "c612cb2884339a375d1a3635f0de6c709b0d1183fcb149212cc0223e3174e9a9",
+      "source_bytes": 1560,
+      "archive_bytes": 226,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_baseline_s4101_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "498ed3527ae6a5b84599302466998f56f3d1df46ffb601f0b30dc8c4de84bdd8",
+      "archive_sha256": "40bbfd1bdaf9bc32c61360c6da2684d63cca8299996efbf8a3241d1e5edf4b3f",
+      "source_bytes": 485383,
+      "archive_bytes": 3595,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_baseline_s4101_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "8403ea2cd860796749484aa9cd2509e72ee78e35aac74e040e23cc10b1dbba06",
+      "archive_sha256": "dc698d62e43b8166d8376fd7aa2c1fad18427aa8ca5da64f1d37b7a859af98bd",
+      "source_bytes": 484807,
+      "archive_bytes": 3594,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4101_e3_v1/run.json": {
+      "source_sha256": "3123b7c94fefa79826854b66ddb589704f9b6a6be8fc02387d9986ca58d52c33",
+      "archive_sha256": "98e6e1a27c05e9a92b4567f14424dced7a3cf31d4d5324084adfbcf6a82c0053",
+      "source_bytes": 1571,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4101_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "ee1c55693e8c1699574becdeed1dba67482b69b3e51da74523a28970fa292c56",
+      "archive_sha256": "9148068ee9ecc0e136bddfa432799fc1f9d3d0632a1678347dc272c4b4e1fbe3",
+      "source_bytes": 485599,
+      "archive_bytes": 3603,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4101_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "e842d020027f558bc28e3ac66c984daba9aa2ee944b1bd66c4bf5b5600fa01f6",
+      "archive_sha256": "da2b772ffe58c96ac5d1db7a1288faf3c604493c8600491c0379bb785ce719f7",
+      "source_bytes": 484993,
+      "archive_bytes": 3603,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_state_inline_s4101_e3_v1/run.json": {
+      "source_sha256": "d993ef15c8cd89ea3c85835068d807ca345c96ac505ab070f00f7fa71a380fdb",
+      "archive_sha256": "c26c457626f7ef5e582e018f2b5b3504866897356f3cfbd0684b3cd6f42b1ae3",
+      "source_bytes": 1569,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_state_inline_s4101_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "44252ecb96452fc69fb751f047f193f763c711b199bb52ed7f5f10081e5061e5",
+      "archive_sha256": "d02b7e3bb857d0714bc2d646ded26475a9decd62bc14a2f6341c16133f83f324",
+      "source_bytes": 485379,
+      "archive_bytes": 3604,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_state_inline_s4101_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "f9fa4aaed5501b4d969ece1393e802c08f9666d1bfed217e0828cd90d116cb1f",
+      "archive_sha256": "79fdd86bb2df16fe3c335d451a7dc8643b65ed62ad3eb6ed4cb90a5ffb08c96d",
+      "source_bytes": 484702,
+      "archive_bytes": 3602,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4101_e3_v1/run.json": {
+      "source_sha256": "0066bca5ae99c774e332563407257ec93c451c0d0bbd7f62b9193c96106d3274",
+      "archive_sha256": "0fe932e985196725621d1a7eaf9f6aa4618dab8575af9c683dd3c12a91bde1b5",
+      "source_bytes": 1564,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4101_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "b609f22557d3bdb94d1c8ef618487417c6c782d35ac214d663cb63cb32b27d4a",
+      "archive_sha256": "271bbd2d9680cd88320df2fc8c8061e24e5f4b41e83933df8ea08aa03165cd9b",
+      "source_bytes": 485336,
+      "archive_bytes": 3644,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4101_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "cb652d0c732411be0c7424ff47da1065cb754e1af3a8083464267eeb6b373d0e",
+      "archive_sha256": "baefba875281bccbe2d79dbbbec74be368d4bd4b1bb5e0cc7b0b95221cf8d1a1",
+      "source_bytes": 484714,
+      "archive_bytes": 3641,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_combination_s4101_e3_v1/run.json": {
+      "source_sha256": "9f4bcf19928f45553748620a9e832326e956dc9eb8ead26ddbce27915f622d46",
+      "archive_sha256": "7b26b7316ca7260b2ea829d85fa86dfbcf12684e2b9966a7f2f95d6b43f578b6",
+      "source_bytes": 1576,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_combination_s4101_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "cfdd3a89593e2be990f042cf29fcfae41ea590129c738a3f61eb2e20e17c906e",
+      "archive_sha256": "fca448ea817113b201942255818fada62fb858cf9ca1ab02bb9a52f8b8ac87ab",
+      "source_bytes": 485665,
+      "archive_bytes": 3628,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_combination_s4101_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "6dae3793b390ab3fd859eed76509c7f6ab98e386bfdd7aa078f8d3a55149e69f",
+      "archive_sha256": "8454a1cea3c106a811590dbccaef76191a29a364a9818c86b73a6c4c97691ad7",
+      "source_bytes": 485059,
+      "archive_bytes": 3632,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_baseline_s4102_e3_v1/run.json": {
+      "source_sha256": "3797a7adec98e1f8fa0f2a6b11124d40ea1c0448738a7be6aac1fd3db78f8a5f",
+      "archive_sha256": "b764037bcd24ab17cb3e2210680e8246073818763b268611e3ca9a92d8f0ebc0",
+      "source_bytes": 1561,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_baseline_s4102_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "37976a8ad7117b2b94cfc4a450c595042047bb9f77b7b7ecf294512feb2b9d84",
+      "archive_sha256": "e6320b71bcce74fd070728458b13bc69a6108796fff01c79fe5be68ceafceada",
+      "source_bytes": 485421,
+      "archive_bytes": 3589,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_baseline_s4102_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "f17f91dd3c21eeb5b41824cb37ffdeb7ba33d845a553892baad50ce559baa013",
+      "archive_sha256": "c5a1c326b559e826e82ee8d65ecbf9aaa7ce60c461d16f886a9288b0d5cfc95b",
+      "source_bytes": 484802,
+      "archive_bytes": 3589,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4102_e3_v1/run.json": {
+      "source_sha256": "2b4ce5a9607f51eecf441d1ad570989259a6af2671104f0d8ec18c0ec2dee222",
+      "archive_sha256": "d4276de800e2824f354e655c90055eef4a58a6b43a38abc7d598de1d041fb9fd",
+      "source_bytes": 1571,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4102_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "1ea681b1d85b132a0326445acb3f30c8cfb2c5550bf5d48335159874881956bd",
+      "archive_sha256": "e3f60335b8d5d9297bbd4f2090e47ddec034c2f2d6534cd779e81774289cebf1",
+      "source_bytes": 485350,
+      "archive_bytes": 3605,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4102_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "2e81bd11e369d0ffa26cf7b8c2d3e688aa6848f03305e15db70a2c0dd2b7312a",
+      "archive_sha256": "d4bd52e8614115847302467d3249511daa38f1d3bee17890f1c97b4c130114d6",
+      "source_bytes": 484793,
+      "archive_bytes": 3602,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_state_inline_s4102_e3_v1/run.json": {
+      "source_sha256": "0356a3dc4bc3de4194e8d2639dfb2beff257c34959c3f295180db6bad183541c",
+      "archive_sha256": "86b170d1413e9fcda2649cec7c06bd5262c16caf2877408c718b8f090fd159ed",
+      "source_bytes": 1569,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_state_inline_s4102_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "9c1d298c934a69fbc7a58e52064c305eb721a152901de240051e9d0a58f44864",
+      "archive_sha256": "467939233c505cae04b1a63e60b76d5c5e00f213a0e5c91aa447e75ab4a38580",
+      "source_bytes": 485380,
+      "archive_bytes": 3596,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_state_inline_s4102_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "b9e6a5acf2a6a2d650dc6d33c46668ae441c6c62e593f6e31aa7e20518be860d",
+      "archive_sha256": "3b30278ee7bc69237644a6cbc9b2f04d2d3bff215d106ce68d02f48f823178da",
+      "source_bytes": 484754,
+      "archive_bytes": 3598,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4102_e3_v1/run.json": {
+      "source_sha256": "bc0b8f295c495855cd14d10aefcdfbf67999197c28ef36c1e08cbe5d6bc72160",
+      "archive_sha256": "d253805685c65629a7eb3d93c15b77096fb11b99d091886578fb23d92359983e",
+      "source_bytes": 1564,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4102_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "41c017ec0c5c4c90eb3d842723a1247fd0c3f84023e4b901eb75d80aca7d66b5",
+      "archive_sha256": "dea8103d7e1dd1ab42fd7140ff7642c10f28e8e393e680ed1adea9d0b5dba0a7",
+      "source_bytes": 485335,
+      "archive_bytes": 3641,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4102_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "9735f0e09898e2a4806207f06361f213b058edfd2b6052540c03e49c975c88f3",
+      "archive_sha256": "071063ba50afe1a884a465b9dc45afd92394c7f37cd9ef8885860dc18cd86734",
+      "source_bytes": 484694,
+      "archive_bytes": 3645,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_combination_s4102_e3_v1/run.json": {
+      "source_sha256": "d87cff98953458d8bbc8b20323b8de319118965a85438b5381ad4543064eec34",
+      "archive_sha256": "40be02992b8fb3d68dd9d08b5a96afe6fa361a6874b29db18b49a50b44187c7c",
+      "source_bytes": 1576,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_combination_s4102_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "83f1debcc3df26afb40b081bd3be557ab2e80ba4afeb1c195ba04dffa2902292",
+      "archive_sha256": "0aec68673ef2c726789703d003b7e056c9e27cba95a9ffd6c3a760c6612bb482",
+      "source_bytes": 485728,
+      "archive_bytes": 3634,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_combination_s4102_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "eb7a2ccc3dc31b4337884ffee0fa8359e46aa03d94825a75e69d522ebc3a4bb2",
+      "archive_sha256": "7f6c3699bbc64efdb55146e378b71fa41c29a43a978faf9ad60527a029210af0",
+      "source_bytes": 485168,
+      "archive_bytes": 3636,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_baseline_s4103_e3_v1/run.json": {
+      "source_sha256": "14df75c3f3db0ba750c62b54b07b88c6c05cebca732b24e8825cf8f7036166d6",
+      "archive_sha256": "3dd0d0bfae347a25f0c685c21250ed799d70438ac873c4cad94f11cc4438ee3c",
+      "source_bytes": 1561,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_baseline_s4103_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "03948d7efef7db91217d23952463ccec7e095e9e1d8cb7db2923e7f406806d7f",
+      "archive_sha256": "904eba1ef06477e999f34fbc6ec9ec81cd4efc43e816d5b2b430f2e108346d16",
+      "source_bytes": 485323,
+      "archive_bytes": 3588,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_baseline_s4103_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "df27f48cd36d857f8ecd003279736b952edd3590cf84c68955d2233ae78108f1",
+      "archive_sha256": "0a0f344dab4ab2ab50c770b4c483c2906b455f2aa13b779ab24a64bdb92a32db",
+      "source_bytes": 484680,
+      "archive_bytes": 3596,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4103_e3_v1/run.json": {
+      "source_sha256": "71c75f40a01d22e8e63399e0b23aec854150078bc32ee290765b9ef3547819f9",
+      "archive_sha256": "c384666dd192793619fda9dad1fc4466363ddcfaf5e78fd63e575d8e5303f830",
+      "source_bytes": 1571,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4103_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "6d60b2f808e756f235dc804818241f668e153c5e1be59981d435a636d32ead50",
+      "archive_sha256": "b059fd6f4709865bef07b0657470ed028f066ffcaff9230d3cafa87caf8a0f4a",
+      "source_bytes": 485348,
+      "archive_bytes": 3602,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_loss_deferred_s4103_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "6b895197155f23767f18ec8567a6ab8aac56e623aa268d9f8bfeba365dd2ffc8",
+      "archive_sha256": "cbed6387e4b93ff61b4f7091de98f86645409c4495a7eef3b63c0caca9af430f",
+      "source_bytes": 484794,
+      "archive_bytes": 3605,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_state_inline_s4103_e3_v1/run.json": {
+      "source_sha256": "2bb56da3381568c6a2edd3c6d472421f65cda2e3a5639133be6e4ac66fccc5d4",
+      "archive_sha256": "0740aaedb5dcb1d4f03fca7052477b360a4b9951531d5ae7fcd2aba832ccb13d",
+      "source_bytes": 1569,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_state_inline_s4103_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "f9b44ce8823445161f65d3b35d9ea8b8c904122132f68a262eebad72372f3de0",
+      "archive_sha256": "3d116300fc7a9929fa6e4ded9eb0120c51eabe8417d1cd1cd9ef6e2c30481b9a",
+      "source_bytes": 485413,
+      "archive_bytes": 3599,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_state_inline_s4103_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "724ce73b372584f5770efc65908cb256fa353ee09b9e8a49d2e7408a3de5ba6a",
+      "archive_sha256": "b76a79d3066747af25b037f2ac07a6969209df37309d9cc6ff604c2dbeac812f",
+      "source_bytes": 484693,
+      "archive_bytes": 3601,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4103_e3_v1/run.json": {
+      "source_sha256": "1f84c42d923a0e92b393c701818c7c359d17b61aaa41bd8c3c373586daaa3c2e",
+      "archive_sha256": "124d06fd31eaaf0eaa79c204dbea7fa075a9347f6b555c8c0072a24fdc84d63a",
+      "source_bytes": 1564,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4103_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "25f455481ba83ab592557979d9732db18f09de650fdac4a85342099d0f68c1a3",
+      "archive_sha256": "39622556aab2e5768674d8e2b7ed93bd7b8c1db68d7387c8132a28f12989244c",
+      "source_bytes": 485349,
+      "archive_bytes": 3645,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_direct_flash_s4103_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "6858e2249d4d483df7c3c02723cebb2cf7219601b63a8ec07209ca379f0923ad",
+      "archive_sha256": "5a68cf0955abed0d96dd121d481ed16ece72435f0c8d2a4d501afb7f0dc18e70",
+      "source_bytes": 484676,
+      "archive_bytes": 3647,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_combination_s4103_e3_v1/run.json": {
+      "source_sha256": "6f4209769e5c93f43964c055fa55560277b741e18cb5d1a0eff9f69eebb451d6",
+      "archive_sha256": "ab0fef436bab493f765fb3a5df942b4c0399a7f66cf888853fac3c150add41a4",
+      "source_bytes": 1577,
+      "archive_bytes": 228,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/short_lastfm_p2_combination_s4103_e3_v1/results/rank0/summary.json": {
+      "source_sha256": "e9b927275f5cebd6f3e1b91fa3fe73579545df32566dda99e56c15b9d0f8a041",
+      "archive_sha256": "176d7941a1914d11b36cf4f798ddd4aab71ad69e7de2762c8661d6982cd02ffd",
+      "source_bytes": 485617,
+      "archive_bytes": 3633,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/short_lastfm_p2_combination_s4103_e3_v1/results/rank1/summary.json": {
+      "source_sha256": "80c2addf5070b579b82c7e6745d1b589e4b8cf5a58e150b7f7f3917367b31d0b",
+      "archive_sha256": "e5458e3d0613c9902cb510305597f39d97e908be8b6a91acc69bd5f994662db7",
+      "source_bytes": 485010,
+      "archive_bytes": 3631,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_baseline_s4101_e1_v2/run.json": {
+      "source_sha256": "273bed653c9dab32bd0144b4113ae6a7ab3a57eae395e261d4aa8038009c7e2b",
+      "archive_sha256": "c22cf486fd97fcb4622c638c1992528feea0985bf2fe753488fded376c4f863e",
+      "source_bytes": 1606,
+      "archive_bytes": 228,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/qual_lastfm_p2_baseline_s4101_e1_v2/results/rank0/summary.json": {
+      "source_sha256": "89ec58fcfc60b1dbcbec2586b3fe658368652f3aa3abd13fd7367b54f55a579a",
+      "archive_sha256": "341da39d83bb67711a1a6ed88855a201b835cedabc316cac977070a53ebc05a6",
+      "source_bytes": 244439,
+      "archive_bytes": 2574,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_baseline_s4101_e1_v2/results/rank1/summary.json": {
+      "source_sha256": "b7bf0cd1ef2db997afc8dd95aa4c538b755599e4fe734ea3cbcbf8420dd3af05",
+      "archive_sha256": "678a98aff309a6c72bb6cc9dd5fc6929269ed43e80cce648b17428ae636c5154",
+      "source_bytes": 244119,
+      "archive_bytes": 2572,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_loss_deferred_s4101_e1_v2/run.json": {
+      "source_sha256": "79634fe19472234b9ee8013ef29cd738706a70d980551c668019850a23555cdc",
+      "archive_sha256": "874cd41dec597ae0ea131dda4b5b49acdcfa6b48624126ff5ec2e867b825d728",
+      "source_bytes": 1615,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/qual_lastfm_p2_loss_deferred_s4101_e1_v2/results/rank0/summary.json": {
+      "source_sha256": "bc694d57c79119cb813247e145ba0659f3dbf9d5a0bc070b637aa48cfcfa840d",
+      "archive_sha256": "88240dd2656f0498fb40f9932c31214ae3f27e4472a8d1e5a963dc0a11d15976",
+      "source_bytes": 244501,
+      "archive_bytes": 2584,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_loss_deferred_s4101_e1_v2/results/rank1/summary.json": {
+      "source_sha256": "c572694c89c6d8dcfb3e54e30da2f9fbc05f945ae78917ca41c3a424fb78a0e4",
+      "archive_sha256": "7eca09642c2579333f02dc69884b5f2fc66eb40cbc511af59f99804b34d4c4f5",
+      "source_bytes": 244188,
+      "archive_bytes": 2583,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_state_inline_s4101_e1_v2/run.json": {
+      "source_sha256": "92d72c4ba837aea8e5c27b193c3475e11ad3f301427e435bd472e2fcd18ff781",
+      "archive_sha256": "6515c72d24719ca7d185e2ef5ef21f37760a837e15822e1af0bfafda7e559ab6",
+      "source_bytes": 1613,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/qual_lastfm_p2_state_inline_s4101_e1_v2/results/rank0/summary.json": {
+      "source_sha256": "9fc5e1a5f66d5ff74bbf8b3febb6e40fcd1383f0c93170525b649a876c9a75a1",
+      "archive_sha256": "3e6fd3ba824034231b5f570481be766f9e90e2fac2d2595333102bc2cb6eb7f6",
+      "source_bytes": 244534,
+      "archive_bytes": 2578,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_state_inline_s4101_e1_v2/results/rank1/summary.json": {
+      "source_sha256": "1b5cf2a19b7f3647067e2944ff0ac8edd76ab6a308ce9e85851b42f8a780244d",
+      "archive_sha256": "4c680e780b7a1ff5988ff04bddaf1af6fb50ba6533488edd43bf30c9240e4641",
+      "source_bytes": 244152,
+      "archive_bytes": 2579,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_direct_flash_s4101_e1_v2/run.json": {
+      "source_sha256": "8d8b3a10b5f3cb2117cb1d2b32142f280cf2fcc1c11ada250e20a6ba7256ee14",
+      "archive_sha256": "bd41abce970a027bc47a66c8623e95db687a9e16c1bf6f4721176727dff06101",
+      "source_bytes": 1608,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/qual_lastfm_p2_direct_flash_s4101_e1_v2/results/rank0/summary.json": {
+      "source_sha256": "0ec0e752e20cbc4b1b47940d4942833394a72536e191309a449b6bdb112bb4c7",
+      "archive_sha256": "617d397e9f4374a1d52312284bc9a038e142349baf4ddde647454bdcbbfe8258",
+      "source_bytes": 244494,
+      "archive_bytes": 2627,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_direct_flash_s4101_e1_v2/results/rank1/summary.json": {
+      "source_sha256": "adc8b23a8ffd8ff81f7a1cf7f59126d1f334a5788b17524e229ae369024c2c4e",
+      "archive_sha256": "e3e2d84e98e14ef3ca47ee83d305ad290ede2afd706d2f82f958a4c4b8852a89",
+      "source_bytes": 244180,
+      "archive_bytes": 2626,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_combination_s4101_e1_v2/run.json": {
+      "source_sha256": "ccf8de40f65f5907ee45f55843754611c7c2bebcbc6755861461a9f34030b951",
+      "archive_sha256": "42020bdb8e894883e69e1e3834cba340905dd7a15d559dac8a38ac4547de6635",
+      "source_bytes": 1621,
+      "archive_bytes": 228,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/qual_lastfm_p2_combination_s4101_e1_v2/results/rank0/summary.json": {
+      "source_sha256": "df456b9c318738efca1ef27dc5e4225cbca92743c9044c9d992c2fd01d72e106",
+      "archive_sha256": "cf964d497dee7291aeede10921746f84847e000a4c38b391a9fa7fdd9dd73086",
+      "source_bytes": 244661,
+      "archive_bytes": 2609,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_combination_s4101_e1_v2/results/rank1/summary.json": {
+      "source_sha256": "bdf7325c878f9014a2c25f0727257fdbb0e199e2f9d8bfaa5420630cffe0e838",
+      "archive_sha256": "2c9d641a4264460cd37f2a4a2c96897aa5f2c1a2e936efd6a7dddc1490ee5f9c",
+      "source_bytes": 244316,
+      "archive_bytes": 2613,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_native_arena_s4101_e1_v1/run.json": {
+      "source_sha256": "ce1f19c65b6f6de87be78360cb7da7ff64f72a88fe6616dfa4abf054c8c1beff",
+      "archive_sha256": "c0e6a7a00bc1353dd223b21fb0b016378e6b3c5aaecc27a45f230da399245278",
+      "source_bytes": 1613,
+      "archive_bytes": 228,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/qual_lastfm_p2_native_arena_s4101_e1_v1/results/rank0/summary.json": {
+      "source_sha256": "8fbc8448e8ce41cbf1ef773c0d5daf68c7055c6fb881e0f30a5f7d9d260bc66f",
+      "archive_sha256": "ab7c3d98d7c7d510dc0909598a918030d75784f8cf85fc00b59abe746b1024ed",
+      "source_bytes": 244449,
+      "archive_bytes": 2561,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/qual_lastfm_p2_native_arena_s4101_e1_v1/results/rank1/summary.json": {
+      "source_sha256": "7d3663c0001fd09d26d5e1fa85de041737e5653f3f3de78b187960b0acff8415",
+      "archive_sha256": "a275218ee66f8f2adf624b4b3e00cd3d51d0cc537b6f09438aafd539a19b0958",
+      "source_bytes": 244141,
+      "archive_bytes": 2556,
+      "mode": "config output made relative; per-batch dispatch records aggregated per phase; timing and validation values retained"
+    },
+    "runs/comm_lastfm_same_numa_v1/run.json": {
+      "source_sha256": "7c922644dce916f815e18e6060e8a42880729d96db638c37286a913fe5dd2ceb",
+      "archive_sha256": "7b155572f5e2afd52dbd82c70b1e81e36e2c0bf17f49ad58f49a7a72d955d901",
+      "source_bytes": 1392,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/comm_lastfm_same_numa_v1/results/rank0.json": {
+      "source_sha256": "6c2ed192bd954c5ceeff58b938862ff7b5e0eff259c856762707ed232323f8e8",
+      "archive_sha256": "6c2ed192bd954c5ceeff58b938862ff7b5e0eff259c856762707ed232323f8e8",
+      "source_bytes": 4171,
+      "archive_bytes": 4171,
+      "mode": "numeric content retained"
+    },
+    "runs/comm_lastfm_same_numa_v1/results/rank1.json": {
+      "source_sha256": "1952a61976f04e68420e6968fb316210c19c05388d8b7bbebb5a4cb58bac4589",
+      "archive_sha256": "1952a61976f04e68420e6968fb316210c19c05388d8b7bbebb5a4cb58bac4589",
+      "source_bytes": 4187,
+      "archive_bytes": 4187,
+      "mode": "numeric content retained"
+    },
+    "runs/comm_lastfm_cross_numa_v1/run.json": {
+      "source_sha256": "307db91458a31e914add53588526a3f125921d765ab6d4d2a490b6bc986091d5",
+      "archive_sha256": "73008cb46a6f1f8e31471defa0d3915642d19e74cb96073de52aff4a0ebef6f9",
+      "source_bytes": 1393,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/comm_lastfm_cross_numa_v1/results/rank0.json": {
+      "source_sha256": "be434e87d5b7f1a1f584233fcfb9bb1f3e2b6812b8dfe2df100edfb954134a01",
+      "archive_sha256": "be434e87d5b7f1a1f584233fcfb9bb1f3e2b6812b8dfe2df100edfb954134a01",
+      "source_bytes": 4185,
+      "archive_bytes": 4185,
+      "mode": "numeric content retained"
+    },
+    "runs/comm_lastfm_cross_numa_v1/results/rank1.json": {
+      "source_sha256": "1363d445f20d41abc4eba30ab853e4c4167fef0ccea1d9334b79408d36ca6ec6",
+      "archive_sha256": "1363d445f20d41abc4eba30ab853e4c4167fef0ccea1d9334b79408d36ca6ec6",
+      "source_bytes": 4175,
+      "archive_bytes": 4175,
+      "mode": "numeric content retained"
+    },
+    "runs/comm_lastfm_same_numa_default_v1/run.json": {
+      "source_sha256": "ce376f6f606a8d8a90f9c144f56bf2ae47ae840f77825f425fc243185c3da8cb",
+      "archive_sha256": "2204f729dba2d0da0b8d26c0723e364b4428ce5d84ff6c1cda94c26cd1261c44",
+      "source_bytes": 1320,
+      "archive_bytes": 227,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/comm_lastfm_same_numa_default_v1/results/rank0.json": {
+      "source_sha256": "83e468c3f276af225e0ea2a81ee16b37a5821beab22ad9ec4b1a3020973e6751",
+      "archive_sha256": "83e468c3f276af225e0ea2a81ee16b37a5821beab22ad9ec4b1a3020973e6751",
+      "source_bytes": 4185,
+      "archive_bytes": 4185,
+      "mode": "numeric content retained"
+    },
+    "runs/comm_lastfm_same_numa_default_v1/results/rank1.json": {
+      "source_sha256": "6624b88d56d510cbe118b384ce58810804debd03ef95ac90de2dbbe66fedcc32",
+      "archive_sha256": "6624b88d56d510cbe118b384ce58810804debd03ef95ac90de2dbbe66fedcc32",
+      "source_bytes": 4184,
+      "archive_bytes": 4184,
+      "mode": "numeric content retained"
+    },
+    "runs/sampler_lastfm_p1_b0_components_v2/run.json": {
+      "source_sha256": "15a8054ab687a0e94d722da264222bac74b874c0a91afa546938b6c8a408d855",
+      "archive_sha256": "5a20b6b936712dd64db453a06263d0ebb77bfa8f953d68be21196b82786d0437",
+      "source_bytes": 1157,
+      "archive_bytes": 220,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/sampler_lastfm_p1_b0_components_v2/results/summary.json": {
+      "source_sha256": "fd5bf53068dfc48542842f99cee41e0bcd20b486bd614997ff6c6c0daf45b39a",
+      "archive_sha256": "fd5bf53068dfc48542842f99cee41e0bcd20b486bd614997ff6c6c0daf45b39a",
+      "source_bytes": 7364,
+      "archive_bytes": 7364,
+      "mode": "numeric content retained"
+    },
+    "runs/sampler_lastfm_p1_b16_components_v2/run.json": {
+      "source_sha256": "708533fcc9286f3dfc009a0ae02bd16437e3060c3b908000af9001d803b178b4",
+      "archive_sha256": "add4f5957f7e50aa509b0a6a4f4344cc8199a9a8e07eb62974cbf1a59edc89f4",
+      "source_bytes": 1157,
+      "archive_bytes": 218,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/sampler_lastfm_p1_b16_components_v2/results/summary.json": {
+      "source_sha256": "54a7ea78350c4ed7c0c6abfd19273c1f16d10826e6e1f2a6e048ea1230718628",
+      "archive_sha256": "54a7ea78350c4ed7c0c6abfd19273c1f16d10826e6e1f2a6e048ea1230718628",
+      "source_bytes": 7368,
+      "archive_bytes": 7368,
+      "mode": "numeric content retained"
+    },
+    "runs/sampler_lastfm_p1_b800_components_v2/run.json": {
+      "source_sha256": "6661f2de724fbe3a0582397f709183e33b073245af6ceb63791f415d273bc2b4",
+      "archive_sha256": "56a582cc5b76acb6ee4e2b6a1c63c3908260ce2b93e7317974f7fba726638ef9",
+      "source_bytes": 1161,
+      "archive_bytes": 220,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/sampler_lastfm_p1_b800_components_v2/results/summary.json": {
+      "source_sha256": "06eea4ed94d564ed7fc4cb3ee65f31edd9bfbd2dea6f1bba8cb843ecd62e3b1e",
+      "archive_sha256": "06eea4ed94d564ed7fc4cb3ee65f31edd9bfbd2dea6f1bba8cb843ecd62e3b1e",
+      "source_bytes": 7365,
+      "archive_bytes": 7365,
+      "mode": "numeric content retained"
+    },
+    "runs/sampler_lastfm_p1_b1508_components_v2/run.json": {
+      "source_sha256": "e82dcd2348f0113cc97935d0481eb5ff4c5289b93deac442016f4752a83f4142",
+      "archive_sha256": "f41482a05c8e573bb57ce984821010c7e14465950de61040c821c883dfb759c8",
+      "source_bytes": 1164,
+      "archive_bytes": 221,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/sampler_lastfm_p1_b1508_components_v2/results/summary.json": {
+      "source_sha256": "66df4c1e228f906ce1ad0c3e1796661a004525756b0fd9edfbb666fc5e9955e4",
+      "archive_sha256": "66df4c1e228f906ce1ad0c3e1796661a004525756b0fd9edfbb666fc5e9955e4",
+      "source_bytes": 7377,
+      "archive_bytes": 7377,
+      "mode": "numeric content retained"
+    },
+    "runs/sampler_lastfm_p1_b16_native_v1/run.json": {
+      "source_sha256": "fc52790e7c4054e34c22ff6299fa4eb28ab9e81fb12daaef0e8dc7deac8ffb93",
+      "archive_sha256": "8fe8572ace584f1fdacad78963d33c1ee2daa444bd6e595dd12b74ac981e5483",
+      "source_bytes": 1196,
+      "archive_bytes": 220,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/sampler_lastfm_p1_b16_native_v1/results/summary.json": {
+      "source_sha256": "b6902880d0834db95308bd30a5ff7c92f0ad67e8973a771123f4a70bcfda89d3",
+      "archive_sha256": "b6902880d0834db95308bd30a5ff7c92f0ad67e8973a771123f4a70bcfda89d3",
+      "source_bytes": 624,
+      "archive_bytes": 624,
+      "mode": "numeric content retained"
+    },
+    "runs/ncu_lastfm_sampler_b16_native_v1/run.json": {
+      "source_sha256": "d57f25216d604c956110710b94da7c344d59cd9cf63a7bda230953af7a809512",
+      "archive_sha256": "47cb763bfbfd89a1048bb44ba03d948fd5558ac93d35652d1a543651223b6876",
+      "source_bytes": 1711,
+      "archive_bytes": 220,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "runs/ncu_lastfm_sampler_b16_native_v1/results/summary.json": {
+      "source_sha256": "4f001174a99232c40cd212e065c61cc7761bf33792600cb1d022d4c781b314ca",
+      "archive_sha256": "4f001174a99232c40cd212e065c61cc7761bf33792600cb1d022d4c781b314ca",
+      "source_bytes": 599,
+      "archive_bytes": 599,
+      "mode": "numeric content retained"
+    },
+    "runs/nsys_lastfm_p2_native_threads_s4101_e1_v2/run.json": {
+      "source_sha256": "0ffd79b7d5c9da686d26f2a16bff3863851b1fa08dd15df19b0459871326f66a",
+      "archive_sha256": "b15d084d8157150be8e904cea1995f43c1a9e556a75e0a89872314d48f4a533c",
+      "source_bytes": 2079,
+      "archive_bytes": 228,
+      "mode": "statistics-only; command, UUID, locks and environment paths omitted"
+    },
+    "software.json": {
+      "archive_sha256": "b6d7519ff9ea30e74e0860a3735121ffd1bd32684faba9167483f4dc8a99bc23",
+      "archive_bytes": 541,
+      "mode": "publication environment read-back"
+    },
+    "src/analyze_campaign.py": {
+      "source_sha256": "3ff5f09878ed0de18140458a180efeb5535f628a207124c711f4cb556cc5e1ac",
+      "archive_sha256": "3ff5f09878ed0de18140458a180efeb5535f628a207124c711f4cb556cc5e1ac",
+      "archive_bytes": 4913,
+      "mode": "exact-copy"
+    },
+    "src/analyze_communication.py": {
+      "source_sha256": "709d1dd473c1dd7fb1f38704a82d936921128ef0a564391270102075ce8e9ce0",
+      "archive_sha256": "709d1dd473c1dd7fb1f38704a82d936921128ef0a564391270102075ce8e9ce0",
+      "archive_bytes": 1981,
+      "mode": "exact-copy"
+    },
+    "src/analyze_dependencies.py": {
+      "source_sha256": "42c8084deab7a2d6be2774a37ad9f55d982aef9d0fda284dcb9902e67fcf7303",
+      "archive_sha256": "42c8084deab7a2d6be2774a37ad9f55d982aef9d0fda284dcb9902e67fcf7303",
+      "archive_bytes": 4161,
+      "mode": "exact-copy"
+    },
+    "src/analyze_threads.py": {
+      "source_sha256": "1b0b5e666494ac881f1e1777bb3421bebf852b74a7ff9a5e3852b0a177bf5045",
+      "archive_sha256": "1b0b5e666494ac881f1e1777bb3421bebf852b74a7ff9a5e3852b0a177bf5045",
+      "archive_bytes": 13562,
+      "mode": "exact-copy"
+    },
+    "src/check_training_models.py": {
+      "source_sha256": "920de6e5b6e571e79840157ade4cd2657bd44c6df6731ea91c9ac79ce5e31214",
+      "archive_sha256": "920de6e5b6e571e79840157ade4cd2657bd44c6df6731ea91c9ac79ce5e31214",
+      "archive_bytes": 1962,
+      "mode": "exact-copy"
+    },
+    "src/communication_probe.py": {
+      "source_sha256": "7c5734dc728f945742a6166c2bd5c6c474d429b7c2b85768954ea5fb40780583",
+      "archive_sha256": "7c5734dc728f945742a6166c2bd5c6c474d429b7c2b85768954ea5fb40780583",
+      "archive_bytes": 2498,
+      "mode": "exact-copy"
+    },
+    "src/guard.py": {
+      "source_sha256": "4504937ed26d2748d0f01d81589de3a558433e0c4774ac3acf7ad849c22d8c49",
+      "archive_sha256": "4504937ed26d2748d0f01d81589de3a558433e0c4774ac3acf7ad849c22d8c49",
+      "archive_bytes": 3567,
+      "mode": "exact-copy"
+    },
+    "src/parameter_arena.py": {
+      "source_sha256": "0e93afda583931342e93b06a9e57929fab6f7acae9fb5e754aefe93c1f4f071f",
+      "archive_sha256": "0e93afda583931342e93b06a9e57929fab6f7acae9fb5e754aefe93c1f4f071f",
+      "archive_bytes": 706,
+      "mode": "exact-copy"
+    },
+    "src/pipe_flash_adapter.py": {
+      "source_sha256": "57fefeea0b994ee59f44bf956095f28f4a56daf9ba68299537cbc930cb9b5a79",
+      "archive_sha256": "57fefeea0b994ee59f44bf956095f28f4a56daf9ba68299537cbc930cb9b5a79",
+      "archive_bytes": 5691,
+      "mode": "exact-copy"
+    },
+    "src/pipe_parameter_bench.py": {
+      "source_sha256": "b88a7d341d34857401a1968ebd2b7b837787d454cb657f2e2f052a335f6d24bb",
+      "archive_sha256": "b88a7d341d34857401a1968ebd2b7b837787d454cb657f2e2f052a335f6d24bb",
+      "archive_bytes": 20526,
+      "mode": "exact-copy"
+    },
+    "src/pipe_prefix_bench.py": {
+      "source_sha256": "7d960fe5a51041304c9e451f1b6e12a12b0f8649bb3ee3f16b0572af6c2d0368",
+      "archive_sha256": "7d960fe5a51041304c9e451f1b6e12a12b0f8649bb3ee3f16b0572af6c2d0368",
+      "archive_bytes": 20571,
+      "mode": "exact-copy"
+    },
+    "src/pipe_prefix_candidate_bench.py": {
+      "source_sha256": "174bfbf901665b481f9d2837de3def13c857da38445adf58d586532334e2cc62",
+      "archive_sha256": "174bfbf901665b481f9d2837de3def13c857da38445adf58d586532334e2cc62",
+      "archive_bytes": 20525,
+      "mode": "exact-copy"
+    },
+    "src/prefix_snapshot.py": {
+      "source_sha256": "f7ff6b9bbe72aaf816d9702cca40ebfd72fc5e2ddc4d95059ac8694178e9eb60",
+      "archive_sha256": "f7ff6b9bbe72aaf816d9702cca40ebfd72fc5e2ddc4d95059ac8694178e9eb60",
+      "archive_bytes": 7785,
+      "mode": "exact-copy"
+    },
+    "src/prepare_lastfm.py": {
+      "source_sha256": "bf706ee05d3e01ec8d8afae51ae60503b77c69eb86f337f437d0ce62bc0499bc",
+      "archive_sha256": "bf706ee05d3e01ec8d8afae51ae60503b77c69eb86f337f437d0ce62bc0499bc",
+      "archive_bytes": 2915,
+      "mode": "exact-copy"
+    },
+    "src/qualify_lastfm.py": {
+      "source_sha256": "ec908431c865e91403b7a4d943ee06f1cd341e9d349af2c9dee49c544744f6d2",
+      "archive_sha256": "ec908431c865e91403b7a4d943ee06f1cd341e9d349af2c9dee49c544744f6d2",
+      "archive_bytes": 3173,
+      "mode": "exact-copy"
+    },
+    "src/rendezvous_probe.py": {
+      "source_sha256": "29031c699428ed77444010204d9bd756c8bf7841f6545b03c7090dd0ee6c6642",
+      "archive_sha256": "29031c699428ed77444010204d9bd756c8bf7841f6545b03c7090dd0ee6c6642",
+      "archive_bytes": 6149,
+      "mode": "exact-copy"
+    },
+    "src/run_campaign.py": {
+      "source_sha256": "7803edf4ed5a28922be96cdabf93eab4abcce5e47e7b4591ee0ed7c21670ca5f",
+      "archive_sha256": "7803edf4ed5a28922be96cdabf93eab4abcce5e47e7b4591ee0ed7c21670ca5f",
+      "archive_bytes": 4579,
+      "mode": "exact-copy"
+    },
+    "src/run_parameter_ablation.py": {
+      "source_sha256": "def08eaa15768dc163c7b59882b10357ac94567930ddf9c8167e8b2400713cb0",
+      "archive_sha256": "def08eaa15768dc163c7b59882b10357ac94567930ddf9c8167e8b2400713cb0",
+      "archive_bytes": 8091,
+      "mode": "exact-copy"
+    },
+    "src/sampler_probe.py": {
+      "source_sha256": "d64b5bbd68e29bf1d28b96b92b47be5aaf2e16fab67768ff7c2a98dad74e1d86",
+      "archive_sha256": "d64b5bbd68e29bf1d28b96b92b47be5aaf2e16fab67768ff7c2a98dad74e1d86",
+      "archive_bytes": 3966,
+      "mode": "exact-copy"
+    },
+    "src/strict_gather.py": {
+      "source_sha256": "4947a8ba6798bbd9c5fb4436489934a25cc7ef77a5092f692f810e44ec22fdb5",
+      "archive_sha256": "4947a8ba6798bbd9c5fb4436489934a25cc7ef77a5092f692f810e44ec22fdb5",
+      "archive_bytes": 1903,
+      "mode": "exact-copy"
+    },
+    "src/summarize_experiments.py": {
+      "source_sha256": "ae3b0f691cc41579a19bbb3a69b099a62a03fea672b35ac73ca6227a7312059b",
+      "archive_sha256": "ae3b0f691cc41579a19bbb3a69b099a62a03fea672b35ac73ca6227a7312059b",
+      "archive_bytes": 13292,
+      "mode": "exact-copy"
+    },
+    "src/thread_probe.py": {
+      "source_sha256": "670f7d1314687889671b8146f17759aced14d40e6c4770afa0dd96f7dee2a351",
+      "archive_sha256": "670f7d1314687889671b8146f17759aced14d40e6c4770afa0dd96f7dee2a351",
+      "archive_bytes": 10288,
+      "mode": "exact-copy"
+    },
+    "analysis/data_manifest.json": {
+      "source_sha256": "520e8f38cb52886ef77ae401cb357fc56728f65d4d885536d0aff8120c831ffa",
+      "archive_sha256": "ef61ca648d5a68db98f481d7b69959c86e50cdb8588b57b4f9308f3ceb0e1d99",
+      "archive_bytes": 1354,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/historical_data_comparison.json": {
+      "source_sha256": "bb0adf12b6095715712236f767d2a26fe7bfac019d8e7bff0ef1d4803a9104ed",
+      "archive_sha256": "15d20ae20030023bbcfdb8ea4c5f7cad2059434405e09464ac3203cffd5cd07f",
+      "archive_bytes": 820,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/frozen_qualification.json": {
+      "source_sha256": "9924ace5f4ae3036aa6e54498c37fb4a456ac8d46e2bd966295a5e1886681348",
+      "archive_sha256": "9924ace5f4ae3036aa6e54498c37fb4a456ac8d46e2bd966295a5e1886681348",
+      "archive_bytes": 10660,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/parameter_arena_qualification.json": {
+      "source_sha256": "a84d1623844e3d96e5a2cb78feabb366179c12d777954850e5491e59f3e96b07",
+      "archive_sha256": "a84d1623844e3d96e5a2cb78feabb366179c12d777954850e5491e59f3e96b07",
+      "archive_bytes": 15168,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/paired_short_training.json": {
+      "source_sha256": "643a65de1f00ad28fa21b7e0151e1dbce5cf999c9194ba8a12fabf126fa7d6dd",
+      "archive_sha256": "643a65de1f00ad28fa21b7e0151e1dbce5cf999c9194ba8a12fabf126fa7d6dd",
+      "archive_bytes": 25869,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/trained_model_checks.json": {
+      "source_sha256": "dc086b766a2c629317d1678d254fbd2d96d839f20ef8b4e3e0e7060ebecda007",
+      "archive_sha256": "dc086b766a2c629317d1678d254fbd2d96d839f20ef8b4e3e0e7060ebecda007",
+      "archive_bytes": 8267,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/thread_gpu_breakdown.json": {
+      "source_sha256": "a3a73892780b63ad186cf89d15a1bb94539bee382471b0018b776093d782902a",
+      "archive_sha256": "a3a73892780b63ad186cf89d15a1bb94539bee382471b0018b776093d782902a",
+      "archive_bytes": 67767,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/dependency_breakdown.json": {
+      "source_sha256": "95901854c41f5871879810f94b3924b0a287ea6bfe2e16dc4a96d7b32640b44e",
+      "archive_sha256": "95901854c41f5871879810f94b3924b0a287ea6bfe2e16dc4a96d7b32640b44e",
+      "archive_bytes": 3019,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/sampler_component_breakdown.json": {
+      "source_sha256": "73988517ac7f212bc64d35ebca61160fb413f69bbded2e9fcc53241668d17769",
+      "archive_sha256": "73988517ac7f212bc64d35ebca61160fb413f69bbded2e9fcc53241668d17769",
+      "archive_bytes": 1703,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/communication_breakdown.json": {
+      "source_sha256": "d319e618203f7d0c8ef6671cc0ff4f4e832eb87648b885d069ff7118fd466873",
+      "archive_sha256": "d319e618203f7d0c8ef6671cc0ff4f4e832eb87648b885d069ff7118fd466873",
+      "archive_bytes": 10848,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/ncu_sampler_b16_selected.json": {
+      "source_sha256": "4f6064069a3e09ffeb150c9b3ed9089e876e1abf08f082c732d40000d66e68cc",
+      "archive_sha256": "4f6064069a3e09ffeb150c9b3ed9089e876e1abf08f082c732d40000d66e68cc",
+      "archive_bytes": 7116,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/ncu_sampler_memory_stalls.json": {
+      "source_sha256": "cc6568bdba943ba07b7611c1cb2156cc3b5d8069c410bd0009f63b9cb4937402",
+      "archive_sha256": "cc6568bdba943ba07b7611c1cb2156cc3b5d8069c410bd0009f63b9cb4937402",
+      "archive_bytes": 3745,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/gpu_ownership_audit.json": {
+      "source_sha256": "45f1e6c5cbf68bd0a14d09e84a92fdd9c8028cf5018881de6dbad0ed73143080",
+      "archive_sha256": "45f1e6c5cbf68bd0a14d09e84a92fdd9c8028cf5018881de6dbad0ed73143080",
+      "archive_bytes": 11953,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/performance_campaign.json": {
+      "source_sha256": "c38dc538fd4ae0f36d023e2bdbfe73c09abbd687f650ab34b790da5e64e7aa63",
+      "archive_sha256": "c38dc538fd4ae0f36d023e2bdbfe73c09abbd687f650ab34b790da5e64e7aa63",
+      "archive_bytes": 860,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/qualification_campaign.json": {
+      "source_sha256": "980cd557749358fb9b24790366bcb633f78b1c74dfc9bc34d5eb4ad95b262a5f",
+      "archive_sha256": "980cd557749358fb9b24790366bcb633f78b1c74dfc9bc34d5eb4ad95b262a5f",
+      "archive_bytes": 385,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/parameter_ablation_status.json": {
+      "source_sha256": "550818e1501ef014169713aceac8bd64af68398f5a28cf1a74edc51b379db244",
+      "archive_sha256": "b2e999caaa4ec6b64a94cafefe1bbe96aeacc0e1a048d43ece484625291ee51b",
+      "archive_bytes": 446,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/parameter_ablation_source.json": {
+      "source_sha256": "dc53317f21d6feb086079f212c56a9f01ae439a720be89c6d04ed595c4722f90",
+      "archive_sha256": "33a182b9f2aeba0528edfc0ee56c8da8d04191f8f01254465498ba0ca1c55775",
+      "archive_bytes": 403,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/source_provenance.json": {
+      "source_sha256": "08a361634c11edabd77801c0897014c62bdf80e9f5a8262b79e5a348ed22c30d",
+      "archive_sha256": "9bb46e5df04109fceda7d6dba6828d5f940da8ba4040c784617b3e5c6ccc0f34",
+      "archive_bytes": 2041,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/single_rank_overlap_check.json": {
+      "source_sha256": "a1f9143633935af77b7fee3bcbfe10a0ea4d7b464ba7b17579f019fb2db1b2b6",
+      "archive_sha256": "a1f9143633935af77b7fee3bcbfe10a0ea4d7b464ba7b17579f019fb2db1b2b6",
+      "archive_bytes": 439,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/status.json": {
+      "source_sha256": "d86661244feb2e0ae7df451bbc3a3fd767d1cb0cef258653213499838f2d9213",
+      "archive_sha256": "b3af35d7fdbb6f946fb235459575e069af9ede9c64f9ea2f10ef60c9442343b6",
+      "archive_bytes": 1545,
+      "mode": "numeric content retained; device paths replaced by portable references"
+    },
+    "analysis/measured_source_sha256.json": {
+      "source_sha256": "31e4d191695276233671cfa8dabf496bec005353cf71df4950d286328e1293c0",
+      "archive_sha256": "31e4d191695276233671cfa8dabf496bec005353cf71df4950d286328e1293c0",
+      "archive_bytes": 2346,
+      "mode": "exact-copy; original measured source inventory includes unused historical helpers"
+    },
+    "analysis/excluded_parameter_trial.json": {
+      "source_sha256": "3e19d604c9ddb9614350769456b7e33c4610de5ccc6592d93acf066af8128c13",
+      "archive_sha256": "df728fc7c865844fe817288e7e01663a5aafb1c95f1c28072bf598be1633de03",
+      "archive_bytes": 18318,
+      "mode": "explicit exclusion wrapper around contaminated follow-up result"
+    },
+    "analysis/short_training_table.csv": {
+      "source_sha256": "c3b7048b19cd641adbc25703b1701e4fbd8a2533398de2de1ac3d26a41af6f81",
+      "archive_sha256": "9426014c36a93de93aa742518d8bd403d5412140b34989a5156b29b9f61ac951",
+      "archive_bytes": 686,
+      "mode": "exact-copy; CSV line endings normalized to LF"
+    },
+    "analysis/ncu_sampler_b16_native.csv": {
+      "source_sha256": "65ff9896600e6b012537bb09782ba8c7b566b6a9f7640a3b61b9a9d93597c541",
+      "archive_sha256": "868d38e7cc012756e9292cc081220a81192a009c3382f4a922759083d108db08",
+      "archive_bytes": 24384,
+      "mode": "numeric kernel metrics retained; process/host/device identity columns blanked; CSV line endings normalized to LF",
+      "redacted_columns": [
+        "Process ID",
+        "Process Name",
+        "Host Name",
+        "device__attribute_gpu_pci_device_id",
+        "device__attribute_pci_bus_id",
+        "device__attribute_pci_device_id"
+      ]
+    },
+    "analysis/thread_gpu_timeline.png": {
+      "source_sha256": "a1d3bf4cb4db7ce8cd02af2aae2be6b3beebc56b9d607e88a3992cce5ff9ba93",
+      "archive_sha256": "a1d3bf4cb4db7ce8cd02af2aae2be6b3beebc56b9d607e88a3992cce5ff9ba93",
+      "archive_bytes": 89956,
+      "mode": "exact-copy"
+    },
+    "analysis/thread_gpu_timeline.svg": {
+      "source_sha256": "947c3e9ec507967bdb8a1e8e7f19f369459eb29ebcdade58bd156440554b3e1c",
+      "archive_sha256": "947c3e9ec507967bdb8a1e8e7f19f369459eb29ebcdade58bd156440554b3e1c",
+      "archive_bytes": 582834,
+      "mode": "exact-copy"
+    },
+    "analysis/short_training_comparison.png": {
+      "source_sha256": "2e9e18a73f1b53993b1befd19ce4007433ca3df79abcdc3d57d873522ab74c57",
+      "archive_sha256": "2e9e18a73f1b53993b1befd19ce4007433ca3df79abcdc3d57d873522ab74c57",
+      "archive_bytes": 82703,
+      "mode": "exact-copy"
+    },
+    "analysis/short_training_comparison.svg": {
+      "source_sha256": "786fa5a2f7f638301942fc78ac94d8bff3d338c1916e699dd1e60efa06cfce93",
+      "archive_sha256": "786fa5a2f7f638301942fc78ac94d8bff3d338c1916e699dd1e60efa06cfce93",
+      "archive_bytes": 61931,
+      "mode": "exact-copy"
+    },
+    "analysis/short_validation_curves.png": {
+      "source_sha256": "fd08ce6331c3bfa623e33b2e0d5d1dd8468966a80cd01ed6ca81259d171fcc2d",
+      "archive_sha256": "fd08ce6331c3bfa623e33b2e0d5d1dd8468966a80cd01ed6ca81259d171fcc2d",
+      "archive_bytes": 122116,
+      "mode": "exact-copy"
+    },
+    "analysis/short_validation_curves.svg": {
+      "source_sha256": "fb09c63ce7b26d3caa9235d8c54b508be084f7050e4db04ea76920d6144b151a",
+      "archive_sha256": "fb09c63ce7b26d3caa9235d8c54b508be084f7050e4db04ea76920d6144b151a",
+      "archive_bytes": 53964,
+      "mode": "exact-copy"
+    },
+    "results_round1.txt": {
+      "source_sha256": "98724e88620b20792adc7e56efb7a817a27ee3bfb5c0f9f489b30e3d4000c1f0",
+      "archive_sha256": "2868419b56b3358393e1f84bb9e6638fd45fcd9dccee8a371744b0fe3e99f566",
+      "archive_bytes": 8833,
+      "mode": "experimental numbers unchanged; device paths replaced by portable references"
+    },
+    "README.md": {
+      "archive_sha256": "2f9d2a42d88c68b9dafcf4b1f679647ea0b8baa550e92e3a7b02e3de307b7b1d",
+      "archive_bytes": 7544,
+      "mode": "publication documentation / offline verifier"
+    },
+    "REPRODUCE.md": {
+      "archive_sha256": "604d64b042594b9de67f694ac1888e17ee6dc4f79d82e46a92e203ad42b1b2f1",
+      "archive_bytes": 5310,
+      "mode": "publication documentation / offline verifier"
+    },
+    "verify_archive.py": {
+      "archive_sha256": "7d01a34f197c0a8d60182423f1071626b9c33a31ae0027650ae9523ad443f236",
+      "archive_bytes": 3258,
+      "mode": "publication documentation / offline verifier"
+    }
+  },
+  "omissions": [
+    {
+      "path": "runs/nsys_lastfm_p2_native_threads_s4101_e1_v2/trace.nsys-rep",
+      "bytes": 178410327,
+      "sha256": "ad3bcfa5e444f2826a5d2797187e25b97c76fd4e464a647f30488b3b649f9b43",
+      "reason": "Large profiler artifact retained in original experiment storage."
+    },
+    {
+      "path": "runs/nsys_lastfm_p2_native_threads_s4101_e1_v2/trace.sqlite",
+      "bytes": 575954944,
+      "sha256": "282a5f523312c2729e414a28f77ac470215e0a82e374c4e64632e222cfa0662c",
+      "reason": "Large profiler artifact retained in original experiment storage."
+    },
+    {
+      "path": "runs/ncu_lastfm_sampler_b16_native_v1/profile.ncu-rep",
+      "bytes": 7835109,
+      "sha256": "244844fd78f746ad9beaecddcc1385c22f639c05c80739e0fb1dadcc641cbfb6",
+      "reason": "Large profiler artifact retained in original experiment storage."
+    }
+  ],
+  "measured_source_hashes": "analysis/measured_source_sha256.json",
+  "source_scope": "Selected scripts copied byte-for-byte. Legacy Wiki-only check_prefix_frozen.py and single-marker trace_analysis.py are not part of this LastFM export.",
+  "evidence_scope": "Statistical summaries for completed runs. No datasets, checkpoints, compiled dependencies, raw thread/node records or large traces."
+}

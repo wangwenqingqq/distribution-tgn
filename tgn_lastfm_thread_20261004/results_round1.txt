@@ -1,0 +1,96 @@
+LastFM 双卡线程与 warp 第一轮实验结果
+路径：.
+设备：GPU 4/5，RTX PRO 6000 Blackwell，同 NUMA、无 NVLink。
+数据：1,293,103 条真实 LastFM 事件；每 epoch 905,172 条训练事件。与历史数据逐行一致。
+配置：batch 600，fanout 10，1 层，memory/embed/time 维度 100；真实 2 维零 edge feature，无 node feature。
+通信环境：NCCL_P2P_DISABLE=1、NCCL_IB_DISABLE=1、NCCL_SOCKET_IFNAME=lo。
+计时：3 个配对种子 × 3 epoch × 5 个方案，无 profiler/线程钩子/状态审计。
+全程包含进程启动、数据图准备、原生 warm-up 更新、3 轮训练及验证、退出；epoch 为两 rank 的共同墙钟跨度。
+15 次运行前后选定 GPU 均无其他计算进程，显存处于空闲阈值内；该检查不能排除运行内部短暂干扰。
+
+方案 | 平均 epoch/s | 完整运行/s | 完整用时减少 | 配对全程加速比（3-seed 筛选区间）
+原生基线 | 14.404 | 78.255 | 0.0% | 1.000x [1.000, 1.000]
+延后 loss 读取 | 13.746 | 76.186 | 2.6% | 1.029x [0.976, 1.089]
+状态发送改为同步调用 | 14.278 | 77.972 | 0.4% | 1.004x [0.980, 1.035]
+仅 direct Flash | 15.233 | 81.313 | -3.9% | 0.962x [0.945, 0.980]
+Flash + 参数 arena + state-first/inline | 10.940 | 62.533 | 20.1% | 1.252x [1.213, 1.297]
+
+组合方案的训练 epoch 用时减少约 24.1%，全程用时减少约 20.1%；这是固定工作量短训练结果。
+延后 loss 和 state-inline 的区间跨 1，当前不能认定稳定收益；仅 direct Flash 三个种子均变慢。
+三 seed bootstrap 只作筛选，不能替代完整训练/更多重复的统计确认。
+
+正确性与精度范围：
+五个冻结权重方案的初始权重相同、权重保持不变、最终 memory/mailbox 与两种时间戳逐位相同，future-read 审计为零。
+30 个 rank 的正式训练初始权重与配对基线逐位相同，最终参数和状态均有限。
+loss-deferred、state-inline 的最终参数/状态和 AP 曲线在三个种子、两个 rank 均与原生逐位相同。
+Flash 与组合的训练轨迹不同。冻结状态检查没有证明 forward/gradient 等价或精度保持；不宣称同 AP / time-to-target 加速。
+最终验证 AP（seed 4101 / 4102 / 4103）：
+原生基线：0.745365 / 0.580843 / 0.670907
+延后 loss 读取：0.745365 / 0.580843 / 0.670907
+状态发送改为同步调用：0.745365 / 0.580843 / 0.670907
+仅 direct Flash：0.712372 / 0.710395 / 0.571641
+Flash + 参数 arena + state-first/inline：0.715627 / 0.707636 / 0.669183
+
+CPU 线程层：
+rank0：采样包装 9.4%；support snapshot/compute 10.6%；forward 15.5%；backward dispatch 23.8%；loss 标量读取 0.18%。
+rank1：采样包装 9.0%；support snapshot/compute 9.8%；forward 21.1%；backward dispatch 22.0%；loss 标量读取 0.17%。
+这些是独占主线程墙钟区间，含 CUDA 等待，不等于 CPU 运算时间；线程与主线程重叠，不能相加。
+每 batch 新建状态/参数发送线程，进入第一条 Python 指令的中位延迟约 0.15ms；单独 state-inline 未带来稳定收益。
+Nsight 同时记录两个 rank 的 autograd、通信线程、GIL、OSRT、调度及 GPU 活动。调度线程状态为 Unknown，无法精确区分阻塞与 runnable。
+Nsight 每 rank 的显式 profiler overhead 联合区间约 6s / 24.67s，不能从总时间简单减去；绝对比例仅用于诊断。
+
+GPU 线程 / warp 层：
+rank0：计算 kernel 236922 次，77.7% 不超过 5us，27.1% 仅 1–2 个 block；trace 中计算活动联合时间约 0.937s。
+rank1：计算 kernel 237021 次，78.1% 不超过 5us，27.1% 仅 1–2 个 block；trace 中计算活动联合时间约 0.913s。
+GPU 事件空白不等于 SM idle；NCCL kernel 长度含 peer wait/polling，不等于物理链路传输时间。
+真实 batch16 sampler 的 NCU：grid 71 blocks / 188 SM；eligible warps 0.007299；long scoreboard 为主要 stall 来源。
+recent sampler 发射时预留 48KiB dynamic shared memory，而函数源码没有使用该 shared 区；这是可测假设，尚未改动/验证。
+当前小 grid 和包装开销使单纯提高理论 occupancy 的端到端空间有限。NCU replay/cache-flush 时间不得当作正式性能。
+
+采样调用进一步拆分（50 次真实输入重放，中位 ms）：
+batch0：total 1.350，C++ sampler 0.489，DGL 包装 0.834，最后 synchronize 0.028。
+batch16：total 1.111，C++ sampler 0.418，DGL 包装 0.669，最后 synchronize 0.024。
+batch800：total 1.123，C++ sampler 0.423，DGL 包装 0.673，最后 synchronize 0.025。
+batch1508：total 1.222，C++ sampler 0.379，DGL 包装 0.812，最后 synchronize 0.027。
+batch16 重放输出 hash 与未插桩和 NCU 输出相同；各输入重复结果一致。C++ 时间还包含 CUDA 编排与结果拷贝。
+
+通信与 NUMA：
+same_numa / state_p10：217440 bytes / 2 tensors，中位 max-endpoint completion 0.0770ms。
+same_numa / state_p50：271800 bytes / 2 tensors，中位 max-endpoint completion 0.0770ms。
+same_numa / state_p90：306832 bytes / 2 tensors，中位 max-endpoint completion 0.0765ms。
+same_numa / parameter_list：891604 bytes / 24 tensors，中位 max-endpoint completion 0.7358ms。
+same_numa / parameter_flat：891604 bytes / 1 tensors，中位 max-endpoint completion 0.0835ms。
+cross_numa / state_p10：217440 bytes / 2 tensors，中位 max-endpoint completion 0.0835ms。
+cross_numa / state_p50：271800 bytes / 2 tensors，中位 max-endpoint completion 0.0751ms。
+cross_numa / state_p90：306832 bytes / 2 tensors，中位 max-endpoint completion 0.0767ms。
+cross_numa / parameter_list：891604 bytes / 24 tensors，中位 max-endpoint completion 0.7488ms。
+cross_numa / parameter_flat：891604 bytes / 1 tensors，中位 max-endpoint completion 0.1082ms。
+same_numa_default / state_p10：217440 bytes / 2 tensors，中位 max-endpoint completion 0.0782ms。
+same_numa_default / state_p50：271800 bytes / 2 tensors，中位 max-endpoint completion 0.0767ms。
+same_numa_default / state_p90：306832 bytes / 2 tensors，中位 max-endpoint completion 0.0753ms。
+same_numa_default / parameter_list：891604 bytes / 24 tensors，中位 max-endpoint completion 0.7410ms。
+same_numa_default / parameter_flat：891604 bytes / 1 tensors，中位 max-endpoint completion 0.0838ms。
+同 NUMA、同 891604B：24 次参数消息 vs 1 次消息，独立通信完成耗时比例约 8.8x。
+该耗时包含 API、对端到达和 CUDA 完成，只是微实验；不能直接换成训练加速。NUMA 仅比较了一个同域/跨域 GPU 对。
+默认 NCCL 的 payload 校验通过，但没有对默认传输完成整轮训练资格检查。
+
+依赖与 chunk 方向：
+全部 1508 对相邻 batch 都有 RAW 状态与 WAW target 重叠。
+batch-level state DAG 是状态前沿代理，不意味着整个 forward/backward 必须串行。参数接收实际在 backward 后、optimizer.step 前。
+采样 node slots 约 88.5% 是重复 node ID；原生 prepare_input 已在 memory_updater 前 unique，再展开，不能将其当作剩余 GRU 冗余。
+chunk 4：support (node,last-writing-batch) 记录的乐观复用上界 42.0%；错误地只按 node ID 计数会得到 52.1%。
+chunk 8：support (node,last-writing-batch) 记录的乐观复用上界 51.5%；错误地只按 node ID 计数会得到 73.4%。
+chunk 16：support (node,last-writing-batch) 记录的乐观复用上界 56.8%；错误地只按 node ID 计数会得到 86.3%。
+这个上界仅指状态记录准备；mail/producer-version 和跨 rank 权重版本需进一步审计，不能复用整个 learned activation。
+结合 DOLPHIN/REAL/TempGNN 摘要，后续优先研究：按 chunk 准备采样拓扑；版本感知 support-state packet；保留有序状态/参数提交，减少 DGL/CPU/CUDA 发射。
+LastFM 的数据/特征很小且 feature 为零，disk–RAM 特征搬运暂不是主要方向。以上为本项目推断，非论文复现结果。
+
+补充参数消融：
+native attention + baseline schedule + 原生 state-send 线程，仅采用 parameter arena，冻结检查通过。
+seed4101 的 AP 曲线、最终参数/状态与原生逐位相同；但结束时选定 GPU 出现其他任务，因此整次性能计时被排除。
+seed4102 被空闲检查跳过，seed4103 未启动。目前其他任务占用八卡，三个有效性能种子尚待空闲窗口。
+恢复命令：OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python src/run_parameter_ablation.py
+脚本保留已跳过/受干扰目录，重试写入新版本目录；不覆盖原始结果。
+
+未执行：unused shared-memory 改动、chunk/packet 实现、正式 1/2/4/8 卡 scaling、完整精度及 time-to-target 实验。
+原始证据：runs/ 下每次 run.json、stdout/stderr、前后 GPU 快照；trace .nsys-rep/.sqlite；NCU .ncu-rep；模型/状态及审计结果。

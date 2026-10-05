@@ -1,0 +1,99 @@
+{
+  "config": {
+    "output": "runs/qual_lastfm_p2_native_arena_s4101_e1_v1/results",
+    "batch": 600,
+    "dataset": "LASTFM",
+    "epochs": 1,
+    "seed": 4101,
+    "variant": "native",
+    "profile": false,
+    "freeze_weights": true,
+    "audit_state": true,
+    "rendezvous": false,
+    "schedule": "baseline",
+    "delay_stage": "state",
+    "delay_ms": 0,
+    "target_ap": 0,
+    "target_consecutive": 2,
+    "drain_communications": false,
+    "control_barrier": "gloo",
+    "complete_batches": true,
+    "deterministic_mailbox": true,
+    "prefix_snapshot": true,
+    "inline_state_send": false,
+    "parameter_transport": "arena"
+  },
+  "world_size": 2,
+  "rank": 0,
+  "process_start_perf_s": 919820.657049989,
+  "import_and_adapter_seconds": 2.709478080039844,
+  "native_main_wall_seconds": 34.60986426193267,
+  "total_seconds_before_artifact_serialization": 37.319342341972515,
+  "training_work": [
+    {
+      "phase": "warm_up",
+      "positive_edges": 452772,
+      "batch_records": 755
+    },
+    {
+      "phase": "train",
+      "positive_edges": 452772,
+      "batch_records": 755
+    }
+  ],
+  "phase_intervals": [
+    {
+      "phase": "warm_up",
+      "start_s": 7.1646801880560815,
+      "wall_seconds": 14.381612162920646
+    },
+    {
+      "phase": "evaluate",
+      "start_s": 34.775593184051104,
+      "wall_seconds": 2.4762891869759187
+    },
+    {
+      "phase": "train",
+      "start_s": 7.120047701988369,
+      "wall_seconds": 30.13468650903087
+    }
+  ],
+  "epoch_intervals": [
+    {
+      "epoch": 0,
+      "start_s": 21.547003414016217,
+      "wall_seconds": 13.228366835042834,
+      "positive_edges": 452772
+    }
+  ],
+  "validation": [
+    {
+      "epoch": 0,
+      "ap": 0.5249247550964355,
+      "auc": 0.530673623085022,
+      "absolute_perf_s": 919857.910047694,
+      "seconds_since_process_start": 37.25299793598242,
+      "target_streak": 0,
+      "reached_target": false
+    }
+  ],
+  "parameters_finite": true,
+  "peak_allocated_bytes": 81919488,
+  "adaptations": [
+    "dataset path",
+    "run-specific shared-memory names",
+    "DGL copy_src alias",
+    "unused queue-consumer disabled",
+    "one-GPU ring bypass when applicable",
+    "fixed batch/dimensions/dropout/seed",
+    "actual processed-edge accounting"
+  ],
+  "limitations": [
+    "native warm-up performs an extra optimization pass",
+    "complete batches",
+    "deterministic last-event mailbox",
+    "native learning rate scales with sqrt(world size)",
+    "native per-rank Adam and parameter-staleness semantics",
+    "GNNFlow original attention"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "batches": 1509,
+  "sampled_edges": {
+    "mean": 5969.39098740888,
+    "p10": 5929.8,
+    "median": 5984.0,
+    "p90": 6000.0
+  },
+  "target_unique": {
+    "mean": 450.94897282968856,
+    "p10": 368.0,
+    "median": 465.0,
+    "p90": 509.0
+  },
+  "sampled_state_unique": {
+    "mean": 895.3499005964214,
+    "p10": 799.0,
+    "median": 913.0,
+    "p90": 961.0
+  },
+  "duplicate_sampled_node_slot_fraction": {
+    "mean": 0.8847592435349965,
+    "p10": 0.8764577398712886,
+    "median": 0.8826707834812814,
+    "p90": 0.8966955269423665
+  },
+  "duplicate_scope": "PipeTGL prepare_input already uniquifies node IDs before memory_updater, then expands via searchsorted. Duplicate sampled slots do not imply redundant GRU updates or an 8.7x remaining optimization opportunity.",
+  "adjacent": {
+    "pairs": 1508,
+    "raw_state_edge_fraction": 1.0,
+    "waw_target_edge_fraction": 1.0,
+    "read_coverage": {
+      "mean": 0.4196063248921915,
+      "p10": 0.37365220183854525,
+      "median": 0.4253864462636989,
+      "p90": 0.45546987268298744
+    }
+  },
+  "state_batch_proxy_dag": {
+    "longest_path_batches": 1509,
+    "predecessors": {
+      "mean": 27.166335321404905,
+      "p10": 23.0,
+      "median": 27.0,
+      "p90": 32.0
+    },
+    "scope": "Sampled node RAW/WAW proxy. State version ownership, mail updates, and intra-batch ordering require runtime validation. Parameter receive occurs after forward/backward and before optimizer.step; this DAG does not imply whole-batch serial training."
+  },
+  "chunk_support_version_bounds": [
+    {
+      "chunk_batches": 1,
+      "support_record_requests": 670601,
+      "unique_node_versions": 670601,
+      "optimistic_version_reuse_fraction": 0.0,
+      "incorrect_node_only_reuse_fraction": 0.0
+    },
+    {
+      "chunk_batches": 2,
+      "support_record_requests": 670601,
+      "unique_node_versions": 500589,
+      "optimistic_version_reuse_fraction": 0.25352184085618723,
+      "incorrect_node_only_reuse_fraction": 0.25352184085618723
+    },
+    {
+      "chunk_batches": 4,
+      "support_record_requests": 670601,
+      "unique_node_versions": 389247,
+      "optimistic_version_reuse_fraction": 0.4195549961899848,
+      "incorrect_node_only_reuse_fraction": 0.520870085192238
+    },
+    {
+      "chunk_batches": 8,
+      "support_record_requests": 670601,
+      "unique_node_versions": 325052,
+      "optimistic_version_reuse_fraction": 0.5152825599723233,
+      "incorrect_node_only_reuse_fraction": 0.7339133105975089
+    },
+    {
+      "chunk_batches": 16,
+      "support_record_requests": 670601,
+      "unique_node_versions": 289720,
+      "optimistic_version_reuse_fraction": 0.5679696272448147,
+      "incorrect_node_only_reuse_fraction": 0.8630377825264204
+    }
+  ],
+  "reuse_scope": "Counts unique (support node, latest target-writing batch), excluding current targets. This is an optimistic bound for memory-record preparation, not reuse of learned activations or complete sampling descriptors. Static feature payload is zero in LastFM."
+}
