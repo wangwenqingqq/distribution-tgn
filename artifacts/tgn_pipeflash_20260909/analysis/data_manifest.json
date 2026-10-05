@@ -1,0 +1,40 @@
+{
+  "source_manifest": {
+    "dataset": "JODIE Wikipedia",
+    "source_file": "/home/data/wangxuran/factor_tgn_sptc_20260902/project/experiments/tgn_edge_sptc_20260903_gate1/data/wikipedia.csv",
+    "source_sha256": "a6b73e09c0d1e5b9db11e7e7aa416f2e87838a745273e0446a79952cf4cfae09",
+    "header": "user_id,item_id,timestamp,state_label,comma_separated_list_of_features",
+    "events": 157474,
+    "nodes_including_padding": 9228,
+    "feature_dim": 172,
+    "split_counts": {
+      "0": 110232,
+      "1": 23621,
+      "2": 23621
+    },
+    "split_policy": "chronological 70/15/15 quantiles; transductive; no inductive node holdout",
+    "node_features": "zeros, dimension 172, as official TGN preprocessing",
+    "timestamp_rule": "neighbors strictly before query timestamp; float64 search / float32 returned neighbor timestamps as official finder",
+    "preprocess_seconds": 9.518529950990342
+  },
+  "nodes": 9228,
+  "events": 157474,
+  "edge_feature_dim": 172,
+  "node_features": "Pipe absent; Flash zero D=100 with identity projection",
+  "edge_ids": "zero-based, removed original padding feature row",
+  "split_warning": "Native Flash rounds split endpoints to batch size; align before AP comparisons",
+  "csr": "undirected, stable ascending timestamp and original event order within each node",
+  "files": {
+    "data/flash/data/wiki/edges.undirected_tcsr.ets.npy": "599028c9a4e780f97bf29bf5ff504fd164fa111235e69972862bdce2e2dcc400",
+    "data/flash/data/wiki/node_features.pt": "92a53481a91955579da74326c2c038a343acc67d608ca3006be698271001c3a4",
+    "data/flash/data/wiki/edge_features.pt": "b827ff6124bb3c23420a8e5e6e27010f0e00639af4ab7e5bc2a5cd24adcaf364",
+    "data/flash/data/wiki/dst.npy": "de3c65409f727822f41b835f4b7b12ca11f7f9b9a932147ddb6d2f03f98a8637",
+    "data/flash/data/wiki/edges.undirected_tcsr.nbr.npy": "37681d6fa66793d54d79bd0d83e7bcf910894a8613d27ca4b5a5758769870aeb",
+    "data/flash/data/wiki/ts.npy": "e79fadea094e6ba3cbcea35713af8044c728d698a28bb137e35e8029e0e67217",
+    "data/flash/data/wiki/src.npy": "0fc3c796c91baaa287e5c274d06f2a7cd23fcf9747bee1594b95bdedbe2e89ca",
+    "data/flash/data/wiki/edges.undirected_tcsr.eid.npy": "659bde82103b156fcd7d8cc0093cd0f175cfc60e70cea7d02d1b2781f5ea92b3",
+    "data/flash/data/wiki/edges.undirected_tcsr.ind.npy": "ac0186c1a5eefcaa16cf44a5cfb6feef586483546b8d2e9c53d2774d2e4cb323",
+    "data/pipe/WIKI/edges.csv": "95b278b541c06ba830d802d4a85bb0e10ecc5c73809e680a449b90a57ac6796b",
+    "data/pipe/WIKI/edge_features.npy": "c353480df20ef986123132e85bf3410d66e140f5d3e9d647ac81df0441f7831e"
+  }
+}

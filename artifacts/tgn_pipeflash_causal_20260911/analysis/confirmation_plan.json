@@ -1,0 +1,32 @@
+{
+  "seeds": [
+    2029,
+    2030,
+    2031,
+    2032,
+    2033
+  ],
+  "world_size": 8,
+  "conditions": [
+    "native baseline",
+    "flash baseline",
+    "native arena+inline+state_first",
+    "flash arena+inline+state_first"
+  ],
+  "primary": "Paired complete-process time to validation AP >= 0.97 for two consecutive epochs, flash baseline / flash candidate.",
+  "secondary": [
+    "native baseline / flash candidate",
+    "native candidate / flash candidate"
+  ],
+  "max_epochs": 20,
+  "exclude_performance_outliers": false,
+  "source_sha256": {
+    "pipe_bench.py": "23dc0896a89438cf429c562719f39891d825eb731ff7b7827d0dacb0caa02ee1",
+    "pipe_arena_inline_bench.py": "244f5a0a9a3b8bd81ec6f2337ba67e9514f9146ec65c056daa2d3c5af395a32f",
+    "parameter_arena.py": "0e93afda583931342e93b06a9e57929fab6f7acae9fb5e754aefe93c1f4f071f",
+    "inline_state.py": "403070923f0c7e2b08303e95a79d437979545330bb6a6078d690f74072de7f0e",
+    "rendezvous_probe.py": "29031c699428ed77444010204d9bd756c8bf7841f6545b03c7090dd0ee6c6642",
+    "run_causal.py": "d25ff1dbe3dd72df13e83b156a9bffd11ff65a1396d70f3f7f55f363a11bbbed"
+  },
+  "notes": "These seeds have not been used to select the candidate. Candidate frozen before collecting these runs. Same validation target, all batch accounting, optimizer policy and mathematical model as earlier."
+}

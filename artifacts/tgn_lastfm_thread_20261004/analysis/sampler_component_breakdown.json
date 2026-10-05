@@ -1,0 +1,49 @@
+{
+  "rows": [
+    {
+      "batch": 0,
+      "sampled_edges": 4525,
+      "total_median_ms": 1.3495694999999999,
+      "component_median_ms": {
+        "native_sampler_host_ms": 0.48875599999999997,
+        "to_dgl_host_ms": 0.833855,
+        "final_sync_ms": 0.027986999999999998
+      },
+      "output_sha256": "76aec3fb128b43358a7057331960339d7700fcc8f857e754adb44a478cd8eefe"
+    },
+    {
+      "batch": 16,
+      "sampled_edges": 5962,
+      "total_median_ms": 1.1110375000000001,
+      "component_median_ms": {
+        "native_sampler_host_ms": 0.41815,
+        "to_dgl_host_ms": 0.6693225,
+        "final_sync_ms": 0.023553499999999998
+      },
+      "output_sha256": "eab2ab7b4f2f80dfa3bc81496034f57e3274c3d219298fe2df9e87e50048618d"
+    },
+    {
+      "batch": 800,
+      "sampled_edges": 5990,
+      "total_median_ms": 1.1233155,
+      "component_median_ms": {
+        "native_sampler_host_ms": 0.42341949999999995,
+        "to_dgl_host_ms": 0.6734089999999999,
+        "final_sync_ms": 0.0247625
+      },
+      "output_sha256": "4db9b7fbb5a5a78b6355eedac38afbb38e0bc9ebae56884c1ed2807f5af35679"
+    },
+    {
+      "batch": 1508,
+      "sampled_edges": 3720,
+      "total_median_ms": 1.222473,
+      "component_median_ms": {
+        "native_sampler_host_ms": 0.379091,
+        "to_dgl_host_ms": 0.811847,
+        "final_sync_ms": 0.0272285
+      },
+      "output_sha256": "38539b1f75c631fa32efcc397ae44ab4db405db0283dc6e2e13ab2f7a4ef8b82"
+    }
+  ],
+  "scope": "Fifty identical replays for real early/middle/tail batches; component host wall times include native CUDA orchestration and result copies, not pure GPU execution. b16 output hash equals the uninstrumented sampler and NCU replay."
+}

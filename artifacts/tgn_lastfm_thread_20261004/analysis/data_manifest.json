@@ -1,0 +1,30 @@
+{
+  "dataset": "JODIE LastFM temporal user-item interactions",
+  "source_url": "https://snap.stanford.edu/jodie/lastfm.csv",
+  "citation_url": "https://snap.stanford.edu/jodie/",
+  "raw_sha256": "06a917ae03dbd66447616225452f7d610bb6cb2603ea7ee5ef44ddc55044be07",
+  "events": 1293103,
+  "users": 980,
+  "items": 1000,
+  "nodes": 1980,
+  "edge_feature_dim": 2,
+  "edge_features_all_zero": true,
+  "node_features": "absent, matching dataset; no artificial features",
+  "train_events": 905172,
+  "validation_events": 193965,
+  "test_events": 193966,
+  "split_timestamp_quantiles": [
+    103764807.2,
+    120235472.99999999
+  ],
+  "split_rule": "70/85% timestamp quantiles; <= boundary retained in earlier split; equal timestamps not split",
+  "node_ids": "zero-based disjoint user/item namespaces; sorted original IDs",
+  "event_ids": "zero-based original CSV row order; no padding feature row",
+  "timestamp_rule": "original relative time; split in float64, sampler uses its native float32",
+  "files": {
+    "data/pipe/LASTFM/edges.csv": "f8d3fa916c8d8c134847b3885bc6527d089965ffce814d6865dd9a8648513c00",
+    "data/pipe/LASTFM/edge_features.npy": "7d7bb4443af8e6c9485d1b0112e00f9c557fb5a4c3a8fd92901824d41bdd4ff0"
+  },
+  "historical_event_equivalence": "analysis/historical_data_comparison.json",
+  "historical_experiments": "README.md#data-validation"
+}

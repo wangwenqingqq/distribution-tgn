@@ -1,0 +1,139 @@
+{
+  "config": {
+    "output": "runs/short_lastfm_p2_combination_s4102_e3_v1/results",
+    "batch": 600,
+    "dataset": "LASTFM",
+    "epochs": 3,
+    "seed": 4102,
+    "variant": "flash",
+    "profile": false,
+    "freeze_weights": false,
+    "audit_state": false,
+    "rendezvous": false,
+    "schedule": "state_first",
+    "delay_stage": "state",
+    "delay_ms": 0,
+    "target_ap": 0,
+    "target_consecutive": 2,
+    "drain_communications": false,
+    "control_barrier": "gloo",
+    "complete_batches": true,
+    "deterministic_mailbox": true,
+    "prefix_snapshot": true,
+    "inline_state_send": true,
+    "parameter_transport": "arena"
+  },
+  "world_size": 2,
+  "rank": 1,
+  "process_start_perf_s": 918543.524962876,
+  "import_and_adapter_seconds": 2.4057286489987746,
+  "native_main_wall_seconds": 53.64144357596524,
+  "total_seconds_before_artifact_serialization": 56.047172224964015,
+  "training_work": [
+    {
+      "phase": "warm_up",
+      "positive_edges": 452400,
+      "batch_records": 754
+    },
+    {
+      "phase": "train",
+      "positive_edges": 1357200,
+      "batch_records": 2262
+    }
+  ],
+  "phase_intervals": [
+    {
+      "phase": "warm_up",
+      "start_s": 7.191603900049813,
+      "wall_seconds": 10.266583240008913
+    },
+    {
+      "phase": "evaluate",
+      "start_s": 27.764824223006144,
+      "wall_seconds": 2.2242126839701086
+    },
+    {
+      "phase": "evaluate",
+      "start_s": 40.999944422976114,
+      "wall_seconds": 2.1984095070511103
+    },
+    {
+      "phase": "evaluate",
+      "start_s": 54.09687973500695,
+      "wall_seconds": 1.8988539449637756
+    },
+    {
+      "phase": "train",
+      "start_s": 6.8968490089755505,
+      "wall_seconds": 49.1008318309905
+    }
+  ],
+  "epoch_intervals": [
+    {
+      "epoch": 0,
+      "start_s": 17.473796228994615,
+      "wall_seconds": 10.290898420033045,
+      "positive_edges": 452400
+    },
+    {
+      "epoch": 1,
+      "start_s": 29.989580551045947,
+      "wall_seconds": 11.010211627930403,
+      "positive_edges": 452400
+    },
+    {
+      "epoch": 2,
+      "start_s": 43.19878812797833,
+      "wall_seconds": 10.897977172979154,
+      "positive_edges": 452400
+    }
+  ],
+  "validation": [
+    {
+      "epoch": 0,
+      "ap": 0.5544825196266174,
+      "auc": 0.5641757249832153,
+      "absolute_perf_s": 918573.514387326,
+      "seconds_since_process_start": 29.989424693980254,
+      "target_streak": 0,
+      "reached_target": false
+    },
+    {
+      "epoch": 1,
+      "ap": 0.6957086324691772,
+      "auc": 0.7139153480529785,
+      "absolute_perf_s": 918586.723592811,
+      "seconds_since_process_start": 43.19863007904496,
+      "target_streak": 0,
+      "reached_target": false
+    },
+    {
+      "epoch": 2,
+      "ap": 0.7076356410980225,
+      "auc": 0.7224551439285278,
+      "absolute_perf_s": 918599.520940517,
+      "seconds_since_process_start": 55.99597776599694,
+      "target_streak": 0,
+      "reached_target": false
+    }
+  ],
+  "parameters_finite": true,
+  "peak_allocated_bytes": 84326400,
+  "adaptations": [
+    "dataset path",
+    "run-specific shared-memory names",
+    "DGL copy_src alias",
+    "unused queue-consumer disabled",
+    "one-GPU ring bypass when applicable",
+    "fixed batch/dimensions/dropout/seed",
+    "actual processed-edge accounting"
+  ],
+  "limitations": [
+    "native warm-up performs an extra optimization pass",
+    "complete batches",
+    "deterministic last-event mailbox",
+    "native learning rate scales with sqrt(world size)",
+    "native per-rank Adam and parameter-staleness semantics",
+    "Flash variant uses strict-math gather and original Flash segmented attention"
+  ]
+}

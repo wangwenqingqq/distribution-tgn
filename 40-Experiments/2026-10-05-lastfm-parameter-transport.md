@@ -16,10 +16,10 @@ tags: [experiment, lastfm, communication]
 
 ## 执行与原始证据
 
-- [双方样本、NUMA 与 payload 结果](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/communication_breakdown.json)
-- [native parameter-arena 冻结资格](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/parameter_arena_qualification.json)
-- [受竞争计时的明确排除](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/excluded_parameter_trial.json)
-- [恢复脚本](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/src/run_parameter_ablation.py)与[归档运行条件](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/REPRODUCE.md)
+- [双方样本、NUMA 与 payload 结果](../artifacts/tgn_lastfm_thread_20261004/analysis/communication_breakdown.json)
+- [native parameter-arena 冻结资格](../artifacts/tgn_lastfm_thread_20261004/analysis/parameter_arena_qualification.json)
+- [受竞争计时的明确排除](../artifacts/tgn_lastfm_thread_20261004/analysis/excluded_parameter_trial.json)
+- [恢复脚本](../artifacts/tgn_lastfm_thread_20261004/src/run_parameter_ablation.py)与[归档运行条件](../artifacts/tgn_lastfm_thread_20261004/REPRODUCE.md)
 
 ## 分项验证
 

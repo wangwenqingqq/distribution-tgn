@@ -1,0 +1,101 @@
+[
+  {
+    "label": "probe_arena_p8_p8_native_baseline_s2026_e3",
+    "entry": "pipe_arena_bench.py",
+    "batch": 600,
+    "world_size": 8,
+    "variant": "native",
+    "schedule": "baseline",
+    "seed": 2026,
+    "epochs": 3,
+    "max_epochs": 3,
+    "target_ap": 0,
+    "probe": true,
+    "delay_ms": 0,
+    "delay_stage": "state",
+    "global_epoch_mean_s": 0.5157507260058386,
+    "anchor_halfwidth_max_s": 9.617971954867244e-06,
+    "state": {
+      "receive_span_s": 0.10027855208560747,
+      "upstream_not_ready_s": 0.0916139584320869,
+      "upstream_calibration_lower_s": 0.09117798915867717,
+      "upstream_calibration_upper_s": 0.09205079543008197,
+      "after_both_ready_s": 0.00866459365352057
+    },
+    "parameter": {
+      "receive_span_s": 0.018851391161054682,
+      "upstream_not_ready_s": 0.0067878280581984045,
+      "upstream_calibration_lower_s": 0.006684663819265164,
+      "upstream_calibration_upper_s": 0.006894005662755886,
+      "after_both_ready_s": 0.012063563102856278
+    },
+    "missing": 0,
+    "max_causal_order_violation_s": 0
+  },
+  {
+    "label": "probe_arena_p8_p8_native_state_first_s2026_e3",
+    "entry": "pipe_arena_bench.py",
+    "batch": 600,
+    "world_size": 8,
+    "variant": "native",
+    "schedule": "state_first",
+    "seed": 2026,
+    "epochs": 3,
+    "max_epochs": 3,
+    "target_ap": 0,
+    "probe": true,
+    "delay_ms": 0,
+    "delay_stage": "state",
+    "global_epoch_mean_s": 0.5745935949962586,
+    "anchor_halfwidth_max_s": 9.929004590958357e-06,
+    "state": {
+      "receive_span_s": 0.13678567861158322,
+      "upstream_not_ready_s": 0.12114369383198209,
+      "upstream_calibration_lower_s": 0.12073732012462716,
+      "upstream_calibration_upper_s": 0.12155006753933702,
+      "after_both_ready_s": 0.01564198477960114
+    },
+    "parameter": {
+      "receive_span_s": 0.018115838065568823,
+      "upstream_not_ready_s": 0.005819174936429287,
+      "upstream_calibration_lower_s": 0.005731287892193146,
+      "upstream_calibration_upper_s": 0.005910552500530146,
+      "after_both_ready_s": 0.012296663129139537
+    },
+    "missing": 0,
+    "max_causal_order_violation_s": 0
+  },
+  {
+    "label": "probe_arena_p8_p8_flash_baseline_s2026_e3",
+    "entry": "pipe_arena_bench.py",
+    "batch": 600,
+    "world_size": 8,
+    "variant": "flash",
+    "schedule": "baseline",
+    "seed": 2026,
+    "epochs": 3,
+    "max_epochs": 3,
+    "target_ap": 0,
+    "probe": true,
+    "delay_ms": 0,
+    "delay_stage": "state",
+    "global_epoch_mean_s": 0.4731929280096665,
+    "anchor_halfwidth_max_s": 1.0103511158376932e-05,
+    "state": {
+      "receive_span_s": 0.1397123787246528,
+      "upstream_not_ready_s": 0.1315158269086775,
+      "upstream_calibration_lower_s": 0.13114726488145287,
+      "upstream_calibration_upper_s": 0.13188438893590215,
+      "after_both_ready_s": 0.008196551815975303
+    },
+    "parameter": {
+      "receive_span_s": 0.01619356668864687,
+      "upstream_not_ready_s": 0.005302190006962822,
+      "upstream_calibration_lower_s": 0.005212666056348166,
+      "upstream_calibration_upper_s": 0.00539348789165689,
+      "after_both_ready_s": 0.01089137668168405
+    },
+    "missing": 0,
+    "max_causal_order_violation_s": 0
+  }
+]

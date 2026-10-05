@@ -1,0 +1,237 @@
+{
+  "records": [
+    {
+      "label": "stable_host_profile_p2_native",
+      "world_size": 2,
+      "variant": "native",
+      "ranks": [
+        {
+          "rank": 0,
+          "epoch_seconds": 1.7961563010176178,
+          "host_dispatch_seconds": {
+            "parameter_send_or_order_signal": 0.3733865400427021,
+            "temporal_sampling": 0.17704855219926685,
+            "sampled_topology_and_descriptor_transfer": 0.016388473159167916,
+            "state_receive_and_host_gather": 0.07595469115767628,
+            "state_send_launch": 0.021898710925597697,
+            "target_state_update_and_send": 0.19176821599830873,
+            "support_state_read_and_update": 0.16450477004400454,
+            "attention_and_predict": 0.3471950999228284,
+            "backward": 0.3970726022089366,
+            "optimizer_step": 0.05272655904991552,
+            "parameter_receive_or_order_signal": 0.045397480338579044
+          }
+        },
+        {
+          "rank": 1,
+          "epoch_seconds": 1.8045332769979723,
+          "host_dispatch_seconds": {
+            "temporal_sampling": 0.18178344308398664,
+            "sampled_topology_and_descriptor_transfer": 0.01588468305999413,
+            "state_receive_and_host_gather": 0.07831002600141801,
+            "state_send_launch": 0.02319390291813761,
+            "target_state_update_and_send": 0.19088141800602898,
+            "support_state_read_and_update": 0.16241024099872448,
+            "attention_and_predict": 0.25677715285564773,
+            "backward": 0.4803506630123593,
+            "parameter_receive_or_order_signal": 0.046379708976019174,
+            "optimizer_step": 0.05344884318765253,
+            "parameter_send_or_order_signal": 0.3690277598798275
+          }
+        }
+      ]
+    },
+    {
+      "label": "stable_host_profile_p2_flash",
+      "world_size": 2,
+      "variant": "flash",
+      "ranks": [
+        {
+          "rank": 0,
+          "epoch_seconds": 2.0795829120033886,
+          "host_dispatch_seconds": {
+            "parameter_send_or_order_signal": 0.2902010220277589,
+            "temporal_sampling": 0.14307498704874888,
+            "sampled_topology_and_descriptor_transfer": 0.07613265787949786,
+            "state_receive_and_host_gather": 0.060010879911715165,
+            "state_send_launch": 0.01990249109803699,
+            "target_state_update_and_send": 0.16065018001245335,
+            "support_state_read_and_update": 0.1342220140795689,
+            "attention_and_predict": 0.06972222705371678,
+            "backward": 0.41921754999202676,
+            "optimizer_step": 0.04255492292577401,
+            "parameter_receive_or_order_signal": 0.036400413140654564
+          }
+        },
+        {
+          "rank": 1,
+          "epoch_seconds": 2.089406272978522,
+          "host_dispatch_seconds": {
+            "temporal_sampling": 0.17601776297669858,
+            "sampled_topology_and_descriptor_transfer": 0.08980345714371651,
+            "state_receive_and_host_gather": 0.07273075601551682,
+            "state_send_launch": 0.020465127774514258,
+            "target_state_update_and_send": 0.18451950515736826,
+            "support_state_read_and_update": 0.16136324498802423,
+            "attention_and_predict": 0.08319633491919376,
+            "backward": 0.3925472709524911,
+            "parameter_receive_or_order_signal": 0.04548824383527972,
+            "optimizer_step": 0.05340995700680651,
+            "parameter_send_or_order_signal": 0.31233539181994274
+          }
+        }
+      ]
+    },
+    {
+      "label": "stable_host_profile_p4_native",
+      "world_size": 4,
+      "variant": "native",
+      "ranks": [
+        {
+          "rank": 0,
+          "epoch_seconds": 0.7885009760211688,
+          "host_dispatch_seconds": {
+            "parameter_send_or_order_signal": 0.1936347809387371,
+            "temporal_sampling": 0.11797545899753459,
+            "sampled_topology_and_descriptor_transfer": 0.006912303011631593,
+            "state_receive_and_host_gather": 0.03541290800785646,
+            "state_send_launch": 0.01142150501254946,
+            "target_state_update_and_send": 0.08732355601387098,
+            "support_state_read_and_update": 0.06982674490427598,
+            "attention_and_predict": 0.11935101606650278,
+            "backward": 0.16946630613529123,
+            "optimizer_step": 0.022499387909192592,
+            "parameter_receive_or_order_signal": 0.019364512991160154
+          }
+        },
+        {
+          "rank": 2,
+          "epoch_seconds": 0.7938865090254694,
+          "host_dispatch_seconds": {
+            "parameter_send_or_order_signal": 0.16617736697662622,
+            "temporal_sampling": 0.08212708396604285,
+            "sampled_topology_and_descriptor_transfer": 0.00678340092417784,
+            "state_receive_and_host_gather": 0.040002916066441685,
+            "state_send_launch": 0.011542206135345623,
+            "target_state_update_and_send": 0.08388780796667561,
+            "support_state_read_and_update": 0.06879111903253943,
+            "attention_and_predict": 0.10007659395341761,
+            "backward": 0.23586200605495833,
+            "parameter_receive_or_order_signal": 0.01808645302662626,
+            "optimizer_step": 0.020866780047072098
+          }
+        },
+        {
+          "rank": 3,
+          "epoch_seconds": 0.7976710889779497,
+          "host_dispatch_seconds": {
+            "temporal_sampling": 0.07999174713040702,
+            "sampled_topology_and_descriptor_transfer": 0.00664309598505497,
+            "state_receive_and_host_gather": 0.043797145975986496,
+            "state_send_launch": 0.010668179951608181,
+            "target_state_update_and_send": 0.07991792017128319,
+            "support_state_read_and_update": 0.06721496602403931,
+            "attention_and_predict": 0.10379284780356102,
+            "backward": 0.2344092349812854,
+            "parameter_receive_or_order_signal": 0.018158347927965224,
+            "optimizer_step": 0.020851381093962118,
+            "parameter_send_or_order_signal": 0.17075458593899384
+          }
+        },
+        {
+          "rank": 1,
+          "epoch_seconds": 0.7909382760117296,
+          "host_dispatch_seconds": {
+            "parameter_send_or_order_signal": 0.17472475295653567,
+            "temporal_sampling": 0.08085181203205138,
+            "sampled_topology_and_descriptor_transfer": 0.006718709017150104,
+            "state_receive_and_host_gather": 0.039683633018285036,
+            "state_send_launch": 0.0122684009547811,
+            "target_state_update_and_send": 0.08373490098165348,
+            "support_state_read_and_update": 0.0679653829720337,
+            "attention_and_predict": 0.10097426787251607,
+            "backward": 0.22185969111160375,
+            "parameter_receive_or_order_signal": 0.018701149063417688,
+            "optimizer_step": 0.021267377072945237
+          }
+        }
+      ]
+    },
+    {
+      "label": "stable_host_profile_p4_flash",
+      "world_size": 4,
+      "variant": "flash",
+      "ranks": [
+        {
+          "rank": 0,
+          "epoch_seconds": 0.7618449720030185,
+          "host_dispatch_seconds": {
+            "parameter_send_or_order_signal": 0.16365251792012714,
+            "temporal_sampling": 0.09007595205912367,
+            "sampled_topology_and_descriptor_transfer": 0.04569420911138877,
+            "state_receive_and_host_gather": 0.03621736602508463,
+            "state_send_launch": 0.011595658957958221,
+            "target_state_update_and_send": 0.09281767893116921,
+            "support_state_read_and_update": 0.08114598106476478,
+            "attention_and_predict": 0.04109415994025767,
+            "backward": 0.15962218600907363,
+            "optimizer_step": 0.025737786840181798,
+            "parameter_receive_or_order_signal": 0.022414104838389903
+          }
+        },
+        {
+          "rank": 2,
+          "epoch_seconds": 0.7669938780018128,
+          "host_dispatch_seconds": {
+            "parameter_send_or_order_signal": 0.19427070807432756,
+            "temporal_sampling": 0.13308573910035193,
+            "sampled_topology_and_descriptor_transfer": 0.03767440706724301,
+            "state_receive_and_host_gather": 0.06835985797806643,
+            "state_send_launch": 0.010656714061042294,
+            "target_state_update_and_send": 0.08044305996736512,
+            "support_state_read_and_update": 0.06881717601208948,
+            "attention_and_predict": 0.03333056703559123,
+            "backward": 0.16666374696069397,
+            "parameter_receive_or_order_signal": 0.01809081409010105,
+            "optimizer_step": 0.02065057001891546
+          }
+        },
+        {
+          "rank": 3,
+          "epoch_seconds": 0.7685351260006428,
+          "host_dispatch_seconds": {
+            "temporal_sampling": 0.1029270990693476,
+            "sampled_topology_and_descriptor_transfer": 0.04210313694784418,
+            "state_receive_and_host_gather": 0.04448929397040047,
+            "state_send_launch": 0.011082941055065021,
+            "target_state_update_and_send": 0.08916280002449639,
+            "support_state_read_and_update": 0.07541886513354257,
+            "attention_and_predict": 0.038184001052286476,
+            "backward": 0.12049223901703954,
+            "parameter_receive_or_order_signal": 0.02098017983371392,
+            "optimizer_step": 0.023574691178509966,
+            "parameter_send_or_order_signal": 0.17510049606789835
+          }
+        },
+        {
+          "rank": 1,
+          "epoch_seconds": 0.7659352890041191,
+          "host_dispatch_seconds": {
+            "parameter_send_or_order_signal": 0.16955117811448872,
+            "temporal_sampling": 0.09053063808823936,
+            "sampled_topology_and_descriptor_transfer": 0.047095510992221534,
+            "state_receive_and_host_gather": 0.04059655891614966,
+            "state_send_launch": 0.011604815983446315,
+            "target_state_update_and_send": 0.09740317802061327,
+            "support_state_read_and_update": 0.08265540713910013,
+            "attention_and_predict": 0.042534648993751034,
+            "backward": 0.16022416684427299,
+            "parameter_receive_or_order_signal": 0.02320684990263544,
+            "optimizer_step": 0.026443350012414157
+          }
+        }
+      ]
+    }
+  ],
+  "note": "Profiled CPU dispatch intervals. Asynchronous send calls and nested state-send ranges overlap other intervals. Do not sum them or treat them as GPU kernel, transfer-only, or dependency-wait times."
+}

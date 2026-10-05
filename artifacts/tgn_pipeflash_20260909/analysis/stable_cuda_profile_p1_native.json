@@ -1,0 +1,102 @@
+{
+  "trace": "/home/data/wangxuran/tgn_pipeflash_20260909/runs/stable_cuda_profile_p1_native/trace.sqlite",
+  "phases": [
+    {
+      "phase": "epoch:train:0",
+      "global_pid": 316397557121024,
+      "wall_seconds": 3.44230785,
+      "gpu_any_activity_union_seconds": 0.303439728,
+      "no_traced_gpu_activity_fraction": 0.9118499154571547,
+      "activity_kind_union_seconds": {
+        "compute_kernel": 0.233014766,
+        "memcpy": 0.06818461,
+        "memset": 0.002240352
+      },
+      "stage_activity_union_seconds": {
+        "temporal_sampling:compute_kernel": 0.011456481,
+        "target_state_update_and_send:compute_kernel": 0.027572067,
+        "support_state_read_and_update:compute_kernel": 0.011932994,
+        "attention_and_predict:compute_kernel": 0.037501633,
+        "unattributed:compute_kernel": 0.130063143,
+        "backward:compute_kernel": 0.000161088,
+        "optimizer_step:compute_kernel": 0.01432736,
+        "unattributed:memcpy": 0.050734658,
+        "temporal_sampling:memcpy": 0.001112736,
+        "sampled_topology_and_descriptor_transfer:memcpy": 0.000612192,
+        "state_receive_and_host_gather:memcpy": 0.003780768,
+        "target_state_update_and_send:memcpy": 0.005509312,
+        "support_state_read_and_update:memcpy": 0.005902368,
+        "attention_and_predict:memcpy": 0.000532576,
+        "temporal_sampling:memset": 0.000160736,
+        "attention_and_predict:memset": 0.000546368,
+        "unattributed:memset": 0.001533248
+      },
+      "top_compute_kernels_summed_seconds": [
+        [
+          "void <unnamed>::indexing_backward_kernel<float, (int)4>(const long *, const long *, const T1 *, T1 *, long, long, long, long, bool)",
+          0.031377027
+        ],
+        [
+          "void cutlass::Kernel2<cutlass_80_simt_sgemm_64x64_8x5_tn_align1>(T1::Params)",
+          0.024403393
+        ],
+        [
+          "void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<float, at::native::func_wrapper_t<float, at::native::sum_functor<float, float, float>::operator ()(at::TensorIterator &)::[lambda(float, float) (instance 1)]>, unsigned int, float, (int)4, (int)4>>(T3)",
+          0.021188611
+        ],
+        [
+          "gnnflow::SampleLayerRecentKernel(const gnnflow::DoublyLinkedList *, unsigned long, bool, unsigned int, const long *, const float *, unsigned int, unsigned int, float, unsigned int, unsigned int, long *, long *, float *, float *, unsigned int *)",
+          0.010628737
+        ],
+        [
+          "void at_cuda_detail::cub::detail::radix_sort::DeviceRadixSortSingleTileKernel<at_cuda_detail::cub::detail::radix::policy_hub<long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long>::Policy1000, (at_cuda_detail::cub::SortOrder)0, long, at::cuda::cub::detail::OpaqueType<(int)8>, unsigned long long, at_cuda_detail::cub::detail::identity_decomposer_t>(const T3 *, T3 *, const T4 *, T4 *, T5, int, int, T6)",
+          0.0071592
+        ],
+        [
+          "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_nn_align1>(T1::Params)",
+          0.007059552
+        ],
+        [
+          "void at::native::_scatter_gather_elementwise_kernel<(int)128, (int)8, void at::native::_cuda_scatter_gather_internal_kernel<(bool)1, long, long>::operator ()<at::native::ReduceMaximum>(at::TensorIterator &, long, long, long, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          0.006791745
+        ],
+        [
+          "void cutlass::Kernel2<cutlass_80_simt_sgemm_64x64_8x5_nt_align1>(T1::Params)",
+          0.006504352
+        ],
+        [
+          "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          0.006178272
+        ],
+        [
+          "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x64_8x5_nn_align1>(T1::Params)",
+          0.00597184
+        ],
+        [
+          "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x64_8x5_nt_align1>(T1::Params)",
+          0.00571968
+        ],
+        [
+          "void cublasLt::splitKreduce_kernel<(int)32, (int)16, int, float, float, float, float, (bool)0, float, float, float, (bool)1, (bool)0, (bool)0, (bool)0>(cublasLt::cublasSplitKParams<T6>, const T4 *, const T10 *, T9 *, T5 *, const T6 *, const T6 *, const T11 *, const T4 *, T11 *, void *, long, T6 *, int *, T6 *, T6 *, const T6 *, const T6 *, const T6 *, const T6 *, const T6 *)",
+          0.00556976
+        ]
+      ]
+    }
+  ],
+  "global_epoch_envelopes": [
+    {
+      "phase": "epoch:train:0",
+      "global_start_ns": 12014074434,
+      "global_end_ns": 15456382284,
+      "global_epoch_envelope_seconds": 3.44230785,
+      "rank_count": 1,
+      "rank_start_spread_seconds": 0.0
+    }
+  ],
+  "notes": [
+    "Diagnostic profiled execution; not a throughput measurement.",
+    "GPU activity is the interval union of traced kernels, copies and memset; no-activity time is not dependency waiting or SM-idle fraction.",
+    "Launch attribution uses enclosing NVTX CPU ranges and CUDA correlation IDs. Stage unions can overlap and must not be added.",
+    "Legacy trace phase is inferred from warm-up end to evaluation start; new traces use explicit epoch ranges."
+  ]
+}

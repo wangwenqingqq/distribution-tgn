@@ -1,0 +1,29 @@
+{
+  "status": "complete_initial_prototype",
+  "runs": 18,
+  "seeds": [
+    2026,
+    2027,
+    2028
+  ],
+  "world_sizes": [
+    1,
+    2,
+    4
+  ],
+  "qualification": [
+    "adapter_initial_fma_v4",
+    "adapter_learned_fma_v2"
+  ],
+  "initial_weights_equal_pairs": 9,
+  "final_timestamp_equal_pairs": 9,
+  "cpu_profiles": 4,
+  "single_gpu_cuda_profiles": 2,
+  "limits": [
+    "Only Wikipedia B600 one layer three epochs; no time-to-target/convergence claim.",
+    "NCCL direct P2P disabled; one shared host.",
+    "Full CUDA fused two-GPU profile stalled and is excluded.",
+    "Full floating-point training trajectory equality not established.",
+    "STC and an adaptive distributed scheduler not implemented in this first prototype."
+  ]
+}

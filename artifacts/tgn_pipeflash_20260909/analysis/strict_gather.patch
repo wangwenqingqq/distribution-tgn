@@ -1,0 +1,55 @@
+--- /home/data/wangxuran/tgn_pipeflash_20260909/vendor/flash-tgn/csrc_flash_tgn/fused_gather_v2.cu	2026-09-02 11:37:33.000000000 +0000
++++ /home/data/wangxuran/tgn_pipeflash_20260909/src/csrc/fused_gather_strict.cu	2026-09-09 11:14:04.395505025 +0000
+@@ -12,6 +12,7 @@
+  */
+ #include <cuda_runtime.h>
+ #include <torch/extension.h>
++#include <ATen/cuda/CUDAContext.h>
+ #include <math.h>
+ 
+ __global__ void fused_gather_encode_bwd_v2_kernel(
+@@ -91,7 +92,7 @@
+         float delta = query_times[qi] - hot_ets[qi * K + ki];
+         for (int t = lane; t < d_t; t += 32) {
+             float gz = gz_row[d + d_e + t];
+-            float neg_sin = -sinf(delta * s_te_w[t] + s_te_b[t]);
++            float neg_sin = -sinf(fmaf(delta, s_te_w[t], s_te_b[t]));
+             atomicAdd(&my_grad_tw[t], gz * neg_sin * delta);
+             atomicAdd(&my_grad_tb[t], gz * neg_sin);
+         }
+@@ -203,7 +204,7 @@
+         // 1c. cos(delta * w + b) → Z[d+d_e..d_in-1]
+         float delta = query_times[qi] - hot_ets[qi * K + ki];
+         for (int f = lane; f < d_t; f += 32)
+-            z_row[d + d_e + f] = cosf(delta * s_te_w[f] + s_te_b[f]);
++            z_row[d + d_e + f] = cosf(fmaf(delta, s_te_w[f], s_te_b[f]));
+     }
+ 
+     // ====== Phase 2: Q_in_out — 1 warp per query ======
+@@ -248,7 +249,7 @@
+     int n_blocks = min((total_edges + warps_per_block - 1) / warps_per_block, 2048);
+     int smem_bytes = 2 * d_t * sizeof(float);
+ 
+-    fused_gather_encode_v2_kernel<<<n_blocks, threads, smem_bytes>>>(
++    fused_gather_encode_v2_kernel<<<n_blocks, threads, smem_bytes, at::cuda::getCurrentCUDAStream()>>>(
+         nfeat.data_ptr<float>(), mem.data_ptr<float>(),
+         efeat.data_ptr<float>(),
+         hot_nbr.data_ptr<int>(), hot_eid.data_ptr<int>(),
+@@ -308,7 +309,7 @@
+     // SMEM: 2*d_t (te params) + 2*WARPS*d_t (per-warp accumulators)
+     int smem_bytes = (2 + 2 * warps_per_block) * d_t * sizeof(float);
+ 
+-    fused_gather_encode_bwd_v2_kernel<<<n_blocks, threads, smem_bytes>>>(
++    fused_gather_encode_bwd_v2_kernel<<<n_blocks, threads, smem_bytes, at::cuda::getCurrentCUDAStream()>>>(
+         grad_Z.contiguous().data_ptr<float>(),
+         grad_Q_in.contiguous().data_ptr<float>(),
+         hot_nbr.data_ptr<int>(),
+@@ -331,3 +332,8 @@
+     auto grad_nfeat = (N > 0) ? grad_mem.clone() : torch::empty({0, d_val}, opts);
+     return {grad_nfeat, grad_mem, grad_efeat, grad_te_weight, grad_te_bias};
+ }
++
++PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
++ m.def("fused_gather_encode_v2", &fused_gather_encode_v2);
++ m.def("fused_gather_encode_backward_v2", &fused_gather_encode_backward_v2);
++}

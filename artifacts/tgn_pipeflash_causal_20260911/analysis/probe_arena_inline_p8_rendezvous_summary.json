@@ -1,0 +1,68 @@
+[
+  {
+    "label": "probe_arena_inline_p8_p8_flash_baseline_s2026_e3",
+    "entry": "pipe_arena_inline_bench.py",
+    "batch": 600,
+    "world_size": 8,
+    "variant": "flash",
+    "schedule": "baseline",
+    "seed": 2026,
+    "epochs": 3,
+    "max_epochs": 3,
+    "target_ap": 0,
+    "probe": true,
+    "delay_ms": 0,
+    "delay_stage": "state",
+    "global_epoch_mean_s": 0.43351287602369365,
+    "anchor_halfwidth_max_s": 6.097485311329365e-06,
+    "state": {
+      "receive_span_s": 0.07873119212793729,
+      "upstream_not_ready_s": 0.07398605361716666,
+      "upstream_calibration_lower_s": 0.07363428660807037,
+      "upstream_calibration_upper_s": 0.07433782062626297,
+      "after_both_ready_s": 0.00474513851077063
+    },
+    "parameter": {
+      "receive_span_s": 0.020261329916441657,
+      "upstream_not_ready_s": 0.006749067569520169,
+      "upstream_calibration_lower_s": 0.006635708729713457,
+      "upstream_calibration_upper_s": 0.0068645941594628,
+      "after_both_ready_s": 0.013512262346921489
+    },
+    "missing": 0,
+    "max_causal_order_violation_s": 0
+  },
+  {
+    "label": "probe_arena_inline_p8_p8_flash_state_first_s2026_e3",
+    "entry": "pipe_arena_inline_bench.py",
+    "batch": 600,
+    "world_size": 8,
+    "variant": "flash",
+    "schedule": "state_first",
+    "seed": 2026,
+    "epochs": 3,
+    "max_epochs": 3,
+    "target_ap": 0,
+    "probe": true,
+    "delay_ms": 0,
+    "delay_stage": "state",
+    "global_epoch_mean_s": 0.401520269321433,
+    "anchor_halfwidth_max_s": 5.511014023795724e-06,
+    "state": {
+      "receive_span_s": 0.07228826932502368,
+      "upstream_not_ready_s": 0.06774933153549985,
+      "upstream_calibration_lower_s": 0.06742474562373679,
+      "upstream_calibration_upper_s": 0.06807400576462722,
+      "after_both_ready_s": 0.0045389377895238186
+    },
+    "parameter": {
+      "receive_span_s": 0.02062119612673996,
+      "upstream_not_ready_s": 0.008525107208697591,
+      "upstream_calibration_lower_s": 0.008415891550402623,
+      "upstream_calibration_upper_s": 0.008636335747792542,
+      "after_both_ready_s": 0.01209608891804237
+    },
+    "missing": 0,
+    "max_causal_order_violation_s": 0
+  }
+]

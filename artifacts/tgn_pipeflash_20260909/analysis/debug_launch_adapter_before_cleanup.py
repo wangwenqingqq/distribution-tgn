@@ -1,0 +1,245 @@
+"""Launch the archived PipeTGL entrypoint with explicit compatibility and timing adapters.
+
+This preserves the native multi-GPU training algorithm, including its warm-up
+updates and final-local-batch omission. It reports those behaviors rather than
+silently changing the amount of training work.
+"""
+from __future__ import annotations
+import time
+PROCESS_START=time.perf_counter()
+import argparse,copy,functools,json,os,sys,types,faulthandler,threading
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+sys.path[:0]=[str(ROOT/'src'),str(ROOT/'vendor/PipeTGL'),str(ROOT/'vendor/GNNFlow'),
+              str(ROOT/'vendor/dgl/python'),str(ROOT/'vendor/flash-tgn/python'),str(ROOT/'pydeps')]
+os.environ.setdefault('DGLBACKEND','pytorch')
+import torch
+import torch.distributed as dist
+import dgl.function as fn
+import dgl.utils.shared_mem as shared_mem
+if not hasattr(fn,'copy_src'):fn.copy_src=fn.copy_u
+
+def main():
+    p=argparse.ArgumentParser()
+    p.add_argument('--output',required=True);p.add_argument('--batch',type=int,default=600)
+    p.add_argument('--epochs',type=int,default=1);p.add_argument('--seed',type=int,default=2026)
+    p.add_argument('--variant',choices=['native','flash'],default='native')
+    p.add_argument('--profile',action='store_true')
+    p.add_argument('--drain-communications',action='store_true')
+    p.add_argument('--control-barrier',choices=['native','gloo'],default='native')
+    p.add_argument('--serialize-nccl-launch',action='store_true')
+    p.add_argument('--complete-batches',action='store_true')
+    args=p.parse_args();world=int(os.environ.get('WORLD_SIZE','1'));rank=int(os.environ.get('RANK','0'))
+    out=Path(args.output)/f'rank{rank}';out.mkdir(parents=True,exist_ok=False)
+    stack_log=(out/'thread_stacks.txt').open('w')
+    faulthandler.enable(file=stack_log)
+    faulthandler.dump_traceback_later(35,repeat=True,file=stack_log)
+    # Every run uses distinct POSIX shared-memory names to avoid colliding with other experiments.
+    token='pf_'+Path(args.output).parent.name+'_'+Path(args.output).name
+    make_shm=shared_mem.create_shared_mem_array;get_shm=shared_mem.get_shared_mem_array
+    shared_mem.create_shared_mem_array=lambda name,shape,dtype:make_shm(token+'_'+name,shape,dtype)
+    shared_mem.get_shared_mem_array=lambda name,shape,dtype:get_shm(token+'_'+name,shape,dtype)
+    import config
+    config._tgnn_default_config=copy.deepcopy(config._tgnn_default_config)
+    config._tgnn_default_config.update(batch_size=args.batch,dropout=0.0,att_dropout=0.0,
+                                     num_layers=1,fanouts=[10])
+    from modules.tgnn import TGNN
+    from modules.memory import Memory
+    from pipe_flash_adapter import install_flash_kernels,transfer_mfgs_with_descriptors
+    model_box=[];phase={'name':'setup'};work=[];events=[]
+    original_init=TGNN.__init__
+    def init(self,*a,**kw):
+        original_init(self,*a,**kw);model_box.append(self)
+        if args.variant=='flash':install_flash_kernels(self)
+    TGNN.__init__=init
+    original_update=TGNN.update_memory_and_send
+    def update(self,b,length,rank_arg,world_arg,group,*a,**kw):
+        start=time.perf_counter()
+        if world_arg==1:
+            # A single GPU has no adjacent peer: use the same target update, with all writes committed locally.
+            mem=a[0] if len(a)>0 else kw.get('mem')
+            mail=a[1] if len(a)>1 else kw.get('mail')
+            result=original_update(self,b,length,rank_arg,world_arg,group,mem,mail,None,None,
+                                   edge_feats=kw.get('edge_feats'))
+        else:result=original_update(self,b,length,rank_arg,world_arg,group,*a,**kw)
+        work.append({'phase':phase['name'],'positive_edges':length//2,
+                     'dispatch_start_s':start-PROCESS_START,'dispatch_seconds':time.perf_counter()-start})
+        return result
+    TGNN.update_memory_and_send=update
+    if world==1:
+        def recv_single(self,iteration_now,rank_arg,world_arg,device,group=None,src=-1):
+            nodes=self.pull_msg[iteration_now//world_arg]
+            cached=self.recv_msg[iteration_now//world_arg]
+            if cached is not None:nodes=torch.cat([cached,nodes]).sort().values
+            return self.node_memory[nodes].to(device),self.mailbox[nodes].to(device)
+        Memory.recv_mem=recv_single
+        new_group=dist.new_group
+        def single_group(ranks=None,*a,**kw):
+            return new_group(sorted(set(ranks)) if ranks is not None else None,*a,**kw)
+        dist.new_group=single_group
+
+    if args.serialize_nccl_launch:
+        launch_lock=threading.RLock()
+        for name in ['batch_isend_irecv','isend','irecv']:
+            original_launch=getattr(dist,name)
+            @functools.wraps(original_launch)
+            def serialized(*a,_original=original_launch,**kw):
+                with launch_lock:return _original(*a,**kw)
+            setattr(dist,name,serialized)
+            if name in ['isend','irecv']:
+                setattr(torch.distributed.distributed_c10d,name,serialized)
+
+    if args.control_barrier=='gloo':
+        original_pg_init=dist.init_process_group
+        original_barrier=dist.barrier
+        control_group=[]
+        def init_with_control(*a,**kw):
+            result=original_pg_init(*a,**kw)
+            control_group.append(dist.new_group(backend='gloo'))
+            return result
+        def control_barrier(group=None,async_op=False,device_ids=None):
+            if group is None:
+                torch.cuda.synchronize()
+                return original_barrier(group=control_group[0],async_op=async_op)
+            return original_barrier(group=group,async_op=async_op,device_ids=device_ids)
+        dist.init_process_group=init_with_control
+        dist.barrier=control_barrier
+
+    if args.complete_batches:
+        import inspect,textwrap
+        overlap_source=textwrap.dedent(inspect.getsource(Memory.findOverlapMem))
+        overlap_source=overlap_source.replace('for all_nodes, _, _ in data_loader:','for all_nodes, _, eid in data_loader:')
+        overlap_source=overlap_source.replace('all_nodes = all_nodes[:length]','all_nodes = all_nodes[:2*len(eid)]')
+        overlap_ns=dict(Memory.findOverlapMem.__globals__)
+        exec(compile(overlap_source,'<complete_partial_overlap>','exec'),overlap_ns)
+        Memory.findOverlapMem=overlap_ns['findOverlapMem']
+        (out/'complete_partial_overlap.py').write_text(overlap_source)
+        from modules.IOProcess import IOProcess
+        io_init=IOProcess.__init__
+        @functools.wraps(io_init)
+        def full_io_init(self,*a,**kw):
+            bound=inspect.signature(io_init).bind(self,*a,**kw)
+            bound.arguments['cnt_iterations']+=bound.arguments['local_world_size']
+            return io_init(*bound.args,**bound.kwargs)
+        IOProcess.__init__=full_io_init
+
+    source_path=ROOT/'vendor/PipeTGL/scripts/pipeTrain3.py'
+    source=source_path.read_text()
+    source=source.replace("data_path = '/data/TGL'","data_path = "+repr(str(ROOT/'data/pipe')))
+    # The entrypoint performs feature I/O directly. Its unused q_input consumer has no producer.
+    source=source.replace('    fetchThread.start()',
+                          '    # PipeFlash launch adapter: unused queue consumer disabled for clean termination.')
+    if args.complete_batches:
+        import re
+        pattern=r'(?m)^( +)try:\n\1    next_target_nodes, next_ts, next_eid = next\(train_iter\)\n\1except StopIteration:\n\1    break'
+        def allow_last(m):
+            i=m.group(1)
+            return i+'has_next = True\n'+m.group(0).replace(i+'    break',i+'    has_next = False')
+        source,n=re.subn(pattern,allow_last,source)
+        if n!=2:raise RuntimeError(f'Expected two native prefetch loops, found {n}')
+        source=source.replace('            sampling(next_target_nodes, next_ts, next_eid)','            if has_next: sampling(next_target_nodes, next_ts, next_eid)')
+        source=source.replace('        sampling(next_target_nodes, next_ts, next_eid)','        if has_next: sampling(next_target_nodes, next_ts, next_eid)')
+        source=source.replace('if iteration_now + 2*args.local_world_size < len(train_loader):','if has_next:')
+        source=source.replace('iteration_now+1+args.world_size','iteration_now+1')
+        source,n_last=re.subn(r'(?m)^(( +)cache_node_ratio_sum \+= cache\.cache_node_ratio\n\2(?:# )?total_samples \+= num_target_nodes\n\2i \+= 1)$',lambda m:m.group(0)+'\n'+m.group(2)+'if not has_next: break',source)
+        if n_last!=2:raise RuntimeError('Expected two final-batch exit sites')
+    source=source.replace('    for e in range(args.epoch):\n','    for e in range(args.epoch):\n        record_epoch_begin(e)\n')
+    source=source.replace('        epoch_time = time.time() - start_time','        record_epoch_end(e)\n        epoch_time = time.time() - start_time')
+    (out/'executed_entrypoint.py').write_text(source)
+    ns={'__name__':'pipetgl_archived_entry','__file__':str(source_path)}
+    epoch_intervals=[];epoch_open={}
+    def record_epoch_begin(e):
+        epoch_open.update(start=time.perf_counter(),work=len(work))
+        if args.profile:torch.cuda.nvtx.range_push('epoch:train:'+str(e))
+    def record_epoch_end(e):
+        end=time.perf_counter()
+        if args.profile:torch.cuda.nvtx.range_pop()
+        epoch_intervals.append({'epoch':e,'start_s':epoch_open['start']-PROCESS_START,
+            'wall_seconds':end-epoch_open['start'],
+            'positive_edges':sum(x['positive_edges'] for x in work[epoch_open['work']:])})
+    ns['record_epoch_begin']=record_epoch_begin;ns['record_epoch_end']=record_epoch_end
+    saved_argv=sys.argv
+    sys.argv=[str(source_path),'--data','WIKI','--epoch',str(args.epochs),'--seed',str(args.seed),
+              '--num-workers','0','--print-freq','1000000']
+    try:exec(compile(source,str(source_path),'exec'),ns)
+    finally:sys.argv=saved_argv
+    if world==1:
+        ns['send']=lambda *a,**kw:None
+        ns['recv']=lambda *a,**kw:True
+    if args.variant=='flash':ns['mfgs_to_cuda']=lambda mfgs,device:transfer_mfgs_with_descriptors(mfgs,device,10)
+    def wrap_phase(name):
+        original=ns[name]
+        @functools.wraps(original)
+        def run(*a,**kw):
+            previous=phase['name'];phase['name']=name
+            start=time.perf_counter()
+            if args.profile:torch.cuda.nvtx.range_push('phase:'+name)
+            try:return original(*a,**kw)
+            finally:
+                if name=='warm_up' and args.drain_communications:torch.cuda.synchronize()
+                if args.profile:torch.cuda.nvtx.range_pop()
+                events.append({'phase':name,'start_s':start-PROCESS_START,'wall_seconds':time.perf_counter()-start})
+                phase['name']=previous
+        ns[name]=run
+    for name in ['warm_up','train','evaluate']:wrap_phase(name)
+    if args.profile:
+        def profile_method(obj,name,label):
+            original=getattr(obj,name)
+            @functools.wraps(original)
+            def traced(*a,**kw):
+                begin=time.perf_counter()
+                torch.cuda.nvtx.range_push(label)
+                try:return original(*a,**kw)
+                finally:
+                    torch.cuda.nvtx.range_pop()
+                    events.append({'phase':phase['name'],'label':label,
+                                   'start_s':begin-PROCESS_START,
+                                   'cpu_dispatch_seconds':time.perf_counter()-begin})
+            setattr(obj,name,traced)
+        for obj,name,label in [(TGNN,'update_memory_and_send','target_state_update_and_send'),
+            (TGNN,'prepare_input','support_state_read_and_update'),(TGNN,'forward','attention_and_predict'),
+            (Memory,'recv_mem','state_receive_and_host_gather'),(Memory,'send_mem','state_send_launch'),
+            (torch.Tensor,'backward','backward'),(torch.optim.Adam,'step','optimizer_step')]:
+            profile_method(obj,name,label)
+        from gnnflow.temporal_sampler import TemporalSampler
+        profile_method(TemporalSampler,'sample','temporal_sampling')
+        for name,label in [('recv','parameter_receive_or_order_signal'),('send','parameter_send_or_order_signal')]:
+            original=ns[name]
+            def profiled(*a,_original=original,_label=label,**kw):
+                begin=time.perf_counter();torch.cuda.nvtx.range_push(_label)
+                try:return _original(*a,**kw)
+                finally:
+                    torch.cuda.nvtx.range_pop()
+                    events.append({'phase':phase['name'],'label':_label,'start_s':begin-PROCESS_START,
+                                   'cpu_dispatch_seconds':time.perf_counter()-begin})
+            ns[name]=profiled
+    torch.set_float32_matmul_precision('highest')
+    start=time.perf_counter()
+    ns['main']()
+    torch.cuda.synchronize()
+    finished=time.perf_counter()
+    model=model_box[0]
+    torch.save(model.state_dict(),out/'final_model.pt')
+    result={'config':vars(args),'world_size':world,'rank':rank,
+            'import_and_adapter_seconds':start-PROCESS_START,'native_main_wall_seconds':finished-start,
+            'total_seconds_before_artifact_serialization':finished-PROCESS_START,
+            'training_work':work,'phase_intervals':events,'epoch_intervals':epoch_intervals,
+            'parameters_finite':all(torch.isfinite(p).all().item() for p in model.parameters()),
+            'peak_allocated_bytes':torch.cuda.max_memory_allocated(),
+            'adaptations':['dataset path','run-specific shared-memory names','DGL copy_src alias',
+                           'unused queue-consumer disabled','one-GPU ring bypass when applicable',
+                           'fixed batch/dimensions/dropout/seed','actual processed-edge accounting'],
+            'limitations':['preserves native warm-up optimization and dropped final local batch',
+                           'native per-rank Adam and parameter-staleness semantics',
+                           'GPU diagnostic timeline still requires qualification']}
+    (out/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps({k:v for k,v in result.items() if k not in ['training_work']},indent=2),flush=True)
+    faulthandler.cancel_dump_traceback_later()
+    dist.destroy_process_group()
+if __name__=='__main__':
+    try:main()
+    except BaseException:
+        import multiprocessing
+        for child in multiprocessing.active_children():child.terminate()
+        for child in multiprocessing.active_children():child.join(timeout=2)
+        raise

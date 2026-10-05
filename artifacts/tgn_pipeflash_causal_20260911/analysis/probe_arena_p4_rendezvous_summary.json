@@ -1,0 +1,60 @@
+[
+  {
+    "label": "probe_arena_p4_p4_native_baseline_s2026_e3",
+    "entry": "pipe_arena_bench.py",
+    "batch": 600,
+    "world_size": 4,
+    "variant": "native",
+    "schedule": "baseline",
+    "seed": 2026,
+    "epochs": 3,
+    "max_epochs": 3,
+    "target_ap": 0,
+    "probe": true,
+    "delay_ms": 0,
+    "delay_stage": "state",
+    "global_epoch_mean_s": 0.8448611443163827,
+    "anchor_halfwidth_max_s": 1.0339019354432821e-05,
+    "state": {
+      "receive_span_s": 0.10164424886170309,
+      "upstream_not_ready_s": 0.08192958127377399,
+      "after_both_ready_s": 0.019714667587929096
+    },
+    "parameter": {
+      "receive_span_s": 0.02697870300714082,
+      "upstream_not_ready_s": 0.00578392071959873,
+      "after_both_ready_s": 0.021194782287542086
+    },
+    "missing": 0,
+    "max_causal_order_violation_s": 0
+  },
+  {
+    "label": "probe_arena_p4_p4_flash_baseline_s2026_e3",
+    "entry": "pipe_arena_bench.py",
+    "batch": 600,
+    "world_size": 4,
+    "variant": "flash",
+    "schedule": "baseline",
+    "seed": 2026,
+    "epochs": 3,
+    "max_epochs": 3,
+    "target_ap": 0,
+    "probe": true,
+    "delay_ms": 0,
+    "delay_stage": "state",
+    "global_epoch_mean_s": 0.7539429286650071,
+    "anchor_halfwidth_max_s": 1.0404502972960472e-05,
+    "state": {
+      "receive_span_s": 0.12065066394279711,
+      "upstream_not_ready_s": 0.10123046755325049,
+      "after_both_ready_s": 0.019420196389546618
+    },
+    "parameter": {
+      "receive_span_s": 0.03087756781800029,
+      "upstream_not_ready_s": 0.009317479950065414,
+      "after_both_ready_s": 0.02156008786793488
+    },
+    "missing": 0,
+    "max_causal_order_violation_s": 0
+  }
+]

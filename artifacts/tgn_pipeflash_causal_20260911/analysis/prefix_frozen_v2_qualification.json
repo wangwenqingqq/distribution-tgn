@@ -1,0 +1,83 @@
+{
+  "rows": [
+    {
+      "label": "prefix_native_frozen_v2_p8_native_baseline_s2026_e2",
+      "weights_unchanged": true,
+      "memory_fields": {
+        "node_memory": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "node_memory_ts": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "mailbox": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "mailbox_ts": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        }
+      },
+      "snapshot_calls": 632,
+      "support_reads": 273905,
+      "future_reads": 0
+    },
+    {
+      "label": "prefix_candidate_frozen_v2_p8_native_state_first_s2026_e2",
+      "weights_unchanged": true,
+      "memory_fields": {
+        "node_memory": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "node_memory_ts": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "mailbox": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "mailbox_ts": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        }
+      },
+      "snapshot_calls": 632,
+      "support_reads": 273905,
+      "future_reads": 0
+    },
+    {
+      "label": "prefix_candidate_frozen_v2_p8_flash_state_first_s2026_e2",
+      "weights_unchanged": true,
+      "memory_fields": {
+        "node_memory": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "node_memory_ts": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "mailbox": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        },
+        "mailbox_ts": {
+          "bitwise_equal": true,
+          "max_abs": 0.0
+        }
+      },
+      "snapshot_calls": 632,
+      "support_reads": 273905,
+      "future_reads": 0
+    }
+  ],
+  "complete": true,
+  "scope": "Two complete training epochs plus warm-up and validation, frozen model weights. All final state tensors bitwise equal across baseline/native-candidate/flash-candidate; audited support timestamps never exceed current batch maximum. Trained trajectory identity is not asserted.",
+  "all_rank_initial_and_frozen_final_weights_equal": true,
+  "rank_models_checked": 24
+}

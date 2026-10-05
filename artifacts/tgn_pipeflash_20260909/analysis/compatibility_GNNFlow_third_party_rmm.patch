@@ -1,0 +1,90 @@
+diff --git a/include/rmm/mr/device/cuda_async_memory_resource.hpp b/include/rmm/mr/device/cuda_async_memory_resource.hpp
+index cb7bd00..6f734c3 100644
+--- a/include/rmm/mr/device/cuda_async_memory_resource.hpp
++++ b/include/rmm/mr/device/cuda_async_memory_resource.hpp
+@@ -24,7 +24,7 @@
+ 
+ #include <cuda_runtime_api.h>
+ 
+-#include <thrust/optional.h>
++#include <optional>
+ 
+ #if CUDART_VERSION >= 11020  // 11.2 introduced cudaMallocAsync
+ #define RMM_CUDA_MALLOC_ASYNC_SUPPORT
+@@ -53,8 +53,8 @@ class cuda_async_memory_resource final : public device_memory_resource {
+    * @param release_threshold Optional release threshold size in bytes of the pool. If no value is
+    * provided, the release threshold is set to the total amount of memory on the current device.
+    */
+-  cuda_async_memory_resource(thrust::optional<std::size_t> initial_pool_size = {},
+-                             thrust::optional<std::size_t> release_threshold = {})
++  cuda_async_memory_resource(std::optional<std::size_t> initial_pool_size = {},
++                             std::optional<std::size_t> release_threshold = {})
+   {
+ #ifdef RMM_CUDA_MALLOC_ASYNC_SUPPORT
+     // Check if cudaMallocAsync Memory pool supported
+diff --git a/include/rmm/mr/device/pool_memory_resource.hpp b/include/rmm/mr/device/pool_memory_resource.hpp
+index 934f7d9..6303519 100644
+--- a/include/rmm/mr/device/pool_memory_resource.hpp
++++ b/include/rmm/mr/device/pool_memory_resource.hpp
+@@ -26,7 +26,7 @@
+ 
+ #include <thrust/iterator/counting_iterator.h>
+ #include <thrust/iterator/transform_iterator.h>
+-#include <thrust/optional.h>
++#include <optional>
+ 
+ #include <cuda_runtime_api.h>
+ 
+@@ -82,8 +82,8 @@ class pool_memory_resource final
+    * of the available memory on the current device.
+    */
+   explicit pool_memory_resource(Upstream* upstream_mr,
+-                                thrust::optional<std::size_t> initial_pool_size = thrust::nullopt,
+-                                thrust::optional<std::size_t> maximum_pool_size = thrust::nullopt)
++                                std::optional<std::size_t> initial_pool_size = std::nullopt,
++                                std::optional<std::size_t> maximum_pool_size = std::nullopt)
+     : upstream_mr_{[upstream_mr]() {
+         RMM_EXPECTS(nullptr != upstream_mr, "Unexpected null upstream pointer.");
+         return upstream_mr;
+@@ -192,8 +192,8 @@ class pool_memory_resource final
+    * @param initial_size The optional initial size for the pool
+    * @param maximum_size The optional maximum size for the pool
+    */
+-  void initialize_pool(thrust::optional<std::size_t> initial_size,
+-                       thrust::optional<std::size_t> maximum_size)
++  void initialize_pool(std::optional<std::size_t> initial_size,
++                       std::optional<std::size_t> maximum_size)
+   {
+     auto const try_size = [&]() {
+       if (not initial_size.has_value()) {
+@@ -267,7 +267,7 @@ class pool_memory_resource final
+    * @param stream The stream on which the memory is to be used.
+    * @return block_type The allocated block
+    */
+-  thrust::optional<block_type> block_from_upstream(size_t size, cuda_stream_view stream)
++  std::optional<block_type> block_from_upstream(size_t size, cuda_stream_view stream)
+   {
+     RMM_LOG_DEBUG("[A][Stream {}][Upstream {}B]", fmt::ptr(stream.value()), size);
+ 
+@@ -275,10 +275,10 @@ class pool_memory_resource final
+ 
+     try {
+       void* p = upstream_mr_->allocate(size, stream);
+-      return thrust::optional<block_type>{
++      return std::optional<block_type>{
+         *upstream_blocks_.emplace(reinterpret_cast<char*>(p), size, true).first};
+     } catch (std::exception const& e) {
+-      return thrust::nullopt;
++      return std::nullopt;
+     }
+   }
+ 
+@@ -428,7 +428,7 @@ class pool_memory_resource final
+ 
+   Upstream* upstream_mr_;  // The "heap" to allocate the pool from
+   std::size_t current_pool_size_{};
+-  thrust::optional<std::size_t> maximum_pool_size_{};
++  std::optional<std::size_t> maximum_pool_size_{};
+ 
+ #ifdef RMM_POOL_TRACK_ALLOCATIONS
+   std::set<block_type, rmm::mr::detail::compare_blocks<block_type>> allocated_blocks_;

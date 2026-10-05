@@ -37,3 +37,20 @@ runs/
 *.gz
 *.mp4
 *.mov
+# Compiled extensions and large profiler output
+*.so
+*.o
+*.nsys-rep
+*.ncu-rep
+*.sqlite
+**/raw/
+# Published lightweight run summaries; other run output remains excluded
+!artifacts/tgn_lastfm_thread_20261004/runs/
+!artifacts/tgn_pipeflash_causal_20260911/runs/
+artifacts/tgn*/runs/**
+!artifacts/tgn*/runs/**/
+!artifacts/tgn*/runs/**/run.json
+!artifacts/tgn*/runs/**/summary.json
+!artifacts/tgn*/runs/**/prefix_snapshot.json
+!artifacts/tgn*/runs/**/rank0.json
+!artifacts/tgn*/runs/**/rank1.json

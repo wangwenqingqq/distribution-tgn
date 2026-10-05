@@ -1,0 +1,22 @@
+import os,subprocess
+from pathlib import Path
+root=Path("/home/data/wangxuran/tgn_pipeflash_20260909"); source=root/'vendor/GNNFlow'
+p=source/'CMakeLists.txt'; s=subprocess.check_output(['git','-C',str(source),'show','HEAD:CMakeLists.txt'],text=True)
+s=s.replace('set(CMAKE_CXX_STANDARD 14)','set(CMAKE_CXX_STANDARD 17)\nset(CMAKE_CUDA_STANDARD 17)')
+start=s.index('include(FindCUDA/select_compute_arch)'); end=s.index('# 3rd party',start)
+s=s[:start]+'# Explicit architecture avoids GPU probing on the shared server.\nset(CMAKE_CUDA_ARCHITECTURES 120)\n\n'+s[end:]
+s=s.replace('add_subdirectory(third_party/pybind11)','find_package(pybind11 CONFIG REQUIRED)')
+s=s.replace('include_directories(third_party/pybind11/include)','')
+p.write_text(s)
+(root/'analysis/gnnflow_compat.patch').write_text(subprocess.check_output(['git','-C',str(source),'diff'],text=True))
+env=dict(os.environ,CUDA_VISIBLE_DEVICES='',TORCH_CUDA_ARCH_LIST='12.0',PYTHONPATH=str(root/'pydeps'),PYTHONDONTWRITEBYTECODE='1')
+py='/home/data/wangxuran/isaacsim6/env/bin/python'
+prefix=subprocess.check_output([py,'-c','import torch;print(torch.utils.cmake_prefix_path)'],env=env,text=True).strip()
+bind=subprocess.check_output([py,'-m','pybind11','--cmakedir'],env=env,text=True).strip()
+cmd=['cmake','--fresh','-DCMAKE_CUDA_COMPILER=/usr/local/cuda-13.1/bin/nvcc','-DCUDAToolkit_ROOT=/usr/local/cuda-13.1','-DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-13.1','-S',str(source),'-B',str(source/'build'),'-DCMAKE_BUILD_TYPE=Release','-DPYTHON_EXECUTABLE='+py,'-DPython_EXECUTABLE='+py,'-DCMAKE_PREFIX_PATH='+prefix+';'+bind,'-DCMAKE_LIBRARY_OUTPUT_DIRECTORY='+str(source)]
+with (root/'logs/gnnflow_build_v4.log').open('w') as log:
+ r=subprocess.run(cmd,env=env,stdout=log,stderr=subprocess.STDOUT)
+ print('configure',r.returncode,flush=True)
+ if not r.returncode:
+  r=subprocess.run(['cmake','--build',str(source/'build'),'--parallel','4'],env=env,stdout=log,stderr=subprocess.STDOUT)
+  print('build',r.returncode,flush=True)

@@ -20,11 +20,11 @@ tags: [experiment, lastfm, pipetgl]
 
 ## 执行与原始证据
 
-权威发布版本为 [tgn-pipeflash-artifact@79b835cf3b08](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/tree/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004)。
+权威证据现位于本仓库 [LastFM 归档](../artifacts/tgn_lastfm_thread_20261004)，来自原 artifact 发布版本 `79b835cf3b08`；提交历史与目录对应见[合并记录](../artifacts/MIGRATION.md)。
 
-- [逐 seed / epoch 结果与配对区间](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/paired_short_training.json)
-- [30 份正式 rank summary 和统计 run.json](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/tree/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/runs)
-- [实测源码、环境和离线复算方法](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/REPRODUCE.md)
+- [逐 seed / epoch 结果与配对区间](../artifacts/tgn_lastfm_thread_20261004/analysis/paired_short_training.json)
+- [30 份正式 rank summary 和统计 run.json](../artifacts/tgn_lastfm_thread_20261004/runs)
+- [实测源码、环境和离线复算方法](../artifacts/tgn_lastfm_thread_20261004/REPRODUCE.md)
 
 运行前后选定 GPU 的显存 / 进程记录均通过检查；它不能排除运行内部短暂竞争。数据、权重、大型 trace 不进入知识仓库或代码归档。
 

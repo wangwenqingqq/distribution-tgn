@@ -1,0 +1,65 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2f2e65a..b7ce539 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,29 +4,25 @@ enable_language(CUDA)
+ 
+ set(TARGET_LIB "libgnnflow")
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
++set(CMAKE_CUDA_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+ 
+ # set cuda arch
+ set(CMAKE_CUDA_RUNTIME_LIBRARY Shared)
+-include(FindCUDA/select_compute_arch)
+-CUDA_DETECT_INSTALLED_GPUS(INSTALLED_GPU_CCS_1)
+-string(STRIP "${INSTALLED_GPU_CCS_1}" INSTALLED_GPU_CCS_2)
+-string(REPLACE " " ";" INSTALLED_GPU_CCS_3 "${INSTALLED_GPU_CCS_2}")
+-string(REPLACE "." "" CUDA_ARCH_LIST "${INSTALLED_GPU_CCS_3}")
+-set(CMAKE_CUDA_ARCHITECTURES ${CUDA_ARCH_LIST})
+-message(STATUS "CUDA_ARCH_LIST: ${CUDA_ARCH_LIST}")
++# Explicit architecture avoids GPU probing on the shared server.
++set(CMAKE_CUDA_ARCHITECTURES 120)
+ 
+ # 3rd party
+ find_package(PythonLibs REQUIRED)
+-add_subdirectory(third_party/pybind11)
++find_package(pybind11 CONFIG REQUIRED)
+ 
+ 
+ include_directories(${PYTHON_INCLUDE_DIRS})
+ include_directories(${PROJECT_SOURCE_DIR}/gnnflow/csrc)
+ include_directories(/usr/local/cuda/include)
+-include_directories(third_party/pybind11/include)
++
+ include_directories(third_party/spdlog/include)
+ include_directories(third_party/rmm/include)
+ 
+diff --git a/gnnflow/data.py b/gnnflow/data.py
+index 82c7ee0..4ce47f0 100644
+--- a/gnnflow/data.py
++++ b/gnnflow/data.py
+@@ -6,7 +6,7 @@ import numpy as np
+ import pandas as pd
+ import torch
+ import torch.distributed
+-from torch._six import string_classes
++string_classes = (str, bytes)  # PyTorch removed torch._six; retain its Python 3 types.
+ from torch.utils.data import BatchSampler, Dataset, Sampler
+ 
+ from gnnflow.utils import DstRandEdgeSampler, RandEdgeSampler, local_rank
+diff --git a/third_party/abseil-cpp b/third_party/abseil-cpp
+--- a/third_party/abseil-cpp
++++ b/third_party/abseil-cpp
+@@ -1 +1 @@
+-Subproject commit 13708db87b1ab69f4f2b3214f3f51e986546f282
++Subproject commit 13708db87b1ab69f4f2b3214f3f51e986546f282-dirty
+diff --git a/third_party/rmm b/third_party/rmm
+--- a/third_party/rmm
++++ b/third_party/rmm
+@@ -1 +1 @@
+-Subproject commit e800a57e0a3b51c19e840c5eb93c9e9c978dfcef
++Subproject commit e800a57e0a3b51c19e840c5eb93c9e9c978dfcef-dirty

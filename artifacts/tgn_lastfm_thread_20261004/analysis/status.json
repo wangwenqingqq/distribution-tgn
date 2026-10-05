@@ -1,0 +1,23 @@
+{
+  "history_review": "complete",
+  "data_equivalence": "passed: all src/dst/time/ext_roll rows equal historical LastFM",
+  "E0": {
+    "data": "passed",
+    "single_rank_overlap": "passed: first, second, final partial real batches",
+    "smoke": "passed: smoke_lastfm_p1_native_s4101_e1_v3",
+    "multi_rank_frozen": "passed: five configurations, both ranks, all four states bitwise equal, frozen weights unchanged, future reads zero",
+    "smoke_checks": "analysis/smoke_check.json",
+    "first_attempt": "v1 failed during periodic synthetic-frame stack dump; no timing included"
+  },
+  "E1": "complete: exclusive host spans, both-rank on-core/GIL/OSRT and GPU unions; profiling overhead quantified",
+  "E2": "complete: sampler NCU plus C++/DGL wrapper breakdown at four real input strata",
+  "E3": "complete: 15 unprofiled paired short-training runs, 30 rank model checks and ownership audit",
+  "E4": "native-arena frozen correctness passed; first performance timing excluded due resource contention; other seeds require idle GPUs. Shared-memory optimization deferred.",
+  "E5": "not run: all eight GPUs presently occupied by other tasks",
+  "plan": "REPRODUCE.md",
+  "historical_evidence": "README.md#data-validation",
+  "profiling_fix_reference": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
+  "E2b": "complete: same/cross NUMA and default-NCCL isolated payload correctness",
+  "report": "results_round1.txt",
+  "performance_claim_scope": "Fixed-work short training only; Flash trajectory and AP differ from baseline."
+}

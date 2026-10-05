@@ -13,7 +13,7 @@ tags: [experiment, critical-path, causal]
 - 计时：所有 rank 全局单轮区间；每个非零延迟条件共 920 次训练期插入，并记录实际 CUDA 延迟。
 
 ## 执行与原始证据
-- [代码与证据](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/tree/main/tgn_pipeflash_causal_20260911)。
+- [代码与证据](../artifacts/tgn_pipeflash_causal_20260911)。
 - `src/pipe_prefix_gpu_delay_bench.py`、`src/cuda_delay.py`；有效汇总为 `analysis/final_mechanism_summary.json`。
 - `analysis/gpu_delay_summary.json` 还包含旧诊断，不能不加条件直接汇总。
 

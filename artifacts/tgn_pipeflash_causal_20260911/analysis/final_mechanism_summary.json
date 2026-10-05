@@ -1,0 +1,142 @@
+{
+  "groups": [
+    {
+      "variant": "native",
+      "schedule": "baseline",
+      "seeds": [
+        2026,
+        2027,
+        2028
+      ],
+      "epoch_s": 0.7498843471209208,
+      "state_wait_ms": 268.6788634576563,
+      "state_residual_ms": 9.201566050049022,
+      "parameter_span_ms": 63.08355888581395
+    },
+    {
+      "variant": "flash",
+      "schedule": "baseline",
+      "seeds": [
+        2026,
+        2027,
+        2028
+      ],
+      "epoch_s": 0.7495828166461757,
+      "state_wait_ms": 336.24170942008885,
+      "state_residual_ms": 9.50409286128383,
+      "parameter_span_ms": 43.09915603759388
+    },
+    {
+      "variant": "flash",
+      "schedule": "state_first",
+      "seeds": [
+        2026,
+        2027,
+        2028
+      ],
+      "epoch_s": 0.6812396231042739,
+      "state_wait_ms": 307.3973151792112,
+      "state_residual_ms": 4.4168978743578515,
+      "parameter_span_ms": 11.40709284421367
+    }
+  ],
+  "cuda_delay": [
+    {
+      "label": "prefix_gpu_delay_zero_p8_flash_baseline_s2026_e5",
+      "entry": "pipe_prefix_gpu_delay_bench.py",
+      "batch": 600,
+      "world_size": 8,
+      "variant": "flash",
+      "schedule": "baseline",
+      "seed": 2026,
+      "epochs": 5,
+      "max_epochs": 5,
+      "target_ap": 0,
+      "probe": false,
+      "delay_ms": 0.0,
+      "delay_stage": "state",
+      "mean_epoch_s": 0.733176409418229,
+      "epoch_walls_s": [
+        0.739879971020855,
+        0.7146937160287052,
+        0.7375387040083297,
+        0.7389014330110513,
+        0.7348682230222039
+      ],
+      "delay_observed_ms": null,
+      "summed_actual_delay_per_global_epoch_s": 0.0,
+      "delta_epoch_s": 0.0,
+      "sensitivity_to_serial_delay": null
+    },
+    {
+      "label": "prefix_gpu_delay_state_p8_flash_baseline_s2026_e5",
+      "entry": "pipe_prefix_gpu_delay_bench.py",
+      "batch": 600,
+      "world_size": 8,
+      "variant": "flash",
+      "schedule": "baseline",
+      "seed": 2026,
+      "epochs": 5,
+      "max_epochs": 5,
+      "target_ap": 0,
+      "probe": false,
+      "delay_ms": 1.0,
+      "delay_stage": "state",
+      "mean_epoch_s": 0.8989690858172252,
+      "epoch_walls_s": [
+        0.8953287540352903,
+        0.8906101110042073,
+        0.8616108310525306,
+        0.9135872559854761,
+        0.9337084770086221
+      ],
+      "delay_observed_ms": {
+        "mean": 0.9982091474144356,
+        "min": 0.9915840029716492,
+        "max": 1.0132479667663574,
+        "count": 920
+      },
+      "summed_actual_delay_per_global_epoch_s": 0.18367048312425613,
+      "delta_epoch_s": 0.1657926763989962,
+      "sensitivity_to_serial_delay": 0.9026636919489927
+    },
+    {
+      "label": "prefix_gpu_delay_compute_p8_flash_baseline_s2026_e5",
+      "entry": "pipe_prefix_gpu_delay_bench.py",
+      "batch": 600,
+      "world_size": 8,
+      "variant": "flash",
+      "schedule": "baseline",
+      "seed": 2026,
+      "epochs": 5,
+      "max_epochs": 5,
+      "target_ap": 0,
+      "probe": false,
+      "delay_ms": 1.0,
+      "delay_stage": "compute",
+      "mean_epoch_s": 0.7312368885846808,
+      "epoch_walls_s": [
+        0.7302852610009722,
+        0.7240489659598097,
+        0.7296206059982069,
+        0.7366558790090494,
+        0.735573730955366
+      ],
+      "delay_observed_ms": {
+        "mean": 1.001080277821292,
+        "min": 0.9913280010223389,
+        "max": 1.0308159589767456,
+        "count": 920
+      },
+      "summed_actual_delay_per_global_epoch_s": 0.18419877111911773,
+      "delta_epoch_s": -0.0019395208335482028,
+      "sensitivity_to_serial_delay": -0.010529499310795906
+    }
+  ],
+  "trained_audit": {
+    "calls": 7704,
+    "support_reads": 3347718,
+    "future_reads": 0
+  },
+  "scope": "Three diagnostic seeds, three epochs each. Spans are means per rank per epoch and are not SM idle fractions or pure wire times."
+}

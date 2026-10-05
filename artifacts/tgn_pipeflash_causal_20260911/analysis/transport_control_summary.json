@@ -1,0 +1,95 @@
+{
+  "rows": [
+    {
+      "mode": "native",
+      "repeat": 0,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 412.6545519102365,
+      "global_wall_median_us": 398.20399251766503,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    },
+    {
+      "mode": "packed",
+      "repeat": 0,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 338.0477603059262,
+      "global_wall_median_us": 324.4355320930481,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    },
+    {
+      "mode": "arena",
+      "repeat": 0,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 124.6922626160085,
+      "global_wall_median_us": 90.07300832308829,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    },
+    {
+      "mode": "arena",
+      "repeat": 1,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 89.40506726503372,
+      "global_wall_median_us": 89.25850852392614,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    },
+    {
+      "mode": "packed",
+      "repeat": 1,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 351.8583613913506,
+      "global_wall_median_us": 322.6810076739639,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    },
+    {
+      "mode": "native",
+      "repeat": 1,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 399.9249421758577,
+      "global_wall_median_us": 399.86398769542575,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    },
+    {
+      "mode": "native",
+      "repeat": 2,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 411.0102291451767,
+      "global_wall_median_us": 399.8810425400734,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    },
+    {
+      "mode": "packed",
+      "repeat": 2,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 339.851172757335,
+      "global_wall_median_us": 323.1470473110676,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    },
+    {
+      "mode": "arena",
+      "repeat": 2,
+      "messages": 100,
+      "bytes": 1231604,
+      "global_wall_mean_us": 110.91581895016134,
+      "global_wall_median_us": 93.56651571579278,
+      "both_endpoints_bitwise_correct": true,
+      "adam_bitwise_under_identical_gradients": true
+    }
+  ],
+  "scope": "Both endpoints have ready inputs before a Gloo barrier outside the timed region. Timed span includes host launch, GPU transfer and required packing/copying; global earliest start through latest CUDA synchronization. This is a warm transport calibration, not a pure wire time or training speedup. 20 untimed warm-up iterations then 100 measured per repeat; three order-alternating repetitions."
+}

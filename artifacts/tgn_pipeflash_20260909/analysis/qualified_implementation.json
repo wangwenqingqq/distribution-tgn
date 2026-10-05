@@ -1,0 +1,16 @@
+{
+  "qualification": "runs/adapter_cuda_strict_v3/results/qualification.json",
+  "passed": true,
+  "files": {
+    "src/pipe_flash_adapter.py": "57fefeea0b994ee59f44bf956095f28f4a56daf9ba68299537cbc930cb9b5a79",
+    "src/strict_gather.py": "4947a8ba6798bbd9c5fb4436489934a25cc7ef77a5092f692f810e44ec22fdb5",
+    "src/csrc/fused_gather_strict.cu": "369b14771058309a96a98b0eb377c1b2800178c7b0708d6f27640fd0c6aec7b4",
+    "cache/strict_gather/_pipeflash_gather_strict.so": "2d95e63b5621de38334f04b0f7b52f25d4891b8b55987d656daec715dc053fa5",
+    "src/qualify_adapter.py": "3abe633913f9699e4c7f4778cda882e540fb1e610399434abaaa7b8d87132f1b"
+  },
+  "reason": "Initial and learned parameter checks passed with precise trig and explicit FMA",
+  "qualifications": [
+    "runs/adapter_initial_fma_v4/results/qualification.json",
+    "runs/adapter_learned_fma_v2/results/qualification.json"
+  ]
+}

@@ -14,10 +14,10 @@ tags: [experiment, lastfm, profiling]
 
 ## 执行与原始证据
 
-- [独占主线程 spans、on-core、GIL、OSRT 和 GPU 活动](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/thread_gpu_breakdown.json)
-- [双卡时间线](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/thread_gpu_timeline.png)
-- [采样 C++ / DGL 拆分](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/sampler_component_breakdown.json)
-- [NCU warp 指标](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/ncu_sampler_b16_selected.json)与[节点状态依赖代理](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/blob/79b835cf3b08791b602c4cf3a9b72b549d16c4ed/tgn_lastfm_thread_20261004/analysis/dependency_breakdown.json)
+- [独占主线程 spans、on-core、GIL、OSRT 和 GPU 活动](../artifacts/tgn_lastfm_thread_20261004/analysis/thread_gpu_breakdown.json)
+- [双卡时间线](../artifacts/tgn_lastfm_thread_20261004/analysis/thread_gpu_timeline.png)
+- [采样 C++ / DGL 拆分](../artifacts/tgn_lastfm_thread_20261004/analysis/sampler_component_breakdown.json)
+- [NCU warp 指标](../artifacts/tgn_lastfm_thread_20261004/analysis/ncu_sampler_b16_selected.json)与[节点状态依赖代理](../artifacts/tgn_lastfm_thread_20261004/analysis/dependency_breakdown.json)
 
 Nsight v1 没有触发 capture，不作成功 GPU 采集；v2 通过 `NSYS_NVTX_PROFILER_REGISTER_ONLY=0` 捕获两个 rank，按 host/NVTX 对齐分析稳态窗口。单 rank epoch 标记不等于只分析单 rank，GPU 活动与线程按真实进程分别归属。
 

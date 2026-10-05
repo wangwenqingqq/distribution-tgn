@@ -16,7 +16,7 @@ tags: [experiment, pipetgl, wikipedia]
 - 计时：完整进程包括启动、导入、准备、一轮预热优化、训练、验证、保存和退出；单轮取所有 rank 最早开始至最晚结束。正式运行不带探针或状态审计。
 
 ## 执行与原始证据
-- [权威报告及复现入口](https://github.com/wangwenqingqq/tgn-pipeflash-artifact/tree/main/tgn_pipeflash_causal_20260911)。
+- [权威报告及复现入口](../artifacts/tgn_pipeflash_causal_20260911)。
 - 计划：`analysis/final_confirmation_plan.json`；运行索引：`analysis/final_confirm_p8_campaign.json`。
 - 汇总：`analysis/final_confirm_p8_summary.json`；配对区间：`analysis/final_confirm_p8_pairs.json`。
 - 命令与依赖见归档 `REPRODUCE.md`；本次归档没有重跑训练。

@@ -1,0 +1,29 @@
+{
+  "records": [
+    {
+      "variant": "native",
+      "profiled_epoch_wall_seconds": 3.44230785,
+      "gpu_activity_union_seconds": 0.303439728,
+      "gpu_kind_union_seconds": {
+        "compute_kernel": 0.233014766,
+        "memcpy": 0.06818461,
+        "memset": 0.002240352
+      },
+      "gemm_like_kernel_summed_seconds": 0.064351073,
+      "gemm_like_summed_over_profiled_wall": 0.018694165601719787
+    },
+    {
+      "variant": "flash",
+      "profiled_epoch_wall_seconds": 2.800647411,
+      "gpu_activity_union_seconds": 0.302677245,
+      "gpu_kind_union_seconds": {
+        "compute_kernel": 0.21186734,
+        "memcpy": 0.089572753,
+        "memset": 0.001237152
+      },
+      "gemm_like_kernel_summed_seconds": 0.061269995,
+      "gemm_like_summed_over_profiled_wall": 0.021877082691434877
+    }
+  ],
+  "notes": "Diagnostic CUDA traces, not throughput. GEMM-name classifier is approximate; interval sums may overlap. No measured multi-GPU dependency-idle fraction or STC speedup is inferred."
+}
