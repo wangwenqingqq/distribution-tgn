@@ -1,0 +1,96 @@
+{
+  "diagnostic_run_id": "critical_20261006_e2_native_s4101_a1",
+  "reference_run_id": "critical_20261006_s1_qualification_s4101_native_a1",
+  "diagnostic_only": true,
+  "summary": {
+    "run_id": "critical_20261006_e2_native_s4101_a1",
+    "global_epoch_seconds": [
+      13.608921681996435
+    ],
+    "formal_train_seconds": 13.608921681996435,
+    "full_process_seconds": 43.97473060595803,
+    "validation_ap_by_rank": [
+      [
+        0.6054257750511169
+      ],
+      [
+        0.6054257750511169
+      ]
+    ],
+    "resources": {
+      "accepted": true,
+      "reasons": [],
+      "scope": "Before/after observations; internal transient competition is not ruled out."
+    }
+  },
+  "semantic": {
+    "passed": true,
+    "ranks": [
+      {
+        "rank": 0,
+        "checks": {
+          "initial_model.pt": {
+            "bitwise_equal": true,
+            "first_differences": []
+          },
+          "final_model.pt": {
+            "bitwise_equal": true,
+            "first_differences": []
+          },
+          "final_memory.pt": {
+            "bitwise_equal": true,
+            "first_differences": []
+          },
+          "final_optimizer_rng.pt": {
+            "bitwise_equal": true,
+            "first_differences": []
+          },
+          "ap_curve": {
+            "bitwise_equal": true
+          },
+          "reference_timestamp_audit": {
+            "bitwise_equal": true,
+            "future_reads": 0
+          },
+          "diagnostic_timestamp_audit": {
+            "bitwise_equal": true,
+            "future_reads": 0
+          }
+        }
+      },
+      {
+        "rank": 1,
+        "checks": {
+          "initial_model.pt": {
+            "bitwise_equal": true,
+            "first_differences": []
+          },
+          "final_model.pt": {
+            "bitwise_equal": true,
+            "first_differences": []
+          },
+          "final_memory.pt": {
+            "bitwise_equal": true,
+            "first_differences": []
+          },
+          "final_optimizer_rng.pt": {
+            "bitwise_equal": true,
+            "first_differences": []
+          },
+          "ap_curve": {
+            "bitwise_equal": true
+          },
+          "reference_timestamp_audit": {
+            "bitwise_equal": true,
+            "future_reads": 0
+          },
+          "diagnostic_timestamp_audit": {
+            "bitwise_equal": true,
+            "future_reads": 0
+          }
+        }
+      }
+    ],
+    "optimizer_rng_checked": true
+  }
+}

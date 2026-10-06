@@ -1,10 +1,12 @@
 # PipeTGL + Flash：代码与实验证据归档
 
-截至 2026-10-05，归档 Wikipedia 原型、状态关键路径实验和新完成的 LastFM 双卡线程 / warp 第一轮实验。研究判断与文献笔记见本仓库[研究首页](../README.md)。
+截至 2026-10-06，归档 Wikipedia 原型、状态关键路径实验、LastFM 双卡线程 / warp 第一轮和 E0/E1/E2 补充实验。研究判断与文献笔记见本仓库[研究首页](../README.md)。
 
 本目录由原 `tgn-pipeflash-artifact` 整体迁入，提交历史与实测文件保留，详见[合并记录](MIGRATION.md)。下面及历史复现文档中的“仓库根目录”指本目录 `artifacts/`；从整个项目根目录运行时，在原命令路径前加 `artifacts/`。后续代码、实验结果与研究笔记在 `distribution-tgn` 统一维护。
 
 ## LastFM 最新结果
+
+[新配对与端点诊断](tgn_lastfm_critical_20261006/README.md)：参数 arena 的六次新正式进程保持模型、内存和 AP 逐位一致，完整用时几何平均减少 2.78%，低于 3% 筛选门槛。四个主要窗口的 256 条状态／参数消息内容一致，确认 forward 与 optimizer 输入使用不同参数版本。下面保留 2026-10-05 第一轮结果。
 
 [完整阅读入口](tgn_lastfm_thread_20261004/README.md) · [详细报告](tgn_lastfm_thread_20261004/results_round1.txt) · [运行与核验](tgn_lastfm_thread_20261004/REPRODUCE.md)
 

@@ -1,0 +1,1195 @@
+{
+  "run_id": "critical_20261006_e2_native_s4101_a1",
+  "diagnostic_only": true,
+  "raw_events": 17172,
+  "logical_messages": 6355,
+  "unpaired_or_ambiguous_messages": [],
+  "selected_payload_messages": 288,
+  "payload_hash_failures": [],
+  "payload_hash_verified": 280,
+  "payload_hash_unobserved_outside_capture": 8,
+  "batch_adjacency_failures": [],
+  "state_node_order_failures": [],
+  "cpu_writes_observed": 1509,
+  "cpu_provenance_total": {
+    "read_end_unobserved": 175372,
+    "observed_cpu_storage_writer": 208908,
+    "initial_reset": 40028
+  },
+  "support_current_storage_mismatch_count": 0,
+  "parameter_tensor_counts": [
+    24
+  ],
+  "parameter_payload_bytes": [
+    891604
+  ],
+  "cuda_clock_contracts": [
+    {
+      "rank": 0,
+      "windows": [
+        [
+          16,
+          47
+        ],
+        [
+          128,
+          159
+        ],
+        [
+          784,
+          815
+        ],
+        [
+          1472,
+          1503
+        ]
+      ],
+      "boundary_context_batches": 2,
+      "clock": "perf_counter_ns, same host; per-device CUDA event mapping",
+      "anchor_host_bracket_ns": [
+        1057745628627021,
+        1057745628680016
+      ],
+      "clock_mapping_half_bracket_ns": 26497,
+      "events": 8587,
+      "retained_payloads": 288,
+      "diagnostic_only": true,
+      "limitations": [
+        "CUDA event boundaries are stream fences, not actual kernel start/end",
+        "Send completion is unobserved; native send does not wait for Work",
+        "Parameter receive copy and CPU audits perturb this diagnostic",
+        "CPU field versions describe storage provenance, not temporal correctness",
+        "Logical message pairing and producer consistency require offline validation"
+      ]
+    },
+    {
+      "rank": 1,
+      "windows": [
+        [
+          16,
+          47
+        ],
+        [
+          128,
+          159
+        ],
+        [
+          784,
+          815
+        ],
+        [
+          1472,
+          1503
+        ]
+      ],
+      "boundary_context_batches": 2,
+      "clock": "perf_counter_ns, same host; per-device CUDA event mapping",
+      "anchor_host_bracket_ns": [
+        1057745629031686,
+        1057745629075822
+      ],
+      "clock_mapping_half_bracket_ns": 22068,
+      "events": 8585,
+      "retained_payloads": 288,
+      "diagnostic_only": true,
+      "limitations": [
+        "CUDA event boundaries are stream fences, not actual kernel start/end",
+        "Send completion is unobserved; native send does not wait for Work",
+        "Parameter receive copy and CPU audits perturb this diagnostic",
+        "CPU field versions describe storage provenance, not temporal correctness",
+        "Logical message pairing and producer consistency require offline validation"
+      ]
+    }
+  ],
+  "windows": [
+    {
+      "global_batches": [
+        16,
+        47
+      ],
+      "independent_window": true,
+      "matched_selected_messages": 64,
+      "hash_verified": 64,
+      "parameter_steps": 32,
+      "forward_vs_step_input_distinct": 32,
+      "parameter_versions_unresolved": 0,
+      "support_node_field_provenance": {
+        "observed_cpu_storage_writer": 32280,
+        "initial_reset": 19312
+      },
+      "new_diagnostic_endpoint_us": {
+        "parameter": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 32,
+            "median": 9114.6985,
+            "p95_nearest_rank": 12769.544,
+            "min": 6533.007,
+            "max": 16712.003
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 32,
+            "median": -8378.0705,
+            "p95_nearest_rank": -6289.643,
+            "min": -16147.657,
+            "max": -5962.509
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 32,
+            "median": 306.145,
+            "p95_nearest_rank": 437.226,
+            "min": 228.638,
+            "max": 450.348
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 32,
+            "median": 598.8285000000001,
+            "p95_nearest_rank": 690.772,
+            "min": 487.088,
+            "max": 696.73
+          }
+        },
+        "state": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 32,
+            "median": 8409.502499999999,
+            "p95_nearest_rank": 11883.207,
+            "min": 4028.185,
+            "max": 15799.558
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 32,
+            "median": -8152.516,
+            "p95_nearest_rank": -4852.862,
+            "min": -15567.201,
+            "max": -3801.135
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 32,
+            "median": 1806.885,
+            "p95_nearest_rank": 1919.098,
+            "min": 1625.0,
+            "max": 2006.591
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 32,
+            "median": 215.63299999999998,
+            "p95_nearest_rank": 294.95,
+            "min": 205.458,
+            "max": 312.761
+          }
+        }
+      },
+      "historical_thread_intervals": [
+        {
+          "rank": 0,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 16,
+              "median": 1022.5335,
+              "p95_nearest_rank": 1101.208,
+              "min": 730.05,
+              "max": 1101.208
+            },
+            "worker_first_instruction/state": {
+              "n": 16,
+              "median": 1031.6315,
+              "p95_nearest_rank": 1134.505,
+              "min": 581.241,
+              "max": 1134.505
+            },
+            "thread_start/parameter": {
+              "n": 16,
+              "median": 1284.2855,
+              "p95_nearest_rank": 1513.611,
+              "min": 920.195,
+              "max": 1513.611
+            },
+            "thread_start/state": {
+              "n": 16,
+              "median": 1212.5639999999999,
+              "p95_nearest_rank": 1350.887,
+              "min": 661.273,
+              "max": 1350.887
+            },
+            "thread_join": {
+              "n": 16,
+              "median": 22.3475,
+              "p95_nearest_rank": 30.154,
+              "min": 20.686,
+              "max": 30.154
+            },
+            "loss_scalar_read": {
+              "n": 16,
+              "median": 68.7005,
+              "p95_nearest_rank": 76.345,
+              "min": 49.38,
+              "max": 76.345
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 16,
+              "median": 15.814,
+              "p95_nearest_rank": 38.181,
+              "min": 14.923,
+              "max": 38.181
+            },
+            "parameter_recv_api": {
+              "n": 16,
+              "median": 1205.4855,
+              "p95_nearest_rank": 1653.082,
+              "min": 1097.43,
+              "max": 1653.082
+            },
+            "state_receive": {
+              "n": 16,
+              "median": 1093.946,
+              "p95_nearest_rank": 1125.673,
+              "min": 1066.331,
+              "max": 1125.673
+            }
+          }
+        },
+        {
+          "rank": 1,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 16,
+              "median": 1034.92,
+              "p95_nearest_rank": 1115.317,
+              "min": 999.248,
+              "max": 1115.317
+            },
+            "worker_first_instruction/state": {
+              "n": 16,
+              "median": 1008.203,
+              "p95_nearest_rank": 1459.911,
+              "min": 611.281,
+              "max": 1459.911
+            },
+            "thread_start/parameter": {
+              "n": 16,
+              "median": 1302.4295,
+              "p95_nearest_rank": 1418.238,
+              "min": 1256.174,
+              "max": 1418.238
+            },
+            "thread_start/state": {
+              "n": 16,
+              "median": 1206.4405000000002,
+              "p95_nearest_rank": 1659.78,
+              "min": 693.414,
+              "max": 1659.78
+            },
+            "thread_join": {
+              "n": 16,
+              "median": 27.774,
+              "p95_nearest_rank": 29.802,
+              "min": 20.684,
+              "max": 29.802
+            },
+            "loss_scalar_read": {
+              "n": 16,
+              "median": 69.831,
+              "p95_nearest_rank": 78.027,
+              "min": 50.941,
+              "max": 78.027
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 16,
+              "median": 15.656500000000001,
+              "p95_nearest_rank": 29.897,
+              "min": 14.905,
+              "max": 29.897
+            },
+            "parameter_recv_api": {
+              "n": 16,
+              "median": 1392.3845000000001,
+              "p95_nearest_rank": 1648.578,
+              "min": 1094.413,
+              "max": 1648.578
+            },
+            "state_receive": {
+              "n": 16,
+              "median": 1087.489,
+              "p95_nearest_rank": 1108.592,
+              "min": 1033.306,
+              "max": 1108.592
+            }
+          }
+        }
+      ]
+    },
+    {
+      "global_batches": [
+        128,
+        159
+      ],
+      "independent_window": true,
+      "matched_selected_messages": 64,
+      "hash_verified": 64,
+      "parameter_steps": 32,
+      "forward_vs_step_input_distinct": 32,
+      "parameter_versions_unresolved": 0,
+      "support_node_field_provenance": {
+        "observed_cpu_storage_writer": 41764,
+        "initial_reset": 12564
+      },
+      "new_diagnostic_endpoint_us": {
+        "parameter": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 32,
+            "median": 9497.3755,
+            "p95_nearest_rank": 16928.19,
+            "min": 4851.717,
+            "max": 16989.348
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 32,
+            "median": -8829.908,
+            "p95_nearest_rank": -4649.367,
+            "min": -16415.115,
+            "max": -4288.152
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 32,
+            "median": 339.173,
+            "p95_nearest_rank": 422.851,
+            "min": 245.606,
+            "max": 485.596
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 32,
+            "median": 496.8105,
+            "p95_nearest_rank": 687.637,
+            "min": 482.42,
+            "max": 688.535
+          }
+        },
+        "state": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 32,
+            "median": 8410.828,
+            "p95_nearest_rank": 13582.976,
+            "min": 2996.858,
+            "max": 16128.873
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 32,
+            "median": -8142.3555,
+            "p95_nearest_rank": -3247.661,
+            "min": -15889.789,
+            "max": -2681.68
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 32,
+            "median": 1785.3395,
+            "p95_nearest_rank": 2021.972,
+            "min": 1657.959,
+            "max": 2027.587
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 32,
+            "median": 218.8675,
+            "p95_nearest_rank": 293.477,
+            "min": 206.189,
+            "max": 312.183
+          }
+        }
+      },
+      "historical_thread_intervals": [
+        {
+          "rank": 0,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 16,
+              "median": 991.1705,
+              "p95_nearest_rank": 1038.671,
+              "min": 691.622,
+              "max": 1038.671
+            },
+            "worker_first_instruction/state": {
+              "n": 16,
+              "median": 1020.8305,
+              "p95_nearest_rank": 1108.398,
+              "min": 594.661,
+              "max": 1108.398
+            },
+            "thread_start/parameter": {
+              "n": 16,
+              "median": 1257.2335,
+              "p95_nearest_rank": 1314.614,
+              "min": 839.69,
+              "max": 1314.614
+            },
+            "thread_start/state": {
+              "n": 16,
+              "median": 1200.545,
+              "p95_nearest_rank": 1308.863,
+              "min": 703.801,
+              "max": 1308.863
+            },
+            "thread_join": {
+              "n": 16,
+              "median": 20.889000000000003,
+              "p95_nearest_rank": 28.585,
+              "min": 20.187,
+              "max": 28.585
+            },
+            "loss_scalar_read": {
+              "n": 16,
+              "median": 51.682500000000005,
+              "p95_nearest_rank": 102.77,
+              "min": 50.149,
+              "max": 102.77
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 16,
+              "median": 15.837,
+              "p95_nearest_rank": 1480.436,
+              "min": 15.17,
+              "max": 1480.436
+            },
+            "parameter_recv_api": {
+              "n": 16,
+              "median": 1217.825,
+              "p95_nearest_rank": 1674.359,
+              "min": 1158.689,
+              "max": 1674.359
+            },
+            "state_receive": {
+              "n": 16,
+              "median": 1112.2714999999998,
+              "p95_nearest_rank": 2549.843,
+              "min": 1085.799,
+              "max": 2549.843
+            }
+          }
+        },
+        {
+          "rank": 1,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 16,
+              "median": 826.2345,
+              "p95_nearest_rank": 1059.215,
+              "min": 683.594,
+              "max": 1059.215
+            },
+            "worker_first_instruction/state": {
+              "n": 16,
+              "median": 1018.1220000000001,
+              "p95_nearest_rank": 1079.341,
+              "min": 603.345,
+              "max": 1079.341
+            },
+            "thread_start/parameter": {
+              "n": 16,
+              "median": 1058.851,
+              "p95_nearest_rank": 1363.555,
+              "min": 812.624,
+              "max": 1363.555
+            },
+            "thread_start/state": {
+              "n": 16,
+              "median": 1195.292,
+              "p95_nearest_rank": 1267.357,
+              "min": 670.116,
+              "max": 1267.357
+            },
+            "thread_join": {
+              "n": 16,
+              "median": 21.0845,
+              "p95_nearest_rank": 27.601,
+              "min": 20.202,
+              "max": 27.601
+            },
+            "loss_scalar_read": {
+              "n": 16,
+              "median": 50.7975,
+              "p95_nearest_rank": 112.478,
+              "min": 48.865,
+              "max": 112.478
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 16,
+              "median": 15.507,
+              "p95_nearest_rank": 27.992,
+              "min": 14.531,
+              "max": 27.992
+            },
+            "parameter_recv_api": {
+              "n": 16,
+              "median": 1199.998,
+              "p95_nearest_rank": 1658.269,
+              "min": 1176.143,
+              "max": 1658.269
+            },
+            "state_receive": {
+              "n": 16,
+              "median": 1100.656,
+              "p95_nearest_rank": 1135.772,
+              "min": 1074.628,
+              "max": 1135.772
+            }
+          }
+        }
+      ]
+    },
+    {
+      "global_batches": [
+        140,
+        147
+      ],
+      "independent_window": false,
+      "matched_selected_messages": 16,
+      "hash_verified": 16,
+      "parameter_steps": 8,
+      "forward_vs_step_input_distinct": 8,
+      "parameter_versions_unresolved": 0,
+      "support_node_field_provenance": {
+        "observed_cpu_storage_writer": 10468,
+        "initial_reset": 3236
+      },
+      "new_diagnostic_endpoint_us": {
+        "parameter": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 8,
+            "median": 9497.3755,
+            "p95_nearest_rank": 12998.991,
+            "min": 5386.751,
+            "max": 12998.991
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 8,
+            "median": -8829.908,
+            "p95_nearest_rank": -4809.367,
+            "min": -12242.121,
+            "max": -4809.367
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 8,
+            "median": 340.2105,
+            "p95_nearest_rank": 485.596,
+            "min": 296.875,
+            "max": 485.596
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 8,
+            "median": 505.7755,
+            "p95_nearest_rank": 685.228,
+            "min": 494.769,
+            "max": 685.228
+          }
+        },
+        "state": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 8,
+            "median": 7727.4455,
+            "p95_nearest_rank": 11955.778,
+            "min": 4517.488,
+            "max": 11955.778
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 8,
+            "median": -7479.8105,
+            "p95_nearest_rank": -4262.754,
+            "min": -11700.159,
+            "max": -4262.754
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 8,
+            "median": 1847.656,
+            "p95_nearest_rank": 1928.711,
+            "min": 1657.959,
+            "max": 1928.711
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 8,
+            "median": 221.502,
+            "p95_nearest_rank": 257.19,
+            "min": 212.669,
+            "max": 257.19
+          }
+        }
+      },
+      "historical_thread_intervals": [
+        {
+          "rank": 0,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 4,
+              "median": 912.4639999999999,
+              "p95_nearest_rank": 1038.671,
+              "min": 702.21,
+              "max": 1038.671
+            },
+            "worker_first_instruction/state": {
+              "n": 4,
+              "median": 1045.009,
+              "p95_nearest_rank": 1108.398,
+              "min": 708.862,
+              "max": 1108.398
+            },
+            "thread_start/parameter": {
+              "n": 4,
+              "median": 1163.7945,
+              "p95_nearest_rank": 1314.614,
+              "min": 874.042,
+              "max": 1314.614
+            },
+            "thread_start/state": {
+              "n": 4,
+              "median": 1237.1875,
+              "p95_nearest_rank": 1308.863,
+              "min": 806.303,
+              "max": 1308.863
+            },
+            "thread_join": {
+              "n": 4,
+              "median": 21.146500000000003,
+              "p95_nearest_rank": 28.585,
+              "min": 20.341,
+              "max": 28.585
+            },
+            "loss_scalar_read": {
+              "n": 4,
+              "median": 54.4025,
+              "p95_nearest_rank": 102.77,
+              "min": 50.325,
+              "max": 102.77
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 4,
+              "median": 20.0635,
+              "p95_nearest_rank": 71.958,
+              "min": 15.274,
+              "max": 71.958
+            },
+            "parameter_recv_api": {
+              "n": 4,
+              "median": 1216.6215,
+              "p95_nearest_rank": 1674.359,
+              "min": 1194.193,
+              "max": 1674.359
+            },
+            "state_receive": {
+              "n": 4,
+              "median": 1118.8085,
+              "p95_nearest_rank": 1192.848,
+              "min": 1106.013,
+              "max": 1192.848
+            }
+          }
+        },
+        {
+          "rank": 1,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 4,
+              "median": 784.8695,
+              "p95_nearest_rank": 993.42,
+              "min": 701.878,
+              "max": 993.42
+            },
+            "worker_first_instruction/state": {
+              "n": 4,
+              "median": 1031.181,
+              "p95_nearest_rank": 1047.603,
+              "min": 620.22,
+              "max": 1047.603
+            },
+            "thread_start/parameter": {
+              "n": 4,
+              "median": 986.116,
+              "p95_nearest_rank": 1255.686,
+              "min": 855.546,
+              "max": 1255.686
+            },
+            "thread_start/state": {
+              "n": 4,
+              "median": 1209.1080000000002,
+              "p95_nearest_rank": 1222.787,
+              "min": 717.827,
+              "max": 1222.787
+            },
+            "thread_join": {
+              "n": 4,
+              "median": 21.105,
+              "p95_nearest_rank": 22.04,
+              "min": 20.589,
+              "max": 22.04
+            },
+            "loss_scalar_read": {
+              "n": 4,
+              "median": 50.5985,
+              "p95_nearest_rank": 82.763,
+              "min": 50.065,
+              "max": 82.763
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 4,
+              "median": 15.321000000000002,
+              "p95_nearest_rank": 15.462,
+              "min": 14.963,
+              "max": 15.462
+            },
+            "parameter_recv_api": {
+              "n": 4,
+              "median": 1208.8400000000001,
+              "p95_nearest_rank": 1220.493,
+              "min": 1176.143,
+              "max": 1220.493
+            },
+            "state_receive": {
+              "n": 4,
+              "median": 1097.474,
+              "p95_nearest_rank": 1099.74,
+              "min": 1085.813,
+              "max": 1099.74
+            }
+          }
+        }
+      ]
+    },
+    {
+      "global_batches": [
+        784,
+        815
+      ],
+      "independent_window": true,
+      "matched_selected_messages": 64,
+      "hash_verified": 64,
+      "parameter_steps": 32,
+      "forward_vs_step_input_distinct": 32,
+      "parameter_versions_unresolved": 0,
+      "support_node_field_provenance": {
+        "observed_cpu_storage_writer": 53088,
+        "initial_reset": 3600
+      },
+      "new_diagnostic_endpoint_us": {
+        "parameter": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 32,
+            "median": 8427.9785,
+            "p95_nearest_rank": 12160.8,
+            "min": 5451.994,
+            "max": 16543.124
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 32,
+            "median": -7714.157499999999,
+            "p95_nearest_rank": -4812.121,
+            "min": -15733.114,
+            "max": -4800.833
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 32,
+            "median": 316.16200000000003,
+            "p95_nearest_rank": 366.211,
+            "min": 249.024,
+            "max": 381.836
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 32,
+            "median": 499.256,
+            "p95_nearest_rank": 644.994,
+            "min": 486.297,
+            "max": 679.577
+          }
+        },
+        "state": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 32,
+            "median": 6844.726500000001,
+            "p95_nearest_rank": 10879.06,
+            "min": 3351.408,
+            "max": 15471.835
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 32,
+            "median": -6522.896,
+            "p95_nearest_rank": -3456.018,
+            "min": -15072.867,
+            "max": -3036.477
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 32,
+            "median": 1957.519,
+            "p95_nearest_rank": 2088.867,
+            "min": 1793.945,
+            "max": 2106.445
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 32,
+            "median": 221.6175,
+            "p95_nearest_rank": 308.607,
+            "min": 207.851,
+            "max": 363.514
+          }
+        }
+      },
+      "historical_thread_intervals": [
+        {
+          "rank": 0,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 16,
+              "median": 987.7035000000001,
+              "p95_nearest_rank": 1065.096,
+              "min": 675.53,
+              "max": 1065.096
+            },
+            "worker_first_instruction/state": {
+              "n": 16,
+              "median": 1001.892,
+              "p95_nearest_rank": 1605.309,
+              "min": 580.202,
+              "max": 1605.309
+            },
+            "thread_start/parameter": {
+              "n": 16,
+              "median": 1257.951,
+              "p95_nearest_rank": 1353.726,
+              "min": 857.208,
+              "max": 1353.726
+            },
+            "thread_start/state": {
+              "n": 16,
+              "median": 1173.354,
+              "p95_nearest_rank": 1830.822,
+              "min": 665.716,
+              "max": 1830.822
+            },
+            "thread_join": {
+              "n": 16,
+              "median": 12.9905,
+              "p95_nearest_rank": 16.582,
+              "min": 12.411,
+              "max": 16.582
+            },
+            "loss_scalar_read": {
+              "n": 16,
+              "median": 42.92,
+              "p95_nearest_rank": 50.1,
+              "min": 40.296,
+              "max": 50.1
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 16,
+              "median": 2563.7225,
+              "p95_nearest_rank": 4210.466,
+              "min": 282.236,
+              "max": 4210.466
+            },
+            "parameter_recv_api": {
+              "n": 16,
+              "median": 725.181,
+              "p95_nearest_rank": 878.29,
+              "min": 684.01,
+              "max": 878.29
+            },
+            "state_receive": {
+              "n": 16,
+              "median": 3520.062,
+              "p95_nearest_rank": 5540.556,
+              "min": 1235.611,
+              "max": 5540.556
+            }
+          }
+        },
+        {
+          "rank": 1,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 16,
+              "median": 1012.57,
+              "p95_nearest_rank": 1208.063,
+              "min": 707.089,
+              "max": 1208.063
+            },
+            "worker_first_instruction/state": {
+              "n": 16,
+              "median": 1019.4745,
+              "p95_nearest_rank": 1207.976,
+              "min": 599.579,
+              "max": 1207.976
+            },
+            "thread_start/parameter": {
+              "n": 16,
+              "median": 1280.153,
+              "p95_nearest_rank": 1562.584,
+              "min": 858.311,
+              "max": 1562.584
+            },
+            "thread_start/state": {
+              "n": 16,
+              "median": 1194.1455,
+              "p95_nearest_rank": 1380.579,
+              "min": 691.857,
+              "max": 1380.579
+            },
+            "thread_join": {
+              "n": 16,
+              "median": 28.811,
+              "p95_nearest_rank": 36.075,
+              "min": 21.422,
+              "max": 36.075
+            },
+            "loss_scalar_read": {
+              "n": 16,
+              "median": 52.619,
+              "p95_nearest_rank": 67.63,
+              "min": 51.18,
+              "max": 67.63
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 16,
+              "median": 16.197000000000003,
+              "p95_nearest_rank": 21.559,
+              "min": 15.48,
+              "max": 21.559
+            },
+            "parameter_recv_api": {
+              "n": 16,
+              "median": 1660.988,
+              "p95_nearest_rank": 1794.024,
+              "min": 1252.462,
+              "max": 1794.024
+            },
+            "state_receive": {
+              "n": 16,
+              "median": 1187.9904999999999,
+              "p95_nearest_rank": 1226.701,
+              "min": 1151.624,
+              "max": 1226.701
+            }
+          }
+        }
+      ]
+    },
+    {
+      "global_batches": [
+        1472,
+        1503
+      ],
+      "independent_window": true,
+      "matched_selected_messages": 64,
+      "hash_verified": 64,
+      "parameter_steps": 32,
+      "forward_vs_step_input_distinct": 32,
+      "parameter_versions_unresolved": 0,
+      "support_node_field_provenance": {
+        "observed_cpu_storage_writer": 58656,
+        "initial_reset": 140
+      },
+      "new_diagnostic_endpoint_us": {
+        "parameter": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 32,
+            "median": 8810.059000000001,
+            "p95_nearest_rank": 14417.147,
+            "min": 5206.876,
+            "max": 14489.412
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 32,
+            "median": -8083.8435,
+            "p95_nearest_rank": -4486.839,
+            "min": -13696.132,
+            "max": -4454.462
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 32,
+            "median": 350.098,
+            "p95_nearest_rank": 440.429,
+            "min": 228.516,
+            "max": 442.383
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 32,
+            "median": 503.59450000000004,
+            "p95_nearest_rank": 695.808,
+            "min": 489.328,
+            "max": 699.993
+          }
+        },
+        "state": {
+          "payload_ready_to_receive_ready_us": {
+            "n": 32,
+            "median": 6842.7735,
+            "p95_nearest_rank": 13362.46,
+            "min": 2493.009,
+            "max": 13645.662
+          },
+          "producer_gpu_ready_minus_receiver_host_call_us": {
+            "n": 32,
+            "median": -6456.9835,
+            "p95_nearest_rank": -2980.268,
+            "min": -13277.529,
+            "max": -2102.115
+          },
+          "producer_stream_fence_minus_payload_ready_us": {
+            "n": 32,
+            "median": 1953.613,
+            "p95_nearest_rank": 2129.882,
+            "min": 1777.344,
+            "max": 2145.507
+          },
+          "receiver_host_call_to_wait_return_us": {
+            "n": 32,
+            "median": 215.90449999999998,
+            "p95_nearest_rank": 288.42,
+            "min": 207.211,
+            "max": 530.629
+          }
+        }
+      },
+      "historical_thread_intervals": [
+        {
+          "rank": 0,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 16,
+              "median": 1031.3815,
+              "p95_nearest_rank": 3559.554,
+              "min": 732.754,
+              "max": 3559.554
+            },
+            "worker_first_instruction/state": {
+              "n": 16,
+              "median": 749.615,
+              "p95_nearest_rank": 2296.769,
+              "min": 613.957,
+              "max": 2296.769
+            },
+            "thread_start/parameter": {
+              "n": 16,
+              "median": 1308.435,
+              "p95_nearest_rank": 3761.095,
+              "min": 905.812,
+              "max": 3761.095
+            },
+            "thread_start/state": {
+              "n": 16,
+              "median": 870.057,
+              "p95_nearest_rank": 2455.007,
+              "min": 712.601,
+              "max": 2455.007
+            },
+            "thread_join": {
+              "n": 16,
+              "median": 13.088000000000001,
+              "p95_nearest_rank": 15.978,
+              "min": 12.16,
+              "max": 15.978
+            },
+            "loss_scalar_read": {
+              "n": 16,
+              "median": 42.382,
+              "p95_nearest_rank": 49.196,
+              "min": 41.366,
+              "max": 49.196
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 16,
+              "median": 2429.4865,
+              "p95_nearest_rank": 6502.083,
+              "min": 12.319,
+              "max": 6502.083
+            },
+            "parameter_recv_api": {
+              "n": 16,
+              "median": 705.788,
+              "p95_nearest_rank": 855.399,
+              "min": 685.614,
+              "max": 855.399
+            },
+            "state_receive": {
+              "n": 16,
+              "median": 3514.1075,
+              "p95_nearest_rank": 7756.058,
+              "min": 954.777,
+              "max": 7756.058
+            }
+          }
+        },
+        {
+          "rank": 1,
+          "historical_host_interval_us": {
+            "worker_first_instruction/parameter": {
+              "n": 16,
+              "median": 1141.7075,
+              "p95_nearest_rank": 3006.951,
+              "min": 735.612,
+              "max": 3006.951
+            },
+            "worker_first_instruction/state": {
+              "n": 16,
+              "median": 1047.606,
+              "p95_nearest_rank": 4020.294,
+              "min": 634.669,
+              "max": 4020.294
+            },
+            "thread_start/parameter": {
+              "n": 16,
+              "median": 1414.4125,
+              "p95_nearest_rank": 3178.857,
+              "min": 942.533,
+              "max": 3178.857
+            },
+            "thread_start/state": {
+              "n": 16,
+              "median": 1237.0729999999999,
+              "p95_nearest_rank": 4121.613,
+              "min": 726.946,
+              "max": 4121.613
+            },
+            "thread_join": {
+              "n": 16,
+              "median": 25.7205,
+              "p95_nearest_rank": 30.281,
+              "min": 21.354,
+              "max": 30.281
+            },
+            "loss_scalar_read": {
+              "n": 16,
+              "median": 54.3805,
+              "p95_nearest_rank": 689.402,
+              "min": 50.258,
+              "max": 689.402
+            },
+            "state_gpu_ready_cpu_wait": {
+              "n": 16,
+              "median": 16.607999999999997,
+              "p95_nearest_rank": 21.51,
+              "min": 15.506,
+              "max": 21.51
+            },
+            "parameter_recv_api": {
+              "n": 16,
+              "median": 1513.1395000000002,
+              "p95_nearest_rank": 1803.645,
+              "min": 1246.985,
+              "max": 1803.645
+            },
+            "state_receive": {
+              "n": 16,
+              "median": 1212.3405,
+              "p95_nearest_rank": 1322.222,
+              "min": 1147.423,
+              "max": 1322.222
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "whole_batch_critical_path_verified": false,
+  "limitations": [
+    "Old kernel/thread trace and new version diagnostic are separate runs; their clocks are not joined",
+    "Endpoint intervals include queueing, peer readiness and NCCL; no pure wire-time estimate",
+    "CPU provenance is resolved only for bounded support snapshots without overlapping writes",
+    "Target CPU gather ends and actual GPU consumer kernel boundaries remain unobserved",
+    "No state/parameter versions establish that changing native staleness is semantically safe",
+    "GPU compute union is observed kernel presence, not SM idle or occupancy"
+  ]
+}

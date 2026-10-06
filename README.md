@@ -7,9 +7,9 @@ tags: [research]
 
 **一个课题，一个仓库：研究笔记、实验代码与可追溯的证据。**
 
-> 更新至 2026-10-05：LastFM 双卡已完成 15 次无 profiler 短训练，以及 CPU 线程 / GPU warp 两层诊断。组合方案固定工作量的完整进程用时减少 20.1%，但 AP 和训练轨迹不同，尚不支持同精度达标加速。Wikipedia 八卡历史证据保留。
+> 更新至 2026-10-06：LastFM 新完成参数传输的三个配对 seed 和端点版本诊断。保留 native 轨迹的 arena 完整用时减少 2.78%，低于 3% 筛选门槛。此前组合方案减少 20.1% 但 AP 不等价；Wikipedia 八卡历史证据保留。
 
-最新成果：[LastFM 短训练](40-Experiments/2026-10-05-lastfm-short-training.md)、[两层 breakdown](40-Experiments/2026-10-05-lastfm-thread-breakdown.md)、[参数通信消融与排除记录](40-Experiments/2026-10-05-lastfm-parameter-transport.md)。
+最新成果：[新配对与端点版本诊断](40-Experiments/2026-10-06-lastfm-critical-path.md)、[LastFM 短训练](40-Experiments/2026-10-05-lastfm-short-training.md)、[两层 breakdown](40-Experiments/2026-10-05-lastfm-thread-breakdown.md)、[参数通信消融与排除记录](40-Experiments/2026-10-05-lastfm-parameter-transport.md)。
 
 历史成果：[Wikipedia 最终对比](40-Experiments/2026-09-11-final-confirmation.md)、[状态路径干预](40-Experiments/2026-09-11-state-critical-path.md)、[撤销旧结果与正确性修复](30-Ideas/2026-09-11-withdraw-invalid-speedup.md)、[状态调度假设](30-Ideas/2026-09-16-state-readiness.md)。
 
@@ -22,6 +22,7 @@ tags: [research]
 ```bash
 python3 artifacts/tgn_lastfm_thread_20261004/verify_archive.py
 python3 artifacts/tgn_lastfm_thread_20261004/verify_archive.py --recompute
+python3 artifacts/tgn_lastfm_critical_20261006/verify_archive.py
 ```
 
 第二条需要 NumPy，会在临时目录复算统计，不使用 GPU。归档是原环境研究代码，训练所需依赖、数据及独立运行目录见[复现说明](artifacts/tgn_lastfm_thread_20261004/REPRODUCE.md)；该历史文档中的“仓库根目录”现在对应本仓库的 `artifacts/`。

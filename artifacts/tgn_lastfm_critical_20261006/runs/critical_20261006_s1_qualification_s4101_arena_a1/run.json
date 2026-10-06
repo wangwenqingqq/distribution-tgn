@@ -1,0 +1,40 @@
+{
+  "start_utc": "2026-10-06T06:47:09.801725+00:00",
+  "end_utc": "2026-10-06T06:47:52.294755+00:00",
+  "indices": [
+    4,
+    5
+  ],
+  "status": "passed",
+  "exit_code": 0,
+  "child_process_wall_seconds": 42.12433819100261,
+  "command": [
+    "/home/data/wangxuran/isaacsim6/env/bin/python",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nproc_per_node",
+    "2",
+    "/home/data/wangxuran/tgn_lastfm_critical_20261006/src/pipe_paired_bench.py",
+    "--output",
+    "/home/data/wangxuran/tgn_lastfm_critical_20261006/runs/critical_20261006_s1_qualification_s4101_arena_a1/results",
+    "--dataset",
+    "LASTFM",
+    "--epochs",
+    "1",
+    "--seed",
+    "4101",
+    "--variant",
+    "native",
+    "--ablation",
+    "baseline",
+    "--parameter-transport",
+    "arena",
+    "--complete-batches",
+    "--deterministic-mailbox",
+    "--control-barrier",
+    "gloo",
+    "--capture-optimizer-rng",
+    "--audit-state"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "campaign_id": "critical_20261006",
+  "session_id": "s1",
+  "source_commit": "f9998a2a1e6645af050c826fe950cbdd97884cbe",
+  "indices": [
+    4,
+    5
+  ],
+  "source_hashes": {
+    "check_runner.py": "153ae7f8cb354a6eb590656070f6a9d8f8df2edd16b6b261978f9467a4512e18",
+    "guard.py": "4504937ed26d2748d0f01d81589de3a558433e0c4774ac3acf7ad849c22d8c49",
+    "parameter_arena.py": "0e93afda583931342e93b06a9e57929fab6f7acae9fb5e754aefe93c1f4f071f",
+    "pipe_flash_adapter.py": "57fefeea0b994ee59f44bf956095f28f4a56daf9ba68299537cbc930cb9b5a79",
+    "pipe_paired_bench.py": "68a5c1ecdc018c0b20ffce839722b9bb7c25b6e790ab9c1f1099eb48752353f6",
+    "prefix_snapshot.py": "f7ff6b9bbe72aaf816d9702cca40ebfd72fc5e2ddc4d95059ac8694178e9eb60",
+    "rendezvous_probe.py": "29031c699428ed77444010204d9bd756c8bf7841f6545b03c7090dd0ee6c6642",
+    "run_interleaved_parameter_ablation.py": "a3b0148edea48e75ce58449da8650b012807d7b5fab79ec138f4f9dc531a6766",
+    "strict_gather.py": "4947a8ba6798bbd9c5fb4436489934a25cc7ef77a5092f692f810e44ec22fdb5",
+    "thread_probe.py": "670f7d1314687889671b8146f17759aced14d40e6c4770afa0dd96f7dee2a351"
+  },
+  "seeds_and_order": [
+    [
+      4101,
+      [
+        "native",
+        "arena"
+      ]
+    ],
+    [
+      4102,
+      [
+        "arena",
+        "native"
+      ]
+    ],
+    [
+      4103,
+      [
+        "native",
+        "arena"
+      ]
+    ]
+  ],
+  "max_pair_attempts": 2,
+  "main_metric": "full_process_seconds",
+  "secondary_metric": "formal_train_seconds",
+  "prototype_budget_reduction": 0.03,
+  "second_session": "Not automatically scheduled; requires a separately frozen confirmation plan.",
+  "inference_unit": "seed/session paired block; ranks and epochs are not independent samples"
+}

@@ -1,0 +1,109 @@
+{
+  "config": {
+    "output": "/home/data/wangxuran/tgn_lastfm_critical_20261006/runs/critical_20261006_s1_performance_s4103_native_a1/results",
+    "batch": 600,
+    "dataset": "LASTFM",
+    "ablation": "baseline",
+    "thread_probe": false,
+    "epochs": 3,
+    "seed": 4103,
+    "variant": "native",
+    "profile": false,
+    "freeze_weights": false,
+    "audit_state": false,
+    "rendezvous": false,
+    "schedule": "baseline",
+    "delay_stage": "state",
+    "delay_ms": 0,
+    "target_ap": 0,
+    "target_consecutive": 2,
+    "drain_communications": false,
+    "control_barrier": "gloo",
+    "complete_batches": true,
+    "deterministic_mailbox": true,
+    "parameter_transport": "list",
+    "capture_optimizer_rng": false,
+    "prefix_snapshot": true,
+    "inline_state_send": false
+  },
+  "world_size": 2,
+  "rank": 0,
+  "import_and_adapter_seconds": 2.957187718944624,
+  "native_main_wall_seconds": 70.98263762216084,
+  "total_seconds_before_artifact_serialization": 73.93982534110546,
+  "epoch_intervals": [
+    {
+      "epoch": 0,
+      "start_s": 23.22854067804292,
+      "wall_seconds": 14.660779654048383,
+      "positive_edges": 452772,
+      "global_host_start_offset_s": 23.22854067804292,
+      "global_host_end_offset_s": 37.8893203320913
+    },
+    {
+      "epoch": 1,
+      "start_s": 40.358011570060626,
+      "wall_seconds": 14.375723623903468,
+      "positive_edges": 452772,
+      "global_host_start_offset_s": 40.358011570060626,
+      "global_host_end_offset_s": 54.733735193964094
+    },
+    {
+      "epoch": 2,
+      "start_s": 57.09131773910485,
+      "wall_seconds": 14.420184681890532,
+      "positive_edges": 452772,
+      "global_host_start_offset_s": 57.09131773910485,
+      "global_host_end_offset_s": 71.51150242099538
+    }
+  ],
+  "validation": [
+    {
+      "epoch": 0,
+      "ap": 0.5936614871025085,
+      "auc": 0.6048493981361389,
+      "seconds_since_process_start": 40.357394417980686,
+      "target_streak": 0,
+      "reached_target": false
+    },
+    {
+      "epoch": 1,
+      "ap": 0.6103597283363342,
+      "auc": 0.6344932913780212,
+      "seconds_since_process_start": 57.09082271507941,
+      "target_streak": 0,
+      "reached_target": false
+    },
+    {
+      "epoch": 2,
+      "ap": 0.6709067821502686,
+      "auc": 0.6764897108078003,
+      "seconds_since_process_start": 73.87295113597065,
+      "target_streak": 0,
+      "reached_target": false
+    }
+  ],
+  "parameters_finite": true,
+  "peak_allocated_bytes": 81567232,
+  "adaptations": [
+    "dataset path",
+    "run-specific shared-memory names",
+    "DGL copy_src alias",
+    "unused queue-consumer disabled",
+    "one-GPU ring bypass when applicable",
+    "fixed batch/dimensions/dropout/seed",
+    "actual processed-edge accounting"
+  ],
+  "limitations": [
+    "native warm-up performs an extra optimization pass",
+    "complete batches",
+    "deterministic last-event mailbox",
+    "native learning rate scales with sqrt(world size)",
+    "native per-rank Adam and parameter-staleness semantics",
+    "GNNFlow original attention"
+  ],
+  "work_totals_by_phase": {
+    "warm_up": 452772,
+    "train": 1358316
+  }
+}

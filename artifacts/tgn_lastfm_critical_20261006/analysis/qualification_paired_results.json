@@ -1,0 +1,160 @@
+{
+  "campaign_id": "critical_20261006",
+  "session_id": "s1",
+  "pairs": [
+    {
+      "seed": 4101,
+      "order": [
+        "native",
+        "arena"
+      ],
+      "attempt": 1,
+      "campaign_id": "critical_20261006",
+      "session_id": "s1",
+      "runs": {
+        "native": {
+          "run_id": "critical_20261006_s1_qualification_s4101_native_a1",
+          "global_epoch_seconds": [
+            14.287391311023384
+          ],
+          "formal_train_seconds": 14.287391311023384,
+          "full_process_seconds": 44.87998634809628,
+          "validation_ap_by_rank": [
+            [
+              0.6054257750511169
+            ],
+            [
+              0.6054257750511169
+            ]
+          ],
+          "resources": {
+            "accepted": true,
+            "reasons": [],
+            "scope": "Before/after observations; internal transient competition is not ruled out."
+          }
+        },
+        "arena": {
+          "run_id": "critical_20261006_s1_qualification_s4101_arena_a1",
+          "global_epoch_seconds": [
+            12.633794490015134
+          ],
+          "formal_train_seconds": 12.633794490015134,
+          "full_process_seconds": 42.12433819100261,
+          "validation_ap_by_rank": [
+            [
+              0.6054257750511169
+            ],
+            [
+              0.6054257750511169
+            ]
+          ],
+          "resources": {
+            "accepted": true,
+            "reasons": [],
+            "scope": "Before/after observations; internal transient competition is not ruled out."
+          }
+        }
+      },
+      "valid_for_timing": true,
+      "semantic": {
+        "passed": true,
+        "ranks": [
+          {
+            "rank": 0,
+            "checks": {
+              "initial_model.pt": {
+                "bitwise_equal": true,
+                "first_differences": []
+              },
+              "final_model.pt": {
+                "bitwise_equal": true,
+                "first_differences": []
+              },
+              "final_memory.pt": {
+                "bitwise_equal": true,
+                "first_differences": []
+              },
+              "final_optimizer_rng.pt": {
+                "bitwise_equal": true,
+                "first_differences": []
+              },
+              "ap_curve": {
+                "bitwise_equal": true
+              },
+              "native_timestamp_audit": {
+                "bitwise_equal": true,
+                "future_reads": 0
+              },
+              "arena_timestamp_audit": {
+                "bitwise_equal": true,
+                "future_reads": 0
+              }
+            }
+          },
+          {
+            "rank": 1,
+            "checks": {
+              "initial_model.pt": {
+                "bitwise_equal": true,
+                "first_differences": []
+              },
+              "final_model.pt": {
+                "bitwise_equal": true,
+                "first_differences": []
+              },
+              "final_memory.pt": {
+                "bitwise_equal": true,
+                "first_differences": []
+              },
+              "final_optimizer_rng.pt": {
+                "bitwise_equal": true,
+                "first_differences": []
+              },
+              "ap_curve": {
+                "bitwise_equal": true
+              },
+              "native_timestamp_audit": {
+                "bitwise_equal": true,
+                "future_reads": 0
+              },
+              "arena_timestamp_audit": {
+                "bitwise_equal": true,
+                "future_reads": 0
+              }
+            }
+          }
+        ],
+        "optimizer_rng_checked": true
+      },
+      "source_hashes": {
+        "check_runner.py": "153ae7f8cb354a6eb590656070f6a9d8f8df2edd16b6b261978f9467a4512e18",
+        "guard.py": "4504937ed26d2748d0f01d81589de3a558433e0c4774ac3acf7ad849c22d8c49",
+        "parameter_arena.py": "0e93afda583931342e93b06a9e57929fab6f7acae9fb5e754aefe93c1f4f071f",
+        "pipe_flash_adapter.py": "57fefeea0b994ee59f44bf956095f28f4a56daf9ba68299537cbc930cb9b5a79",
+        "pipe_paired_bench.py": "68a5c1ecdc018c0b20ffce839722b9bb7c25b6e790ab9c1f1099eb48752353f6",
+        "prefix_snapshot.py": "f7ff6b9bbe72aaf816d9702cca40ebfd72fc5e2ddc4d95059ac8694178e9eb60",
+        "rendezvous_probe.py": "29031c699428ed77444010204d9bd756c8bf7841f6545b03c7090dd0ee6c6642",
+        "run_interleaved_parameter_ablation.py": "a3b0148edea48e75ce58449da8650b012807d7b5fab79ec138f4f9dc531a6766",
+        "strict_gather.py": "4947a8ba6798bbd9c5fb4436489934a25cc7ef77a5092f692f810e44ec22fdb5",
+        "thread_probe.py": "670f7d1314687889671b8146f17759aced14d40e6c4770afa0dd96f7dee2a351"
+      },
+      "formal_train_seconds_speedup": 1.1308867911627924,
+      "full_process_seconds_speedup": 1.065417007730753
+    }
+  ],
+  "paired_processes_total": 2,
+  "guard_launches_this_invocation": 2,
+  "scope": "Fresh paired fixed-work screening; no Flash, no time-to-target claim, no eight-GPU scaling.",
+  "formal_train_seconds": {
+    "paired_speedups": [
+      1.1308867911627924
+    ],
+    "geometric_speedup": 1.1308867911627924
+  },
+  "full_process_seconds": {
+    "paired_speedups": [
+      1.065417007730753
+    ],
+    "geometric_speedup": 1.065417007730753
+  }
+}

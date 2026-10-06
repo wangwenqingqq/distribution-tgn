@@ -1,0 +1,77 @@
+{
+  "diagnostic_run_id": "critical_20261006_e2_native_s4101_a1",
+  "guard_argv": [
+    "/home/data/wangxuran/isaacsim6/env/bin/python",
+    "/home/data/wangxuran/tgn_lastfm_critical_20261006/src/guard.py",
+    "--indices",
+    "4,5",
+    "--label",
+    "critical_20261006_e2_native_s4101_a1",
+    "--timeout",
+    "300",
+    "--env",
+    "DGLDEFAULTDIR=/home/data/wangxuran/tgn_lastfm_critical_20261006/cache/dgl",
+    "--env",
+    "TMPDIR=/home/data/wangxuran/tgn_lastfm_critical_20261006/cache/tmp",
+    "--env",
+    "NCCL_P2P_DISABLE=1",
+    "--env",
+    "NCCL_IB_DISABLE=1",
+    "--env",
+    "NCCL_SOCKET_IFNAME=lo",
+    "--",
+    "/home/data/wangxuran/isaacsim6/env/bin/python",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nproc_per_node",
+    "2",
+    "/home/data/wangxuran/tgn_lastfm_critical_20261006/e2/pipe_endpoint_bench.py",
+    "--output",
+    "/home/data/wangxuran/tgn_lastfm_critical_20261006/runs/critical_20261006_e2_native_s4101_a1/results",
+    "--dataset",
+    "LASTFM",
+    "--epochs",
+    "1",
+    "--seed",
+    "4101",
+    "--variant",
+    "native",
+    "--ablation",
+    "baseline",
+    "--parameter-transport",
+    "list",
+    "--complete-batches",
+    "--deterministic-mailbox",
+    "--control-barrier",
+    "gloo",
+    "--capture-optimizer-rng",
+    "--audit-state"
+  ],
+  "reference": "critical_20261006_s1_qualification_s4101_native_a1",
+  "work": "full optimizer warm-up plus 1 complete train epoch; native list parameters, native attention, native Adam/staleness, deterministic mailbox, Gloo control",
+  "windows": [
+    [
+      16,
+      47
+    ],
+    [
+      128,
+      159
+    ],
+    [
+      784,
+      815
+    ],
+    [
+      1472,
+      1503
+    ]
+  ],
+  "context_batches": 2,
+  "diagnostic_only": true,
+  "executed_source_hashes": {
+    "endpoint_probe.py": "b3097eed208ad8feaf19fa1253a18b2a4b96bc84574015c5fbefdcd33a670f4e",
+    "pipe_endpoint_bench.py": "16e221f64a8e10d936820c5ac47ba11256afc88c74300969f6d6e7b91224841a"
+  }
+}

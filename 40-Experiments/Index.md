@@ -7,5 +7,6 @@
 | lastfm_short_p2 | 组合能否减少固定工作量全程用时 | 双卡、5 方案、3 seed、每次 3 epoch；统一状态协议 | 原生 / loss-deferred / state-inline / direct Flash / 组合 | [短训练筛选](2026-10-05-lastfm-short-training.md) | 组合用时减少 20.1%；精度等价未成立 |
 | lastfm_thread_warp | 算子以下的线程与发射开销 | 双 rank host/Nsight；真实 sampler replay/NCU | 未开 profiler 的计时与独立诊断 | [两层 breakdown](2026-10-05-lastfm-thread-breakdown.md) | 优先定位 DGL 构造、短 kernel 提交和状态准备；不宣称气泡可全部消除 |
 | lastfm_parameter_transport | 合并消息能否转化为训练收益 | 同实际 payload、同/跨 NUMA；补充保留 native attention 的消融 | 24 张量消息 / 单张量；native 参数 arena | [通信与排除记录](2026-10-05-lastfm-parameter-transport.md) | 微实验有信号；受资源竞争计时剔除，有效性能种子待补 |
+| lastfm_critical_e012 | 参数合并的真实收益及跨 rank 版本关联 | 双卡、三个新配对 seed、完整预热和 3 epoch；另作端点诊断 | 同 native 轨迹的 list / arena | [新配对与端点诊断](2026-10-06-lastfm-critical-path.md) | 完整用时减少 2.78%，低于 3% 门槛；主要窗口 256 条消息内容一致，确认原生参数滞后 |
 
 使用 [实验模板](../90-Templates/Experiment.md)。只收录轻量摘要与证据指针，不上传原始训练数据或权重。

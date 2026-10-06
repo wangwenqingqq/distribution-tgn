@@ -1,0 +1,77 @@
+{
+  "config": {
+    "output": "/home/data/wangxuran/tgn_lastfm_critical_20261006/runs/critical_20261006_s1_qualification_s4101_arena_a1/results",
+    "batch": 600,
+    "dataset": "LASTFM",
+    "ablation": "baseline",
+    "thread_probe": false,
+    "epochs": 1,
+    "seed": 4101,
+    "variant": "native",
+    "profile": false,
+    "freeze_weights": false,
+    "audit_state": true,
+    "rendezvous": false,
+    "schedule": "baseline",
+    "delay_stage": "state",
+    "delay_ms": 0,
+    "target_ap": 0,
+    "target_consecutive": 2,
+    "drain_communications": false,
+    "control_barrier": "gloo",
+    "complete_batches": true,
+    "deterministic_mailbox": true,
+    "parameter_transport": "arena",
+    "capture_optimizer_rng": true,
+    "prefix_snapshot": true,
+    "inline_state_send": false
+  },
+  "world_size": 2,
+  "rank": 0,
+  "import_and_adapter_seconds": 2.9700308789033443,
+  "native_main_wall_seconds": 34.278278812998906,
+  "total_seconds_before_artifact_serialization": 37.24830969190225,
+  "epoch_intervals": [
+    {
+      "epoch": 0,
+      "start_s": 22.023571382975206,
+      "wall_seconds": 12.633794490015134,
+      "positive_edges": 452772,
+      "global_host_start_offset_s": 22.023571382975206,
+      "global_host_end_offset_s": 34.65736587299034
+    }
+  ],
+  "validation": [
+    {
+      "epoch": 0,
+      "ap": 0.6054257750511169,
+      "auc": 0.6182515621185303,
+      "seconds_since_process_start": 37.172484651906416,
+      "target_streak": 0,
+      "reached_target": false
+    }
+  ],
+  "parameters_finite": true,
+  "peak_allocated_bytes": 81530368,
+  "adaptations": [
+    "dataset path",
+    "run-specific shared-memory names",
+    "DGL copy_src alias",
+    "unused queue-consumer disabled",
+    "one-GPU ring bypass when applicable",
+    "fixed batch/dimensions/dropout/seed",
+    "actual processed-edge accounting"
+  ],
+  "limitations": [
+    "native warm-up performs an extra optimization pass",
+    "complete batches",
+    "deterministic last-event mailbox",
+    "native learning rate scales with sqrt(world size)",
+    "native per-rank Adam and parameter-staleness semantics",
+    "GNNFlow original attention"
+  ],
+  "work_totals_by_phase": {
+    "warm_up": 452772,
+    "train": 452772
+  }
+}
